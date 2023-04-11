@@ -141,6 +141,12 @@ map.on('load', () => {
     
             makePopupContent(map, lngLat, props, clickPopup)
         })
+
+        map.flyTo({
+            center: lngLat,
+            zoom: 16,
+            speed: 0.5
+        })
     })
 
     map.on('click', 'thumb-points', e => {
@@ -204,6 +210,12 @@ map.on('load', () => {
             }
     
             makePopupContent(map, lngLat, props, clickPopup)
+        })
+
+        map.flyTo({
+            center: lngLat,
+            zoom: 16,
+            speed: 0.5
         })
     })
 
