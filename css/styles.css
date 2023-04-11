@@ -34,8 +34,8 @@ a {
     color: var(--theme-black);
 }
 :root {
-    --theme-dvrpc: #0078ae;
-    --theme-dvrpc-accent: #366478;
+    --theme-main: #05adda;
+    --theme-accent: #366478;
     --theme-black: #505a5e;
     --theme-white: #f7f7f7;
     --theme-offwhite: #f2f2f2;
@@ -107,7 +107,7 @@ a {
     margin: 0 auto;
 }
 .modal-section h3 {
-    color: var(--theme-dvrpc-accent);
+    color: var(--theme-accent);
 }
 .close-modal{
     position: absolute;
@@ -118,7 +118,7 @@ a {
 .modal-content-subheader {
     text-align: center;
     margin-bottom: 1rem;
-    color: var(--theme-dvrpc);
+    color: var(--theme-main);
 }
 .modal-hr {
     margin: var(--padding-double) auto;
@@ -133,7 +133,7 @@ nav {
     position: relative;
     height: 6vh;
     padding: 0 var(--padding);
-    background-color: var(--theme-dvrpc);
+    background-color: var(--theme-main);
     color: #f7f7f7;
     box-shadow: var(--box-shadow-nav);
     z-index: 1;
@@ -152,11 +152,9 @@ nav {
     font-size: 1.5em;
     font-weight: 200;
 }
-#dvrpc-logo {
+.project-logo {
     display: block;
     width: 75px;
-}
-.project-logo {
     margin-right: var(--padding-half);
 }
 /* END Navbar */
@@ -210,9 +208,9 @@ nav {
     width: 80px;
     height: 80px;
     margin: 8px;
-    border: 8px solid var(--theme-dvrpc);
+    border: 8px solid var(--theme-main);
     border-radius: 50%;
-    border-color: var(--theme-dvrpc) transparent transparent transparent;
+    border-color: var(--theme-main) transparent transparent transparent;
 }
 .lds-ring div:nth-child(1) {
     animation-delay: -0.45s;
@@ -260,7 +258,7 @@ nav {
 }
 .overlay-h2 {
     font-size: 1em;
-    color: var(--theme-dvrpc);
+    color: var(--theme-main);
 }
 .overlay-hr {
     margin: var(--padding-double) 0;
@@ -320,5 +318,6 @@ nav {
 /* Footer */
 footer {
     font-size: 0.8em;
+    color: grey;
 }
 /* END Footer */

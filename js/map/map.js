@@ -16,7 +16,7 @@ const initMap = () => {
 const makeRegionalExtentEls = map => {
     const position = positionMap()
 
-    const dvrpcExtent = {
+    const nycExtent = {
         center: position.center,
         zoom: position.zoom,
         pitch: 0,
@@ -28,18 +28,19 @@ const makeRegionalExtentEls = map => {
     const icon = document.createElement('img')
 
     button.type = 'button'
-    button.title = 'Zoom to regional extent'
+    button.title = 'Zoom to NYC extent'
     
     icon.id = 'regional-extent-img'
-    icon.alt = 'DVRPC Alternative Logo'
+    icon.alt = 'NYC Alternative Logo'
+    // @TODO: NYC / home icon
     icon.src = 'https://www.dvrpc.org/img/banner/new/bug-favicon.png'
 
     button.classList.add('mapboxgl-ctrl-icon')
-    button.classList.add('mapboxgl-ctrl-dvrpc')
+    button.classList.add('mapboxgl-ctrl-nyc')
 
-    button.setAttribute('aria-label', 'Default DVRPC Extent')
+    button.setAttribute('aria-label', 'Default NYC Extent')
 
-    button.onclick = () => map.flyTo({center: dvrpcExtent.center, zoom: dvrpcExtent.zoom}) 
+    button.onclick = () => map.flyTo({center: nycExtent.center, zoom: nycExtent.zoom}) 
 
     button.appendChild(icon)
 
@@ -50,6 +51,7 @@ const makeControls = map => {
     const geocoder = new MapboxGeocoder({
         accessToken: mapboxgl.accessToken,
         placeholder: 'Zoom to location',
+        // @TODO: NYC bbox
         bbox: [-76.09405517578125,39.49211914385648,-74.32525634765625,40.614734298694216],
         marker: false
     })

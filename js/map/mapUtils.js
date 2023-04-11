@@ -3,13 +3,13 @@
 const positionMap = () => {
     if(window.innerWidth <= 420) {
         return {
-            zoom: 7.3,
-            center: [-75.25, 40.331]
+            zoom: 9,
+            center: [-73.971, 40.783]
         }
     } else {
         return {
             zoom: 8.25,
-            center: [-75.2273, 40.071]
+            center: [-73.87, 40.471]
         }
     }
 }
