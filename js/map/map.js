@@ -27,13 +27,14 @@ const makeRegionalExtentEls = map => {
     const button = document.createElement('button')
     const icon = document.createElement('img')
 
+    icon.classList.add('extent-icon')
+
     button.type = 'button'
     button.title = 'Zoom to NYC extent'
     
     icon.id = 'regional-extent-img'
     icon.alt = 'NYC Alternative Logo'
-    // @TODO: NYC / home icon
-    icon.src = 'https://www.dvrpc.org/img/banner/new/bug-favicon.png'
+    icon.src = '../../img/green-home-icon.png'
 
     button.classList.add('mapboxgl-ctrl-icon')
     button.classList.add('mapboxgl-ctrl-nyc')
