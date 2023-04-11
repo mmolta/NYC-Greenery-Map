@@ -9,11 +9,10 @@ const makePopupContent = (map, lnglat, props, popup) => {
     .addTo(map)
 }
 
-// @params props
-    // {
-    //  display: 'name to display',
-    //  prop: 'value of property'
-    // }
+
+// @TODO: generic popups don't make sense - create custom fnc per interaction
+    // mouseover: just garden name
+    // click: conditional sentences with bolded response data
 const makePopupHTML = props => {
     let html = ''
 

@@ -4,6 +4,7 @@ import mapLayers from './map/mapLayers.js'
 import handleModal from './modal.js'
 import handleForms from './forms.js'
 import { makePopup, makePopupContent } from './map/popup.js'
+import { fetchParkDetails } from './map/mapUtils.js'
 
 const modal = document.getElementById('modal')
 const modalToggle = document.getElementById('modal-toggle')
@@ -16,12 +17,12 @@ const selects = toggleForm.querySelectorAll('select')
 // map
 const map = makeMap()
 const hoverPopup = makePopup()
+const clickPopup = makePopup()
 
 map.on('load', () => {
     // @TODO: load source more efficiently
     getSrc(srcURLs.thumb).then(data => {
         if(data) {
-            console.log(data)
             map.addSource('thumb', {
                 'type': 'geojson',
                 data: data
@@ -43,7 +44,7 @@ map.on('load', () => {
         const allProps = e.features[0].properties
         const props = [
             {
-                display: 'Garden Name',
+                display: '',
                 prop: allProps.gardenname
             }
         ]
@@ -58,7 +59,7 @@ map.on('load', () => {
         const allProps = e.features[0].properties
         const props = [
             {
-                display: 'Garden Name',
+                display: '',
                 prop: allProps.gardenname
             }
         ]
@@ -77,13 +78,71 @@ map.on('load', () => {
         hoverPopup.remove()
     })
 
-    // map.on('click', 'thumb', e => {
-    //     // fetch data from id
-    //     const id = e.properties.parksid
-        
-    //     // fetch id from parksID endpoint and put into popup
-    //     const details = fetchDetails(id)
-    // })
+    map.on('click', 'thumb', e => {
+        const lngLat = e.lngLat
+        const allProps = e.features[0].properties
+        const id = allProps.parksid
+        const gardenName = allProps.gardenname
+
+        // fetch id from parksID endpoint and put into popup
+        fetchParkDetails(id).then(response => {
+            let props;
+
+            if(response.length) {
+                const data = response[0]
+                
+                props = [
+                    {
+                        display: '',
+                        prop: gardenName
+                    },
+                    {
+                        display: 'Open to public',
+                        prop: data.openlawnorcommunalarea
+                    },
+                    {
+                        display: 'Garden Area',
+                        prop: data.totalsidewalkarea + ' square feet'
+                    },
+                    {
+                        display: 'Composting',
+                        prop: data.composting
+                    },
+                    {
+                        display: 'CSA Pick Site',
+                        prop: data.csapickup
+                    },
+                    {
+                        display: 'Solar Panels',
+                        prop: data.solarpanels
+                    },
+                    {
+                        display: 'Is Food Grown Here?',
+                        prop: data.food
+                    },
+                    {
+                        display: 'Is There a Pond?',
+                        prop: data.pond
+                    }
+                ]
+            } else {
+                props = [
+                    {
+                        display: '',
+                        prop: gardenName
+                    },
+                    {
+                        display: 'Details for this park are unavailable',
+                        prop: ''
+                    }
+                ]
+            }
+    
+            makePopupContent(map, lngLat, props, clickPopup)
+        })
+
+
+    })
 
     // on click, fetch the Site Visits API and create a popup with the informaiton
     map.on
