@@ -1,10 +1,10 @@
 const makePopup = () => new mapboxgl.Popup()
 
-const makePopupContent = (map, target, popup) => {
-    const html = makePopupHTML(target.props)
+const makePopupContent = (map, lnglat, props, popup) => {
+    const html = makePopupHTML(props)
 
     popup
-    .setLngLat(target.lngLat)
+    .setLngLat(lnglat)
     .setHTML(html)
     .addTo(map)
 }

@@ -12,6 +12,7 @@ body {
 h1 {
     text-align: center;
     font-size: inherit;
+    margin: 0 32px;
 }
 summary {
     cursor: pointer;
@@ -29,7 +30,7 @@ select {
     padding: 0.5em 0.25em;
 }
 input[type=radio], input[type=checkbox] {
-    margin-right: 0.75em;
+    margin-left: 0.5em;
 }
 a {
     color: var(--theme-black);
@@ -129,23 +130,26 @@ nav {
     transform: translate(-50%, 0);
     padding: 0 24px;
     border-radius: var(--border-radius);
-    background-color: var(--theme-white);
+    background-color: var(--theme-accent);
+    color: var(--theme-white);
     box-shadow: var(--box-shadow);
     z-index: 1;
 }
 .nav-btn {
     font-size: 1em;
     background: transparent;
+    color: var(--theme-white);
     border: none;
-    border-bottom: 2px solid var(--theme-accent);
+    border-bottom: 2px solid var(--theme-white);
     padding: 0;
     cursor: pointer;
 }
 .nav-vr {
-    margin: 0 8px;
+    display: none;
+    margin: 0 16px;
     font-size: 1.5em;
     font-weight: 200;
-    color: var(--theme-accent);
+    color: var(--theme-white);
 }
 .project-logo {
     display: block;
@@ -240,26 +244,18 @@ nav {
 .overlay {
     z-index: 2;
     position: absolute;
-    width: 16em;
     max-height: calc(88vh - 40px);
     overflow-x: hidden;
     overflow-y: auto;
     top: 16px;
     left: 16px;
-    font-size: 1rem;
-    padding: 8px;
+    font-size: 1em;
+    padding: 16px;
     background-color: var(--theme-white);
     box-shadow: var(--box-shadow);
     border-radius: var(--border-radius);
 }
-.overlay-details {
-    margin: 16px 0 4px 0;
-}
-.overlay-details:first-of-type {
-    margin-top: 0;
-}
 .overlay-h2 {
-    font-size: 1em;
     font-weight: 500;
 }
 .overlay-hr {
@@ -276,7 +272,7 @@ nav {
 }
 .overlay-container {
     padding: 8px;
-    margin-top: 4px;
+    margin-top: 8px;
     box-shadow: var(--box-shadow-half);
     border-radius: var(--border-radius);
 }
@@ -291,7 +287,7 @@ nav {
     background-color: white
 }
 .legend-item {
-    margin: 8px 65px 8px 0;
+    margin: 8px 0;
     width: max-content;
 }
 .legend-icon-line {
@@ -304,11 +300,20 @@ nav {
     margin-left: 7.5px;
 }
 .legend-icon-circle {
-    display: block;
+    display: inline-block;
     width: 16px;
     height: 16px;
     margin-right: 8px;
     border-radius: 50%;
+}
+.circle-blue {
+    background-color: var(--theme-main);
+}
+.circle-green {
+    background-color: var(--theme-accent);
+}
+.circle-black {
+    background-color: var(--theme-black);
 }
 .legend-text {
     font-size: 0.75em;

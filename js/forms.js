@@ -1,6 +1,7 @@
 import secondaryMapLayers from './map/secondaryMapLayers.js'
 
 // handles: checkboxes, toggles, radio buttons
+// @TODO: change to a filter instead of a toggle
 const handleFormInputs = (inputs, map) => {
     let active = []
 

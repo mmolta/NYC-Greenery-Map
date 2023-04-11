@@ -32,8 +32,7 @@ const mapLayers = {
                 11, 4,
                 12, 3,
                 13, 2,
-                14, 1,
-                15, 0 
+                14, 0, 
             ],
             'circle-color': ['match',
                 ['get', 'status'],
@@ -41,7 +40,12 @@ const mapLayers = {
                 'Not GreenThumb', '#05adda',
                 '#353535'
             ],
-            'circle-stroke-color': '#FCFAF9'
+            'circle-stroke-color': '#FCFAF9',
+            'circle-stroke-width': ['interpolate',
+            ['linear'], ['zoom'],
+            10, 1,
+            13, 0
+            ]
         }
     }
 }

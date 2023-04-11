@@ -46,29 +46,27 @@
 
         <main class="map" id="map">
             <section class="overlay">
-                <details class="overlay-details" open>
-                    <summary>
-                        <h2 class="overlay-h2 summary-h2">toggle layers</h2>
-                    </summary>
+                <h2 class="overlay-h2 summary-h2">GreenThumb Garden Status</h2>
                     
-                    <form id="toggle-form" class="overlay-container overlay-form flex-column">
-                        <small>add form elements here. Set the "value" attribute on each form element (<code>input</code>, <code>select</code>, etc) to the id of the layer it affects.</small>
-                    </form>
-                </details>
+                <form id="toggle-form" class="overlay-container overlay-form flex-column">
+                    <label class="flex-row flex-align-center legend-item">
+                        <span class="legend-icon-circle circle-green"></span>
+                        Active
+                        <input type="checkbox" value="thumb-points" checked />
+                    </label>
 
-                <details class="overlay-details" open>
-                    <summary>
-                        <h2 class="overlay-h2 summary-h2">legend</h2>
-                    </summary>
+                    <label class="flex-row flex-align-center legend-item">
+                        <span class="legend-icon-circle circle-blue"></span>
+                        Not GreenThumb
+                        <input type="checkbox" value="thumb-points" checked />
+                    </label>
 
-                    <div class="flex-column">
-                        <aside class="overlay-container legend-section flex-column">
-                            <div id="legend-container" class="legend-content-container flex-row flex-wrap">
-                            
-                            </div>
-                        </aside>
-                    </div>
-                </details>
+                    <label class="flex-row flex-align-center legend-item">
+                        <span class="legend-icon-circle circle-black"></span>
+                        Unclassified
+                        <input type="checkbox" value="thumb-points" checked />
+                    </label>
+                </form>
 
                 <hr class="overlay-hr" />
 
