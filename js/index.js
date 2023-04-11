@@ -1,5 +1,5 @@
 import makeMap from './map/map.js'
-import sources from './map/mapSources.js'
+import { getSrc, srcURLs } from './map/mapSources.js'
 import mapLayers from './map/mapLayers.js'
 import handleModal from './modal.js'
 import handleForms from './forms.js'
@@ -18,11 +18,30 @@ const selects = toggleForm.querySelectorAll('select')
 // map
 const map = makeMap()
 
+// sources
+
+
 map.on('load', () => {
-    for(const source in sources) map.addSource(source, sources[source])
-    for(const layer in mapLayers) map.addLayer(mapLayers[layer], 'road-label')
+    getSrc(srcURLs.thumb).then(data => {
+        console.log(data)
+        if(data) {
+            map.addSource('thumb', {
+                'type': 'geojson',
+                data: data
+            })
+    
+            map.addLayer(mapLayers.thumb)
+            map.addLayer(mapLayers.thumbPoints)
+        } else {
+            // @TODO: more graceful way to let users know data source failed to load
+            alert('thumb Layer failed to load!')
+        }
+    })
 
     // add map events here (click, mousemove, etc)
+    // on mousemove, show the name of the community garden
+
+    // on click, fetch the Site Visits API and create a popup with the informaiton
 
     // set default form state
     let activeInputs = handleForms('input', inputs, map)
