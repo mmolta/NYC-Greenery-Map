@@ -6,6 +6,7 @@ import handleForms from './forms.js'
 import { makePopup, makePopupContent } from './map/popup.js'
 import { fetchParkDetails } from './map/mapUtils.js'
 
+
 const modal = document.getElementById('modal')
 const modalToggle = document.getElementById('modal-toggle')
 const closeModal = document.getElementById('close-modal')
@@ -37,7 +38,7 @@ map.on('load', () => {
     })
 
     // add map events here (click, mousemove, etc)
-    // on mousemove, show the name of the community garden
+    // @TODO: refactor events into functions
     map.on('mouseenter', 'thumb', e => {
         map.getCanvas().style.cursor = 'pointer'
 
@@ -90,7 +91,7 @@ map.on('load', () => {
 
             if(response.length) {
                 const data = response[0]
-                
+
                 props = [
                     {
                         display: '',
@@ -140,8 +141,70 @@ map.on('load', () => {
     
             makePopupContent(map, lngLat, props, clickPopup)
         })
+    })
 
+    map.on('click', 'thumb-points', e => {
+        const lngLat = e.lngLat
+        const allProps = e.features[0].properties
+        const id = allProps.parksid
+        const gardenName = allProps.gardenname
 
+        // fetch id from parksID endpoint and put into popup
+        fetchParkDetails(id).then(response => {
+            let props;
+
+            if(response.length) {
+                const data = response[0]
+
+                props = [
+                    {
+                        display: '',
+                        prop: gardenName
+                    },
+                    {
+                        display: 'Open to public',
+                        prop: data.openlawnorcommunalarea
+                    },
+                    {
+                        display: 'Garden Area',
+                        prop: data.totalsidewalkarea + ' square feet'
+                    },
+                    {
+                        display: 'Composting',
+                        prop: data.composting
+                    },
+                    {
+                        display: 'CSA Pick Site',
+                        prop: data.csapickup
+                    },
+                    {
+                        display: 'Solar Panels',
+                        prop: data.solarpanels
+                    },
+                    {
+                        display: 'Is Food Grown Here?',
+                        prop: data.food
+                    },
+                    {
+                        display: 'Is There a Pond?',
+                        prop: data.pond
+                    }
+                ]
+            } else {
+                props = [
+                    {
+                        display: '',
+                        prop: gardenName
+                    },
+                    {
+                        display: 'Details for this park are unavailable',
+                        prop: ''
+                    }
+                ]
+            }
+    
+            makePopupContent(map, lngLat, props, clickPopup)
+        })
     })
 
     // on click, fetch the Site Visits API and create a popup with the informaiton

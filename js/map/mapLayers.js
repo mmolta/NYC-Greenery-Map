@@ -5,8 +5,6 @@ const mapLayers = {
         type: 'circle',
         source: 'dep'
     },
-    // thumb archive has SIZE fields
-        // adjust circle radius based on the size of the garden
     thumb: {
         id: 'thumb',
         type: 'fill',

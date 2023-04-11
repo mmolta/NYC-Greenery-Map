@@ -19,13 +19,6 @@ const getSrc = async url => {
 const srcURLs = {
     dep: "https://data.cityofnewyork.us/resource/uyfj-5xid.geojson",
     thumb: "https://data.cityofnewyork.us/resource/p78i-pat6.geojson"
-    
-    // @NOTE: this is the current greenthumbs dataset but it DOESNT have geometry
-        // common field is ParksID
-        // join with ParksID
-        // clicking an area creates a popup and FETCHES this endpoint with the parksID
-            // creates a popup that has informaiton about the park
-    // thumb: "https://data.cityofnewyork.us/resource/xqbk-beh5.jsonjson"
 }
 
 export { getSrc, srcURLs }

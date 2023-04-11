@@ -155,7 +155,9 @@ nav {
     display: block;
     width: 55px;
     margin-right: 4px;
-    filter: drop-shadow(var(--box-shadow));
+    box-shadow: var(--box-shadow);
+    border-radius: 50%;
+    border: 2px solid var(--theme-white);
 }
 /* END Navbar */
 
@@ -192,6 +194,9 @@ nav {
 }
 .mapboxgl-ctrl-geocoder, .mapboxgl-ctrl-geocoder .suggestions, .mapboxgl-ctrl-group:not(:empty) {
     box-shadow: var(--box-shadow);
+}
+.mapboxgl-ctrl-geocoder--icon {
+    fill: var(--theme-accent);
 }
 .mapboxgl-ctrl-geocoder--input {
     cursor: text;
@@ -261,6 +266,7 @@ nav {
 }
 .overlay-hr {
     margin: 16px 0;
+    color: var(--theme-accent);
 }
 .overlay-form, .overlay-select {
     background-color: white;
