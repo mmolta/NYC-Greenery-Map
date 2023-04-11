@@ -1,0 +1,324 @@
+/* General */
+* {
+    margin: 0;
+}
+body {
+    font-size: 15px;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.45;
+    text-rendering: optimizeLegibility;
+}
+h1 {
+    text-align: center;
+    font-size: inherit;
+}
+summary {
+    cursor: pointer;
+}
+fieldset {
+    font-size: 0.8em;
+    border-radius: var(--border-radius);
+    background-color: white;
+}
+select, input {
+    cursor: pointer;
+}
+select {
+    border-radius: var(--border-radius);
+    padding: 0.5em 0.25em;
+}
+input[type=radio], input[type=checkbox] {
+    margin-right: 0.75em;
+}
+a {
+    color: var(--theme-black);
+}
+:root {
+    --theme-dvrpc: #0078ae;
+    --theme-dvrpc-accent: #366478;
+    --theme-black: #505a5e;
+    --theme-white: #f7f7f7;
+    --theme-offwhite: #f2f2f2;
+
+    --padding-half: 5px;
+    --padding: 10px;
+    --padding-double: 20px;
+
+    --border-radius: 4px;
+    --box-shadow: 1px 2px 3px rgba(0,0,0,0.15);
+    --box-shadow-nav: 1px 2px 3px rgba(0,0,0,0.3);
+    --box-shadow-half: 0.5px 1px 1.5px rgba(0, 0, 0, 0.15);
+}
+.flex-row {
+    display: flex;
+    align-items: center;
+}
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+.flex-between {
+    justify-content: space-between;
+}
+.flex-around {
+    justify-content: space-around;
+}
+.flex-end {
+    justify-content: flex-end;
+}
+.flex-wrap {
+    flex-wrap: wrap
+}
+.summary-h2 {
+    display: inline;
+}
+/* END General */
+
+
+
+/* Modal */
+.modal-toggle, .close-modal{
+    cursor: pointer;
+    font-size: inherit;
+}
+.modal{
+    position: fixed;
+    display: none;
+    z-index: 3;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background: rgba(0, 0, 0, 0.3);
+}
+.modal-content{
+    position: relative;
+    background: #fff;
+    width: 50em;
+    padding: var(--padding-double);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+.modal-content p, .modal-content span {
+    margin-top: 0.25em;
+}
+.modal-section {
+    width: 45em;
+    margin: 0 auto;
+}
+.modal-section h3 {
+    color: var(--theme-dvrpc-accent);
+}
+.close-modal{
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    font-size: 1.5em;
+}
+.modal-content-subheader {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--theme-dvrpc);
+}
+.modal-hr {
+    margin: var(--padding-double) auto;
+    width: 45em;
+}
+/* END Modal */
+
+
+
+/* Navbar */
+nav {
+    position: relative;
+    height: 6vh;
+    padding: 0 var(--padding);
+    background-color: var(--theme-dvrpc);
+    color: #f7f7f7;
+    box-shadow: var(--box-shadow-nav);
+    z-index: 1;
+}
+.nav-btn {
+    font-size: 1em;
+    color: #f7f7f7;
+    background: transparent;
+    border: none;
+    text-decoration: underline;
+    padding: 0;
+    cursor: pointer;
+}
+.nav-vr {
+    margin: 0 var(--padding);
+    font-size: 1.5em;
+    font-weight: 200;
+}
+#dvrpc-logo {
+    display: block;
+    width: 75px;
+}
+.project-logo {
+    margin-right: var(--padding-half);
+}
+/* END Navbar */
+
+
+
+/* Main Webmap Area */
+.map {
+    position: relative;
+    height: 94vh;
+    width: 100%;
+}
+#regional-extent-img {
+    display: block;
+    margin: 0 auto;
+    height: 20px;
+    width: 20px;
+}
+.mapboxgl-popup-content {
+    padding: var(--padding-double) var(--padding);
+}
+.popup-span {
+    display: block;
+}
+.popup-span:not(:last-of-type) {
+    border-bottom: 1px dotted var(--theme-black);
+}
+.mapboxgl-ctrl-geocoder, .mapboxgl-ctrl-geocoder .suggestions, .mapboxgl-ctrl-group:not(:empty) {
+    box-shadow: var(--box-shadow);
+}
+.mapboxgl-ctrl-geocoder--input {
+    cursor: text;
+}
+.lds-ring {
+    display: none;
+    position: relative;
+    width: 100px;
+    height: 100px;
+    top: calc(50% - 40px);
+    left: calc(50% - 40px);
+    z-index: 2;
+}
+.lds-ring-active {
+    display: inline-block;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+.lds-ring div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    margin: 8px;
+    border: 8px solid var(--theme-dvrpc);
+    border-radius: 50%;
+    border-color: var(--theme-dvrpc) transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+    animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+    animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+    animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+/* END Main Webmap Area */
+
+
+
+/* Map Overlays */
+.overlay {
+    z-index: 2;
+    position: absolute;
+    width: 15em;
+    /* map pad(10px) + map pad(10px) + section padding(20px) = 40px */
+    max-height: calc(88vh - 40px);
+    overflow-x: hidden;
+    overflow-y: auto;
+    top: 10px;
+    left: 10px;
+    font-size: 1rem;
+    padding: var(--padding);
+    background-color: var(--theme-white);
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius);
+}
+.overlay-details {
+    margin: var(--padding-double) 0 var(--padding-half) 0;
+}
+.overlay-details:first-of-type {
+    margin-top: 0;
+}
+.overlay-h2 {
+    font-size: 1em;
+    color: var(--theme-dvrpc);
+}
+.overlay-hr {
+    margin: var(--padding-double) 0;
+}
+.overlay-form, .overlay-select {
+    background-color: white;
+    font-size: inherit;
+}
+.label-select {
+    /* same as fieldset */
+    font-size: 0.8em;
+    margin-bottom: var(--padding);
+}
+.overlay-container {
+    padding: var(--padding);
+    margin-top: var(--padding-half);
+    box-shadow: var(--box-shadow-half);
+    border-radius: var(--border-radius);
+}
+.overlay-form-toggle-group {
+    margin-bottom: var(--padding);
+}
+.overlay-form-toggle-group:last-child {
+    margin-bottom: 0;
+}
+.legend-section {
+    padding: 0 var(--padding);
+    background-color: white
+}
+.legend-item {
+    margin: 10px 15px 10px 0;
+    width: max-content;
+}
+.legend-icon-line {
+    display: block;
+    width: 2.5px;
+    height: 15px;
+    margin-right: 12.5px;
+    transform: rotate(90deg);
+    /* account for transform */
+    margin-left: 7.5px;
+}
+.legend-icon-circle {
+    display: block;
+    width: 15px;
+    height: 15px;
+    margin-right: 9px;
+    border-radius: 50%;
+}
+.legend-text {
+    font-size: 0.75em;
+}
+/* END Map Overlays */
+
+
+
+/* Footer */
+footer {
+    font-size: 0.8em;
+}
+/* END Footer */
