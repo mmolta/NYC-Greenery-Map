@@ -182,9 +182,15 @@ nav {
     border-radius: var(--border-radius);
     background-color: var(--theme-white);
 }
+.mapboxgl-popup-close-button {
+    top: 4px;
+    right: 4px;
+}
 .mapboxgl-popup-content {
-    padding: 16px 8px;
+    padding: 16px;
     text-align: center;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
 }
 .popup-span {
     display: block;
