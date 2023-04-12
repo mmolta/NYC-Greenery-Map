@@ -200,17 +200,18 @@ map.on('load', () => {
         })
     })
 
+    // @TODO: re-incorporate
     // set default form state
-    let activeInputs = handleForms('input', inputs, map)
-    let activeSelects = handleForms('select', selects, map)
-    let allActiveToggles = [... activeSelects, ... activeInputs]
+    // let activeInputs = handleForms('input', inputs, map)
+    // let activeSelects = handleForms('select', selects, map)
+    // let allActiveToggles = [... activeSelects, ... activeInputs]
 
     // handle simple toggles - layers on/off and corresponding legend items on/off
-    toggleForm.onchange = () => {
-        activeInputs = handleForms('input', inputs, map)
-        activeSelects = handleForms('select', selects, map)
-        allActiveToggles = [... activeSelects, ... activeInputs]
-    }
+    // toggleForm.onchange = () => {
+    //     activeInputs = handleForms('input', inputs, map)
+    //     activeSelects = handleForms('select', selects, map)
+    //     allActiveToggles = [... activeSelects, ... activeInputs]
+    // }
 })
 
 
