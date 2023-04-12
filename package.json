@@ -10,7 +10,7 @@
   "license": "ISC",
   "scripts": {
     "test": "test",
-    "build": "webpack && npm version patch",
+    "build": "webpack",
     "build:prod": "webpack -p && npm version minor"
   },
   "repository": {
