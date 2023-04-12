@@ -9,10 +9,6 @@ const makePopupContent = (map, lnglat, props, popup) => {
     .addTo(map)
 }
 
-
-// @TODO: generic popups don't make sense - create custom fnc per interaction
-    // mouseover: just garden name
-    // click: conditional sentences with bolded response data
 const makePopupHTML = props => {
     let html = ''
 
@@ -25,6 +21,18 @@ const makePopupHTML = props => {
     })
     
     return html
+}
+
+const makeThumbPopup = (response, gardenName, lngLat, clickPopup) => {
+    let props;
+
+    // @TODO: mockup a designed popup
+    if(response.length) {
+        const data = response[0]
+
+    } else {
+
+    }
 }
 
 export { makePopup, makePopupContent }

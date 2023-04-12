@@ -32,7 +32,7 @@ const TerserPlugin = require("terser-webpack-plugin");
 
 /***** Steps to copy and minify existing HTML files using html-webpack-plugin *****/
 let indexConfig = new HtmlWebpackPlugin({
-    template: path.resolve(__dirname + "/index.html"),
+    template: path.resolve(__dirname + "/index-prod.html"),
     file: 'index.html',
     inject: 'head',
     scriptLoading: 'defer',

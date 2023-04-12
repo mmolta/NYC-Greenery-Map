@@ -4,7 +4,8 @@ import mapLayers from './map/mapLayers.js'
 import handleModal from './modal.js'
 import handleForms from './forms.js'
 import { makePopup, makePopupContent } from './map/popup.js'
-import { fetchParkDetails } from './map/mapUtils.js'
+import { fetchParkDetails } from './map/mapFetch.js'
+import { hoverThumbLayer } from './map/mapEvents.js'
 
 
 const modal = document.getElementById('modal')
@@ -15,13 +16,11 @@ const inputs = toggleForm.querySelectorAll('input')
 const selects = toggleForm.querySelectorAll('select')
 
 
-// map
 const map = makeMap()
 const hoverPopup = makePopup()
 const clickPopup = makePopup()
 
 map.on('load', () => {
-    // @TODO: load source more efficiently
     getSrc(srcURLs.thumb).then(data => {
         if(data) {
             map.addSource('thumb', {
@@ -37,36 +36,17 @@ map.on('load', () => {
         }
     })
 
-    // add map events here (click, mousemove, etc)
-    // @TODO: refactor events into functions
+    // map events
     map.on('mouseenter', 'thumb', e => {
         map.getCanvas().style.cursor = 'pointer'
-
-        const allProps = e.features[0].properties
-        const props = [
-            {
-                display: '',
-                prop: allProps.gardenname
-            }
-        ]
-        const lngLat = e.lngLat
-
-        makePopupContent(map, lngLat, props, hoverPopup)
+        const hoverDetails = hoverThumbLayer(e)
+        makePopupContent(map, hoverDetails[0], hoverDetails[1], hoverPopup)
     })
 
     map.on('mouseenter', 'thumb-points', e => {
         map.getCanvas().style.cursor = 'pointer'
-
-        const allProps = e.features[0].properties
-        const props = [
-            {
-                display: '',
-                prop: allProps.gardenname
-            }
-        ]
-        const lngLat = e.lngLat
-
-        makePopupContent(map, lngLat, props, hoverPopup)
+        const hoverDetails = hoverThumbLayer(e)
+        makePopupContent(map, hoverDetails[0], hoverDetails[1], hoverPopup)
     })
 
     map.on('mouseleave', 'thumb', () => {
@@ -85,11 +65,12 @@ map.on('load', () => {
         const id = allProps.parksid
         const gardenName = allProps.gardenname
 
-        // fetch id from parksID endpoint and put into popup
         fetchParkDetails(id).then(response => {
+            // const popup = makeThumbPopup(data, gardenName)
             let props;
 
             if(response.length) {
+
                 const data = response[0]
 
                 props = [
@@ -219,8 +200,6 @@ map.on('load', () => {
         })
     })
 
-    // on click, fetch the Site Visits API and create a popup with the informaiton
-    map.on
     // set default form state
     let activeInputs = handleForms('input', inputs, map)
     let activeSelects = handleForms('select', selects, map)
@@ -233,6 +212,7 @@ map.on('load', () => {
         allActiveToggles = [... activeSelects, ... activeInputs]
     }
 })
+
 
 // loading spinner 
 map.on('idle', () => {

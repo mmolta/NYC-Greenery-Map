@@ -14,20 +14,18 @@ const positionMap = () => {
     }
 }
 
-const fetchParkDetails = async id => {
-    const stream = await fetch(`https://data.cityofnewyork.us/resource/xqbk-beh5.json?parksid=${id}`, {
-        method: 'GET',
-        data: {
-            'app_token': 'CFr3cIogbz6wjQIVlR6asLXkN'
+// @TODO: remove. Make specific popup fncs, no need for this trash
+const hoverThumbLayer = e => {
+    const allProps = e.features[0].properties
+    const props = [
+        {
+            display: '',
+            prop: allProps.gardenname
         }
-    })
+    ]
+    const lngLat = e.lngLat
 
-    if(stream.ok) {
-        const data = await stream.json()
-        return data
-    } else {
-        return false
-    }
+    return [lngLat, props]
 }
 
-export { positionMap, fetchParkDetails }
+export { positionMap, hoverThumbLayer }
