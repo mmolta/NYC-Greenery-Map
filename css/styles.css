@@ -262,6 +262,7 @@ nav {
     border-radius: var(--border-radius);
 }
 .overlay-h2 {
+    font-size: 1rem;
     font-weight: 500;
 }
 .overlay-hr {
@@ -308,8 +309,8 @@ nav {
 }
 .legend-icon-circle {
     display: inline-block;
-    width: 16px;
-    height: 16px;
+    width: 10px;
+    height: 10px;
     margin-right: 8px;
     border-radius: 50%;
 }
