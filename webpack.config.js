@@ -33,6 +33,7 @@ const TerserPlugin = require("terser-webpack-plugin");
 /***** Steps to copy and minify existing HTML files using html-webpack-plugin *****/
 let indexConfig = new HtmlWebpackPlugin({
     template: path.resolve(__dirname + "/index.html"),
+    favicon: './favicon.ico',
     file: 'index.html',
     inject: 'head',
     scriptLoading: 'defer',
@@ -52,6 +53,14 @@ let indexConfig = new HtmlWebpackPlugin({
 
 /***** JS/CSS Bundle + Static Assets creation *****/
 module.exports = {
+    devServer: {
+        client: {
+          overlay: {
+                errors: true,
+                warnings: false
+            }
+        }
+    },
     entry: ['./js/index.js'],
     mode: 'production',
     module: {
