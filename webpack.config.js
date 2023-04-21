@@ -32,7 +32,7 @@ const TerserPlugin = require("terser-webpack-plugin");
 
 /***** Steps to copy and minify existing HTML files using html-webpack-plugin *****/
 let indexConfig = new HtmlWebpackPlugin({
-    template: path.resolve(__dirname + "/index-prod.html"),
+    template: path.resolve(__dirname + "/index.html"),
     file: 'index.html',
     inject: 'head',
     scriptLoading: 'defer',
@@ -71,7 +71,6 @@ module.exports = {
             },
             // load imgs
             {
-                // cover all test cases (do you have .jpg or otherwise? add to test case)
                 test: /\.(png|svg)$/,
                 use: [
                     {

@@ -17,6 +17,11 @@ Visualizing NYC Open Data's greenery datasets. Includes GreenThumb community gar
 ## @TODO
 - Mockup designs for the popups
 - Update API calls to only include relevant fields
-- Fix build script to remove index.js from head
-    - Temporary solution: copy index.html into index-prod.html, remove index.js and build from index-prod.html
-    - Try a tweak of the [accepted solution here](https://stackoverflow.com/questions/50213866/how-to-delete-outputted-index-js-after-webpack-finishes) but instead of `rm dist/*.js` do `rm dist/index.js`
+
+
+## Getting Started
+- `npm clean-install`
+- `npm run start`
+
+## Build
+- `npm run build`
