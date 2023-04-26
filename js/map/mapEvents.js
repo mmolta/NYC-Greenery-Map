@@ -8,8 +8,8 @@ const positionMap = () => {
         }
     } else {
         return {
-            zoom: 10.5,
-            center: [-73.911, 40.763]
+            zoom: 9.75,
+            center: [-73.911, 40.720]
         }
     }
 }
