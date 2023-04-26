@@ -270,10 +270,12 @@ nav {
     box-shadow: var(--box-shadow);
     border-radius: var(--border-radius);
 }
+.legend-header {
+    margin-bottom: 8px;
+}
 .overlay-h2 {
     font-size: 1rem;
     font-weight: 500;
-    margin-bottom: 8px;
 }
 .overlay-hr {
     margin: 16px 0;

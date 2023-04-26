@@ -19,8 +19,8 @@ const getSrc = async url => {
 // @NOTE: ?$select=syntax,for,limiting,fields,while,fetching
 const srcURLs = {
     // dep: "https://data.cityofnewyork.us/resource/uyfj-5xid.geojson",
-    thumb: "https://data.cityofnewyork.us/resource/p78i-pat6.geojson",
     parks: "https://data.cityofnewyork.us/resource/enfh-gkve.geojson?$select=multipolygon,URL,TYPECATEGORY,SIGNNAME,MAPPED,LOCATION,ACRES",
+    thumb: "https://data.cityofnewyork.us/resource/p78i-pat6.geojson",
     trails: "https://data.cityofnewyork.us/resource/vjbm-hsyr.geojson"
 }
 

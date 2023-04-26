@@ -63,9 +63,9 @@ const mapLayers = {
 }
 
 const layersKey = {
-    parks: ['parks'],
     thumb: ['thumb', 'thumbPoints'],
-    trails: ['trails']
+    trails: ['trails'],
+    parks: ['parks']
 }
 
 export { mapLayers, layersKey }
