@@ -44,7 +44,7 @@
 
         <main class="map" id="map">
             <section class="overlay">
-                <form id="toggle-form" class="overlay-container overlay-form flex-column">
+                <form id="gardens-form" class="overlay-container toggle-form flex-column">
                     <div class="flex-row flex-align-center legend-header">
                         <span class="legend-icon-circle circle-yellow"></span>
                         <h2 class="overlay-h2">GreenThumb Community Gardens</h2>
@@ -62,6 +62,30 @@
 
                     <label class="flex-row flex-align-center legend-item">
                         Unclassified
+                        <input type="checkbox" value="thumb-points" checked />
+                    </label>
+                </form>
+
+                <form id="trails-form" class="overlay-container toggle-form flex-column">
+                    <div class="flex-row flex-align-center legend-header">
+                        <span class="legend-icon-line line-purple"></span>
+                        <h2 class="overlay-h2">Trails</h2>
+                    </div>
+
+                    <label class="flex-row flex-align-center legend-item">
+                        filter ?
+                        <input type="checkbox" value="thumb-points" checked />
+                    </label>
+                </form>
+
+                <form id="parks-form" class="overlay-container toggle-form flex-column">
+                    <div class="flex-row flex-align-center legend-header">
+                        <span class="legend-icon-polygon circle-green"></span>
+                        <h2 class="overlay-h2">Parks</h2>
+                    </div>
+
+                    <label class="flex-row flex-align-center legend-item">
+                        filter ?
                         <input type="checkbox" value="thumb-points" checked />
                     </label>
                 </form>

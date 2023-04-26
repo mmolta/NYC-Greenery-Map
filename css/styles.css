@@ -41,6 +41,7 @@ a {
     --theme-main: #05adda;
     --theme-accent: #00a753;
     --theme-thumb: #F49D6E;
+    --theme-purple: #6369D1;
     --theme-black: #353535;
     --theme-white: #FCFAF9;
 
@@ -326,6 +327,15 @@ nav {
     height: 10px;
     margin-right: 8px;
     border-radius: 50%;
+}
+.legend-icon-polygon {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: 8px;
+}
+.line-purple {
+    background: var(--theme-purple);
 }
 .circle-blue {
     background-color: var(--theme-main);

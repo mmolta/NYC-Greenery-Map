@@ -11,9 +11,7 @@ import { hoverThumbLayer } from './map/mapEvents.js'
 const modal = document.getElementById('modal')
 const modalToggle = document.getElementById('modal-toggle')
 const closeModal = document.getElementById('close-modal')
-const toggleForm = document.getElementById('toggle-form')
-const inputs = toggleForm.querySelectorAll('input')
-const selects = toggleForm.querySelectorAll('select')
+const toggleForm = document.querySelectorAll('.toggle-form')
 
 
 const map = makeMap()
