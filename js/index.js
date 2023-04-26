@@ -1,6 +1,6 @@
 import makeMap from './map/map.js'
 import { getSrc, srcURLs } from './map/mapSources.js'
-import mapLayers from './map/mapLayers.js'
+import { mapLayers, layersKey } from './map/mapLayers.js'
 import handleModal from './modal.js'
 import handleForms from './forms.js'
 import { makePopup, makePopupContent } from './map/popup.js'
@@ -21,20 +21,37 @@ const hoverPopup = makePopup()
 const clickPopup = makePopup()
 
 map.on('load', () => {
-    getSrc(srcURLs.thumb).then(data => {
-        if(data) {
-            map.addSource('thumb', {
-                'type': 'geojson',
-                data: data
-            })
+    for(let [key, value] of Object.entries(srcURLs)) {
+        getSrc(value).then(data => {
+            if(data) {
+                map.addSource(key, {
+                    type: 'geojson',
+                    data: data
+                })
+
+                // add associated layers
+                layersKey[key].forEach(layer => map.addLayer(mapLayers[layer]))
+            } else {
+                console.log(`failed to fetch ${key} at url: ${value}`)
+            }
+
+        })
+    }
+
+    // getSrc(srcURLs.thumb).then(data => {
+    //     if(data) {
+    //         map.addSource('thumb', {
+    //             'type': 'geojson',
+    //             data: data
+    //         })
     
-            map.addLayer(mapLayers.thumb)
-            map.addLayer(mapLayers.thumbPoints)
-        } else {
-            // @TODO: more graceful way to let users know data source failed to load
-            alert('thumb Layer failed to load!')
-        }
-    })
+    //         map.addLayer(mapLayers.thumb)
+    //         map.addLayer(mapLayers.thumbPoints)
+    //     } else {
+    //         // @TODO: more graceful way to let users know data source failed to load
+    //         alert('thumb Layer failed to load!')
+    //     }
+    // })
 
     // map events
     map.on('mouseenter', 'thumb', e => {

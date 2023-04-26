@@ -17,8 +17,10 @@ const getSrc = async url => {
 }
 
 const srcURLs = {
-    dep: "https://data.cityofnewyork.us/resource/uyfj-5xid.geojson",
-    thumb: "https://data.cityofnewyork.us/resource/p78i-pat6.geojson"
+    // dep: "https://data.cityofnewyork.us/resource/uyfj-5xid.geojson",
+    thumb: "https://data.cityofnewyork.us/resource/p78i-pat6.geojson",
+    parks: "https://data.cityofnewyork.us/resource/enfh-gkve.geojson",
+    trails: "https://data.cityofnewyork.us/resource/vjbm-hsyr.geojson"
 }
 
 export { getSrc, srcURLs }

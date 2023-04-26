@@ -20,7 +20,7 @@ const mapLayers = {
         }
     },
     thumbPoints: {
-        id: 'thumb-points',
+        id: 'thumbPoints',
         type: 'circle',
         source: 'thumb',
         paint: {
@@ -40,12 +40,28 @@ const mapLayers = {
             ],
             'circle-stroke-color': '#FCFAF9',
             'circle-stroke-width': ['interpolate',
-            ['linear'], ['zoom'],
-            10, 1,
-            13, 0
+                ['linear'], ['zoom'],
+                10, 1,
+                13, 0
             ]
         }
+    },
+    parks: {
+        id: 'parks',
+        type: 'fill',
+        source: 'parks'
+    },
+    trails: {
+        id: 'trails',
+        type: 'line',
+        source: 'trails'
     }
 }
 
-export default mapLayers
+const layersKey = {
+    thumb: ['thumb', 'thumbPoints'],
+    parks: ['parks'],
+    trails: ['trails']
+}
+
+export { mapLayers, layersKey }
