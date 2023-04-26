@@ -17,6 +17,9 @@ Visualizing NYC Open Data's greenery datasets. Includes GreenThumb community gar
 ## @TODO
 - Mockup designs for the popups
 - Update API calls to only include relevant fields
+    - parks are done
+- Symbolize all gardens as one color
+    - include a filter and give status (active, green thumb, unclassified) in the popup
 
 
 ## Getting Started

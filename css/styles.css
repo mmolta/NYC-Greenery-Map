@@ -40,6 +40,7 @@ a {
 :root {
     --theme-main: #05adda;
     --theme-accent: #00a753;
+    --theme-thumb: #F49D6E;
     --theme-black: #353535;
     --theme-white: #FCFAF9;
 
@@ -49,11 +50,13 @@ a {
 }
 .flex-row {
     display: flex;
-    align-items: center;
 }
 .flex-column {
     display: flex;
     flex-direction: column;
+}
+.flex-align-center {
+    align-items: center;
 }
 .flex-between {
     justify-content: space-between;
@@ -270,6 +273,7 @@ nav {
 .overlay-h2 {
     font-size: 1rem;
     font-weight: 500;
+    margin-bottom: 8px;
 }
 .overlay-hr {
     margin: 16px 0;
@@ -301,7 +305,8 @@ nav {
     background-color: white
 }
 .legend-item {
-    margin: 8px 0;
+    margin-bottom: 8px;
+    margin-left: 16px;
     width: max-content;
 }
 .legend-icon-line {
@@ -322,6 +327,9 @@ nav {
 }
 .circle-blue {
     background-color: var(--theme-main);
+}
+.circle-yellow {
+    background-color: var(--theme-thumb);
 }
 .circle-green {
     background-color: var(--theme-accent);

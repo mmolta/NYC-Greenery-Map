@@ -10,12 +10,7 @@ const mapLayers = {
         type: 'fill',
         source: 'thumb',
         paint: {
-            'fill-color': ['match',
-                ['get', 'status'],
-                'Active', '#00a753',
-                'Not GreenThumb', '#05adda',
-                '#353535'
-            ],
+            'fill-color': '#F49D6E',
             'fill-outline-color': '#353535'
         }
     },
@@ -26,18 +21,13 @@ const mapLayers = {
         paint: {
             'circle-radius': ['interpolate',
                 ['linear'], ['zoom'],
-                10, 5,
+                10, 4.5,
                 11, 4,
                 12, 3,
                 13, 2,
-                14, 0, 
+                14, 0,
             ],
-            'circle-color': ['match',
-                ['get', 'status'],
-                'Active', '#00a753',
-                'Not GreenThumb', '#05adda',
-                '#353535'
-            ],
+            'circle-color': '#F49D6E',
             'circle-stroke-color': '#FCFAF9',
             'circle-stroke-width': ['interpolate',
                 ['linear'], ['zoom'],
@@ -49,18 +39,32 @@ const mapLayers = {
     parks: {
         id: 'parks',
         type: 'fill',
-        source: 'parks'
+        source: 'parks',
+        paint: {
+            'fill-color': 'rgba(0,167,83,0.2)',
+            'fill-outline-color': '#00a753'
+        }
     },
     trails: {
         id: 'trails',
         type: 'line',
-        source: 'trails'
+        source: 'trails',
+        paint: {
+            'line-color': '#6369D1',
+            'line-width': ['interpolate',
+                ['linear'],['zoom'],
+                10, 2.5,
+                11, 2,
+                12, 1.5,
+                13, 1,
+            ]
+        }
     }
 }
 
 const layersKey = {
-    thumb: ['thumb', 'thumbPoints'],
     parks: ['parks'],
+    thumb: ['thumb', 'thumbPoints'],
     trails: ['trails']
 }
 

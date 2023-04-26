@@ -29,7 +29,7 @@
 
     <body>
         <nav class="flex-row flex-between">
-            <div class="flex-row">
+            <div class="flex-row flex-align-center">
                 <img src="./img/green-home.png" alt="A house with a leaf in the middle to symbolize urban greenery as the project logo" class="project-logo" />
                 
                 <span class="nav-vr">|</span>
@@ -44,23 +44,23 @@
 
         <main class="map" id="map">
             <section class="overlay">
-                <h2 class="overlay-h2 summary-h2">GreenThumb Garden Status</h2>
-                    
                 <form id="toggle-form" class="overlay-container overlay-form flex-column">
+                    <div class="flex-row flex-align-center">
+                        <span class="legend-icon-circle circle-yellow"></span>
+                        <h2 class="overlay-h2">GreenThumb Community Gardens</h2>
+                    </div>
+
                     <label class="flex-row flex-align-center legend-item">
-                        <span class="legend-icon-circle circle-green"></span>
                         Active
                         <input type="checkbox" value="thumb-points" checked />
                     </label>
 
                     <label class="flex-row flex-align-center legend-item">
-                        <span class="legend-icon-circle circle-blue"></span>
                         Not GreenThumb
                         <input type="checkbox" value="thumb-points" checked />
                     </label>
 
                     <label class="flex-row flex-align-center legend-item">
-                        <span class="legend-icon-circle circle-black"></span>
                         Unclassified
                         <input type="checkbox" value="thumb-points" checked />
                     </label>

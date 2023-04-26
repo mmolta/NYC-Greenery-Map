@@ -34,24 +34,8 @@ map.on('load', () => {
             } else {
                 console.log(`failed to fetch ${key} at url: ${value}`)
             }
-
         })
     }
-
-    // getSrc(srcURLs.thumb).then(data => {
-    //     if(data) {
-    //         map.addSource('thumb', {
-    //             'type': 'geojson',
-    //             data: data
-    //         })
-    
-    //         map.addLayer(mapLayers.thumb)
-    //         map.addLayer(mapLayers.thumbPoints)
-    //     } else {
-    //         // @TODO: more graceful way to let users know data source failed to load
-    //         alert('thumb Layer failed to load!')
-    //     }
-    // })
 
     // map events
     map.on('mouseenter', 'thumb', e => {
