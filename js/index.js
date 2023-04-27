@@ -3,7 +3,7 @@ import { getSrc, srcURLs } from './map/mapSources.js'
 import { mapLayers, layersKey } from './map/mapLayers.js'
 import handleModal from './modal.js'
 import handleForms from './forms.js'
-import { makePopup, addPopup, makeThumbHoverPopup } from './map/popup.js'
+import { makePopup, addPopup, makeThumbHoverPopup, makeThumbClickPopup } from './map/popup.js'
 import { fetchParkDetails } from './map/mapFetch.js'
 
 
@@ -65,66 +65,18 @@ map.on('load', () => {
 
     map.on('click', 'thumb', e => {
         const lngLat = e.lngLat
-        const allProps = e.features[0].properties
+        const logisticProps = e.features[0].properties
         const id = allProps.parksid
-        const gardenName = allProps.gardenname
+        let html;
 
         fetchParkDetails(id).then(response => {
-            // const popup = makeThumbPopup(data, gardenName)
-            let props;
-
             if(response.length) {
-
-                const data = response[0]
-
-                props = [
-                    {
-                        display: '',
-                        prop: gardenName
-                    },
-                    {
-                        display: 'Open to public',
-                        prop: data.openlawnorcommunalarea
-                    },
-                    {
-                        display: 'Garden Area',
-                        prop: data.totalsidewalkarea + ' square feet'
-                    },
-                    {
-                        display: 'Composting',
-                        prop: data.composting
-                    },
-                    {
-                        display: 'CSA Pick Site',
-                        prop: data.csapickup
-                    },
-                    {
-                        display: 'Solar Panels',
-                        prop: data.solarpanels
-                    },
-                    {
-                        display: 'Is Food Grown Here?',
-                        prop: data.food
-                    },
-                    {
-                        display: 'Is There a Pond?',
-                        prop: data.pond
-                    }
-                ]
+                html = makeThumbClickPopup(logisticProps, response[0])
             } else {
-                props = [
-                    {
-                        display: '',
-                        prop: gardenName
-                    },
-                    {
-                        display: 'Additional details for this park are unavailable',
-                        prop: ''
-                    }
-                ]
+                html = makeThumbClickPopup(logisticProps, false)
             }
-    
-            makePopupContent(map, lngLat, props, clickPopup)
+
+            addPopup(map, lngLat, html, hoverPopup)
         })
 
         map.flyTo({

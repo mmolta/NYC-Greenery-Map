@@ -8,8 +8,25 @@ const addPopup = (map, lnglat, html, popup) => {
     .addTo(map)
 }
 
-const makeThumbClickPopup = () => {
+const makeThumbDetails = () => {
 
+}
+
+const makeThumbClickPopup = (logistics, details) => {
+    const thumbDetails = makeThumbDetails()
+
+    return `
+        <div class="flex-row">
+            <div class="thumb-popup-logistics">
+                <h2 class="thump-popup-h2>${logistics.gardenName}</h2>
+                
+            </div>
+
+            <div class="thumb-popup-details">
+                ${thumbDetails}
+            </div>
+        </div> 
+    `
 }
 
 const makeThumbHoverPopup = (props) => {
