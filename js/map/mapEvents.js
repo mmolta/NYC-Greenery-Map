@@ -14,18 +14,4 @@ const positionMap = () => {
     }
 }
 
-// @TODO: remove. Make specific popup fncs, no need for this trash
-const hoverThumbLayer = e => {
-    const allProps = e.features[0].properties
-    const props = [
-        {
-            display: '',
-            prop: allProps.gardenname
-        }
-    ]
-    const lngLat = e.lngLat
-
-    return [lngLat, props]
-}
-
-export { positionMap, hoverThumbLayer }
+export { positionMap }

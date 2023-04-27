@@ -1,7 +1,6 @@
 const makePopup = () => new mapboxgl.Popup()
 
-const makePopupContent = (map, lnglat, props, popup) => {
-    const html = makePopupHTML(props)
+const addPopup = (map, lnglat, html, popup) => {
 
     popup
     .setLngLat(lnglat)
@@ -9,30 +8,16 @@ const makePopupContent = (map, lnglat, props, popup) => {
     .addTo(map)
 }
 
-const makePopupHTML = props => {
-    let html = ''
+const makeThumbClickPopup = () => {
 
-    props.forEach(prop => {
-        html += `
-            <span class="popup-span">
-                ${prop.display}: <strong>${prop.prop}</strong> 
-            </span>
-        `
-    })
+}
+
+const makeThumbHoverPopup = (props) => {
     
-    return html
 }
 
-const makeThumbPopup = (response, gardenName, lngLat, clickPopup) => {
-    let props;
+const makeParkPopup = () {
 
-    // @TODO: mockup a designed popup
-    if(response.length) {
-        const data = response[0]
-
-    } else {
-
-    }
 }
 
-export { makePopup, makePopupContent }
+export { makePopup, addPopup, makeThumbHoverPopup }

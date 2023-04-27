@@ -3,9 +3,8 @@ import { getSrc, srcURLs } from './map/mapSources.js'
 import { mapLayers, layersKey } from './map/mapLayers.js'
 import handleModal from './modal.js'
 import handleForms from './forms.js'
-import { makePopup, makePopupContent } from './map/popup.js'
+import { makePopup, addPopup, makeThumbHoverPopup } from './map/popup.js'
 import { fetchParkDetails } from './map/mapFetch.js'
-import { hoverThumbLayer } from './map/mapEvents.js'
 
 
 const modal = document.getElementById('modal')
@@ -38,14 +37,20 @@ map.on('load', () => {
     // map events
     map.on('mouseenter', 'thumb', e => {
         map.getCanvas().style.cursor = 'pointer'
-        const hoverDetails = hoverThumbLayer(e)
-        makePopupContent(map, hoverDetails[0], hoverDetails[1], hoverPopup)
+
+        const lngLat = e.lngLat
+        const html = makeThumbHoverPopup(e.features[0].properties)
+
+        addPopup(map, lngLat, html, hoverPopup)
     })
 
     map.on('mouseenter', 'thumb-points', e => {
         map.getCanvas().style.cursor = 'pointer'
-        const hoverDetails = hoverThumbLayer(e)
-        makePopupContent(map, hoverDetails[0], hoverDetails[1], hoverPopup)
+
+        const lngLat = e.lngLat
+        const html = makeThumbHoverPopup(e.features[0].properties)
+
+        addPopup(map, lngLat, html, hoverPopup)
     })
 
     map.on('mouseleave', 'thumb', () => {
@@ -113,7 +118,7 @@ map.on('load', () => {
                         prop: gardenName
                     },
                     {
-                        display: 'Details for this park are unavailable',
+                        display: 'Additional details for this park are unavailable',
                         prop: ''
                     }
                 ]
@@ -183,7 +188,7 @@ map.on('load', () => {
                         prop: gardenName
                     },
                     {
-                        display: 'Details for this park are unavailable',
+                        display: 'Additional details for this park are unavailable',
                         prop: ''
                     }
                 ]

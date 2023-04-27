@@ -9,6 +9,8 @@ const mapLayers = {
             'fill-outline-color': '#353535'
         }
     },
+    // @TODO: replace thumbPoints with a symbol layer at the centroid 
+    // of thumb
     thumbPoints: {
         id: 'thumbPoints',
         type: 'circle',
