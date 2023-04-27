@@ -5,7 +5,7 @@ const mapLayers = {
         type: 'fill',
         source: 'thumb',
         paint: {
-            'fill-color': '#F49D6E',
+            'fill-color': '#522032',
             'fill-outline-color': '#353535'
         }
     },
@@ -24,7 +24,7 @@ const mapLayers = {
                 12, 2.5,
                 13, 0,
             ],
-            'circle-color': '#F49D6E',
+            'circle-color': '#522032',
             'circle-stroke-color': '#FCFAF9',
             'circle-stroke-width': ['interpolate',
                 ['linear'], ['zoom'],
@@ -39,7 +39,7 @@ const mapLayers = {
         source: 'parks',
         paint: {
             'fill-color': 'rgba(0,167,83,0.2)',
-            'fill-outline-color': '#00a753'
+            'fill-outline-color': '#522032'
         }
     },
     trails: {
