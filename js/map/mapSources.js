@@ -19,7 +19,7 @@ const getSrc = async url => {
 // @NOTE: ?$select=syntax,for,limiting,fields,while,fetching
 const srcURLs = {
     // dep: "https://data.cityofnewyork.us/resource/uyfj-5xid.geojson",
-    parks: "https://data.cityofnewyork.us/resource/enfh-gkve.geojson?$select=multipolygon,URL,TYPECATEGORY,SIGNNAME,MAPPED,LOCATION,ACRES",
+    parks: "https://data.cityofnewyork.us/resource/enfh-gkve.geojson?$select=multipolygon,URL,TYPECATEGORY,SIGNNAME,LOCATION,ACRES&TYPECATEGORY='Flagship Park' OR TYPECATEGORY='Nature Area' OR TYPECATEGORY='Community Park'",
     thumb: "https://data.cityofnewyork.us/resource/p78i-pat6.geojson",
     trails: "https://data.cityofnewyork.us/resource/vjbm-hsyr.geojson"
 }

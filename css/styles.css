@@ -266,21 +266,22 @@ nav {
     top: 16px;
     left: 16px;
     font-size: 1em;
-    padding: 16px;
-    background-color: var(--theme-white);
+    padding: 8px;
+    background-color: transparent;
     box-shadow: var(--box-shadow);
     border-radius: var(--border-radius);
 }
 .legend-header {
     margin-bottom: 8px;
 }
-.overlay-h2 {
-    font-size: 1rem;
+.legend-h2 {
+    padding-left: 8px;
+    font-size: 1em;
     font-weight: 500;
 }
-.overlay-hr {
-    margin: 16px 0;
-    color: var(--theme-accent);
+.overlay-h2 {
+    font-size: 1em;
+    font-weight: 700;
 }
 .overlay-form, .overlay-select {
     background-color: white;
@@ -293,7 +294,8 @@ nav {
 }
 .overlay-container {
     padding: 8px;
-    margin-top: 8px;
+    margin-top: 4px;
+    background-color: var(--theme-white);
     box-shadow: var(--box-shadow-half);
     border-radius: var(--border-radius);
 }
@@ -359,6 +361,8 @@ nav {
 /* Footer */
 footer {
     font-size: 0.8em;
-    color: grey;
+    color: var(--theme-black);
+    padding-left: 8px;
+    margin-top: 4px;
 }
 /* END Footer */

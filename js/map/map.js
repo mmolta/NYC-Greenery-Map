@@ -52,8 +52,7 @@ const makeControls = map => {
     const geocoder = new MapboxGeocoder({
         accessToken: mapboxgl.accessToken,
         placeholder: 'Zoom to location',
-        // @TODO: NYC bbox
-        bbox: [-76.09405517578125,39.49211914385648,-74.32525634765625,40.614734298694216],
+        bbox: [-74.317017,40.489017,-73.708649,40.948830],
         marker: false
     })
 

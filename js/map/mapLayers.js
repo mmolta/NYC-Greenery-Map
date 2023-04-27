@@ -53,10 +53,9 @@ const mapLayers = {
             'line-color': '#6369D1',
             'line-width': ['interpolate',
                 ['linear'],['zoom'],
-                10, 2.5,
+                9.75, 2,
                 11, 2,
-                12, 1.5,
-                13, 1,
+                12, 3
             ]
         }
     }
@@ -65,7 +64,7 @@ const mapLayers = {
 const layersKey = {
     thumb: ['thumb', 'thumbPoints'],
     trails: ['trails'],
-    parks: ['parks']
+    parks: ['parks'],
 }
 
 export { mapLayers, layersKey }
