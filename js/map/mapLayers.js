@@ -64,9 +64,9 @@ const mapLayers = {
             'circle-color': 'green',
             'circle-radius': ['interpolate',
                 ['linear'],['zoom'],
-                9.75, 2,
-                11, 1.5,
-                13, 1
+                9.75, 1.5,
+                11, 3,
+                13, 4
             ],
             'circle-stroke-color': '#FCFAF9'
         }

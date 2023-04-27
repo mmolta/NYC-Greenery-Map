@@ -13,16 +13,11 @@ const makeThumbClickPopup = () => {
 }
 
 const makeThumbHoverPopup = (props) => {
-    const span = document.createElement('span')
-    const strong = document.createElement('strong')
-
-    span.classList.add('popup-span')
-
-    strong.textContent = props.gardenname
-
-    span.appendChild(strong)
-
-    return span
+    return `
+        <span class="popup-span">
+            <strong>${props.gardenName}</strong>
+        </span>
+    `
 }
 
 const makeParkPopup = () => {
