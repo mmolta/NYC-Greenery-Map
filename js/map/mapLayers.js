@@ -1,10 +1,5 @@
 // put the default layers here
 const mapLayers = {
-    dep: {
-        id: 'dep',
-        type: 'circle',
-        source: 'dep'
-    },
     thumb: {
         id: 'thumb',
         type: 'fill',
@@ -31,7 +26,7 @@ const mapLayers = {
             'circle-stroke-color': '#FCFAF9',
             'circle-stroke-width': ['interpolate',
                 ['linear'], ['zoom'],
-                10, 1,
+                9.75, 1,
                 13, 0
             ]
         }
@@ -58,6 +53,21 @@ const mapLayers = {
                 12, 3
             ]
         }
+    },
+    trees: {
+        id: 'trees',
+        type: 'circle',
+        source: 'trees',
+        paint: {
+            'circle-color': 'green',
+            'circle-radius': ['interpolate',
+                ['linear'],['zoom'],
+                9.75, 2,
+                11, 1.5,
+                13, 1
+            ],
+            'circle-stroke-color': '#FCFAF9'
+        }
     }
 }
 
@@ -65,6 +75,7 @@ const layersKey = {
     thumb: ['thumb', 'thumbPoints'],
     trails: ['trails'],
     parks: ['parks'],
+    trees: ['trees']
 }
 
 export { mapLayers, layersKey }

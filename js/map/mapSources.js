@@ -16,12 +16,11 @@ const getSrc = async url => {
     }
 }
 
-// @NOTE: ?$select=syntax,for,limiting,fields,while,fetching
 const srcURLs = {
-    // dep: "https://data.cityofnewyork.us/resource/uyfj-5xid.geojson",
-    parks: "https://data.cityofnewyork.us/resource/enfh-gkve.geojson?$select=multipolygon,URL,TYPECATEGORY,SIGNNAME,LOCATION,ACRES&TYPECATEGORY='Flagship Park' OR TYPECATEGORY='Nature Area' OR TYPECATEGORY='Community Park'",
-    thumb: "https://data.cityofnewyork.us/resource/p78i-pat6.geojson",
-    trails: "https://data.cityofnewyork.us/resource/vjbm-hsyr.geojson"
+    parks: "https://data.cityofnewyork.us/resource/enfh-gkve.geojson?$select=BOROUGH,URL,TYPECATEGORY,NAME311,LOCATION,ACRES&TYPECATEGORY='Flagship Park' OR TYPECATEGORY='Nature Area' OR TYPECATEGORY='Community Park' OR TYPECATEGORY='Neighborhood Park' OR TYPECATEGORY='Triangle/Plaza' OR TYPECATEGORY='Historic House Park'",
+    thumb: "https://data.cityofnewyork.us/resource/p78i-pat6.geojson?$select=gardenname,openhrsf,openhrsm,openhrssa,openhrssu,openhrsth,openhrstu,openhrsw,parksid,borough",
+    trails: "https://data.cityofnewyork.us/resource/vjbm-hsyr.geojson?$select=Park_Name,Trail_Name,Class,Surface,Difficulty,Trail_Name,Width_ft",
+    trees: "https://data.cityofnewyork.us/resource/5rq2-4hqu.geojson?$select=health,spc_common,spc_latin,borocode,tree_dbh&status=Alive"
 }
 
 export { getSrc, srcURLs }

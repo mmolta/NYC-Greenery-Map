@@ -12,7 +12,6 @@ Visualizing NYC Open Data's greenery datasets. Includes GreenThumb community gar
 - [Forestry Tree Points](https://data.cityofnewyork.us/Environment/Forestry-Tree-Points/hn5i-inap)
     - this one may be skippable. Forest trees are presumably in parks and probably just add noise.
 - [Borough Boundaries](https://data.cityofnewyork.us/City-Government/Borough-Boundaries/tqmj-j8zm)
-    - TBD...
 
 ## Other Resources
 - [Million Trees NYC fact sheet](https://www.milliontreesnyc.org/html/urban_forest/urban_forest_facts.shtml)
@@ -31,21 +30,13 @@ Visualizing NYC Open Data's greenery datasets. Includes GreenThumb community gar
 - Mockup designs for the popups
 - Filter Fetch
     - Parks:
-        - ignore type="garden" because that overlaps w/greenThumb
-        - only get retired="false"
+        - see @NOTE
     - Street Trees
         - ignore status = "dead"
-- Lookup "openlawnorcommunalarea" in greenthumb data dictionary
+- Lookup what "openlawnorcommunalarea" means in greenthumb data dictionary
+- Try adding GreenThumb markers on the fly rather than as points to have one per garden instead of a point on each vertex of any given garden
+- Feature state for hover effects
 
-
-## @BUGS
-    - flagship parks aren't rendering on the Parks layer, but if I specifically fetch them, they show up.....
-    - setting MAPPED=True makes Central park and others appear, but it hides some and doesn't make Prospect Park (and presumably others) appear. What is going on??
-    - Preselecting a field (i.e. TYPECATEGORY=Nature Area) renders a DIFFERENT SET OF FILLS than fetching all and then filtering at the mapLayer level
-        - Pre-filtering the FETCH yield a larger number of parks. Is it some kind of feature rate limiting? 
-            - SOLUTION: chain TYPECATEGORY filters with OR
-                ex. TYPECATEGORY='Flagship Park' OR TYPECATEGORY='Nature Area' etc.,
-            - See note below for full list of included TYPECATEGORY
 
 ## @NOTE
 - classifying PARKS is hard
@@ -54,4 +45,4 @@ Visualizing NYC Open Data's greenery datasets. Includes GreenThumb community gar
         - Community Park, Flagship Park, Historic House Park,  Nature Area, Neighbordhood Park, Playground, Triangle/Plaza
             - Mall, Strip, and Parkway can likely be accounted for with the street trees dataset...
     - Notable Exclusions:
-        - Recreational Field/Courts (are tennis courts greenspaces? this would also include turf soccer fields so...), Cemetary?
+        - Recreational Field/Courts (are tennis courts greenspaces? this would also include turf soccer fields so...), Cemetary? Playground?
