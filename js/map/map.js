@@ -34,7 +34,7 @@ const makeRegionalExtentEls = map => {
     
     icon.id = 'regional-extent-img'
     icon.alt = 'NYC Alternative Logo'
-    icon.src = '../../img/green-home-icon.png'
+    icon.src = '../../img/green-city-icon.png'
 
     button.classList.add('mapboxgl-ctrl-icon')
     button.classList.add('mapboxgl-ctrl-nyc')

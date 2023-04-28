@@ -14,8 +14,15 @@ h1 {
     font-size: inherit;
     margin: 0 32px;
 }
+details {
+    margin-bottom: 8px;
+}
+details:last-of-type {
+    margin-bottom: 0;
+}
 summary {
     cursor: pointer;
+    font-weight: 700;
 }
 fieldset {
     font-size: 0.8em;
@@ -35,13 +42,17 @@ input[type=radio], input[type=checkbox] {
 a {
     color: var(--theme-black);
     text-decoration: none;
-    border-bottom: 2px solid var(--theme-accent);
+    border-bottom: 2px solid;
+    border-color: inherit;
+}
+li {
+    margin: 0 0 4px 0;
 }
 :root {
-    --theme-main: #05adda;
-    --theme-accent: #00a753;
+    --theme-blue: #05adda;
+    --theme-green: #1f6735;
     --theme-thumb: #f49d6e;
-    --theme-purple: #6369D1;
+    --theme-thumb-text: #522032;
     --theme-black: #353535;
     --theme-white: #FCFAF9;
 
@@ -71,8 +82,12 @@ a {
 .flex-wrap {
     flex-wrap: wrap
 }
-.summary-h2 {
-    display: inline;
+.details-content {
+    margin-left: 8px;
+}
+.list-unstyled {
+    list-style-type: none;
+    padding: 0;
 }
 /* END General */
 
@@ -109,7 +124,7 @@ a {
     margin: 0 auto;
 }
 .modal-section h3 {
-    color: var(--theme-accent);
+    color: var(--theme-green);
 }
 .close-modal{
     position: absolute;
@@ -134,7 +149,7 @@ nav {
     transform: translate(-50%, 0);
     padding: 0 24px;
     border-radius: var(--border-radius);
-    background-color: var(--theme-accent);
+    background-color: var(--theme-green);
     color: var(--theme-white);
     box-shadow: var(--box-shadow);
     z-index: 1;
@@ -162,6 +177,7 @@ nav {
     box-shadow: var(--box-shadow);
     border-radius: 50%;
     border: 2px solid var(--theme-white);
+    background-color: var(--theme-green);
 }
 /* END Navbar */
 
@@ -178,6 +194,8 @@ nav {
     margin: 0 auto;
     height: 20px;
     width: 20px;
+    border-radius: 50%;
+    background-color: var(--theme-green);
 }
 .mapboxgl-ctrl-top-right .mapboxgl-ctrl {
     margin: 16px 16px 0 0;
@@ -186,30 +204,81 @@ nav {
     border-radius: var(--border-radius);
     background-color: var(--theme-white);
 }
+.mapboxgl-popup {
+    max-width: unset;
+}
 .mapboxgl-popup-close-button {
     top: 4px;
     right: 4px;
+    color: var(--theme-white);
 }
 .mapboxgl-popup-content {
-    padding: 16px;
-    text-align: center;
+    padding: 0;
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
-}
-.popup-span {
-    display: block;
-}
-.popup-span:not(:last-of-type) {
-    border-bottom: 1px dotted var(--theme-black);
 }
 .mapboxgl-ctrl-geocoder, .mapboxgl-ctrl-geocoder .suggestions, .mapboxgl-ctrl-group:not(:empty) {
     box-shadow: var(--box-shadow);
 }
 .mapboxgl-ctrl-geocoder--icon {
-    fill: var(--theme-accent);
+    fill: var(--theme-green);
 }
 .mapboxgl-ctrl-geocoder--input {
     cursor: text;
+}
+.popup-span {
+    display: block;
+    border-radius: var(--border-radius);
+    padding: 16px;
+}
+.popup-h2 {
+    font-size: 1.25em;
+    margin-bottom: 8px;
+}
+.popup-h3 {
+    font-size: 1em;
+    margin-top: 8px;
+}
+/* park popups */
+.park-popup {
+    background-color: var(--theme-green);
+    color: var(--theme-white);
+}
+.park-hover-h2 {
+    margin: 0;
+}
+.park-popup a {
+    color: var(--theme-white);
+}
+/* greenthumb garden popups */
+.thumb-hover-popup {
+    background-color: var(--theme-thumb);
+    color: var(--theme-thumb-text);
+}
+.thumb-popup {
+    width: 500px;
+    background-color: var(--theme-white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+.thumb-popup summary {
+    color: var(--theme-thumb-text);
+}
+.thumb-popup-h2, .thumb-popup-h3 {
+    color: var(--theme-thumb-text);
+}
+.thumb-popup-logistics {
+    width: 50%;
+    background-color: var(--theme-thumb);
+    padding: 16px;
+    border-top-left-radius: var(--border-radius);
+    border-bottom-left-radius: var(--border-radius);
+}
+.thumb-popup-details {
+    width: 50%;
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 16px;
 }
 .lds-ring {
     display: none;
@@ -231,9 +300,9 @@ nav {
     width: 80px;
     height: 80px;
     margin: 8px;
-    border: 8px solid var(--theme-main);
+    border: 8px solid var(--theme-blue);
     border-radius: 50%;
-    border-color: var(--theme-main) transparent transparent transparent;
+    border-color: var(--theme-blue) transparent transparent transparent;
 }
 .lds-ring div:nth-child(1) {
     animation-delay: -0.45s;
@@ -336,17 +405,14 @@ nav {
     height: 10px;
     margin-right: 8px;
 }
-.line-purple {
-    background: var(--theme-purple);
-}
 .circle-blue {
-    background-color: var(--theme-main);
+    background-color: var(--theme-blue);
 }
-.circle-yellow {
+.circle-thumb {
     background-color: var(--theme-thumb);
 }
-.circle-green {
-    background-color: var(--theme-accent);
+.circle-park {
+    background-color: var(--theme-green);
 }
 .circle-black {
     background-color: var(--theme-black);

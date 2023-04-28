@@ -41,8 +41,8 @@ const mapLayers = {
         type: 'fill',
         source: 'parks',
         paint: {
-            'fill-color': 'rgba(0,167,83,0.2)',
-            'fill-outline-color': '#00a753'
+            'fill-color': 'rgba(31,103,53,0.3)',
+            'fill-outline-color': '#1f6735'
         }
     },
     trees: {

@@ -3,7 +3,7 @@ import { getSrc, srcURLs } from './map/mapSources.js'
 import { mapLayers, layersKey } from './map/mapLayers.js'
 import handleModal from './modal.js'
 import handleForms from './forms.js'
-import { makePopup, addPopup, makeThumbHoverPopup, makeParkHoverPopup, makeThumbClickPopup } from './map/popup.js'
+import { makePopup, addPopup, makeThumbHoverPopup, makeParkHoverPopup, makeThumbClickPopup, makeParkClickPopup } from './map/popup.js'
 import { fetchParkDetails } from './map/mapFetch.js'
 
 
@@ -89,15 +89,15 @@ map.on('load', () => {
 
     map.on('click', 'thumb', e => {
         const lngLat = e.lngLat
-        const logisticProps = e.features[0].properties
-        const id = logisticProps.parksid
+        const props = e.features[0].properties
+        const id = props.parksid
         let html;
 
         fetchParkDetails(id).then(response => {
             if(response.length) {
-                html = makeThumbClickPopup(logisticProps, response[0])
+                html = makeThumbClickPopup(props, response[0])
             } else {
-                html = makeThumbClickPopup(logisticProps, false)
+                html = makeThumbClickPopup(props, false)
             }
 
             addPopup(map, lngLat, html, clickPopup)
@@ -132,6 +132,18 @@ map.on('load', () => {
             center: lngLat,
             zoom: 16,
             speed: 0.5
+        })
+    })
+
+    map.on('click', 'parks', e => {
+        const lngLat = e.lngLat
+        const html = makeParkClickPopup(e.features[0].properties)
+
+        addPopup(map, lngLat, html, clickPopup)
+
+        map.flyTo({
+            center: lngLat,
+            zoom: 16,
         })
     })
 
