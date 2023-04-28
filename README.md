@@ -19,9 +19,11 @@ Visualizing NYC Open Data's greenery datasets. Includes GreenThumb community gar
 - [Forestry Tree Points](https://data.cityofnewyork.us/Environment/Forestry-Tree-Points/hn5i-inap)
     - this one may be skippable. Forest trees are presumably in parks and probably just add noise.
 - [Borough Boundaries](https://data.cityofnewyork.us/City-Government/Borough-Boundaries/tqmj-j8zm)
+- [BLOCKFACE TREES](https://data.cityofnewyork.us/Environment/2015-Street-Tree-Census-Blockface-Data/2cd9-59fr)
 
 ## Other Resources
 - [Million Trees NYC fact sheet](https://www.milliontreesnyc.org/html/urban_forest/urban_forest_facts.shtml)
+- [OFFSET AND LIMIT OMG](https://support.socrata.com/hc/en-us/articles/202949268-How-to-query-more-than-1000-rows-of-a-dataset)
 
 
 ## Getting Started
@@ -37,7 +39,6 @@ Visualizing NYC Open Data's greenery datasets. Includes GreenThumb community gar
 - Mockup designs for the popups
 - Try adding GreenThumb markers as symbols in the garden centroid instead of as points on each vertex
 - Feature state for hover effects
-
 
 ## @NOTE
 - classifying PARKS is hard

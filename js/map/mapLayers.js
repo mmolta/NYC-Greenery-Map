@@ -5,12 +5,15 @@ const mapLayers = {
         type: 'fill',
         source: 'thumb',
         paint: {
-            'fill-color': '#522032',
+            'fill-color': '#f49d6e',
             'fill-outline-color': '#353535'
         }
     },
-    // @TODO: replace thumbPoints with a symbol layer at the centroid 
-    // of thumb
+    // @TODO: replace thumbPoints with a symbol layer at the centroid of thumb
+    // OR a thumb heatmap at a certain zoom level? and then hide it and show gardens
+    // when zoomed in
+    // OR use clusters at an upper zoom level
+        // https://docs.mapbox.com/mapbox-gl-js/example/cluster-html/
     thumbPoints: {
         id: 'thumbPoints',
         type: 'circle',
@@ -24,7 +27,7 @@ const mapLayers = {
                 12, 2.5,
                 13, 0,
             ],
-            'circle-color': '#522032',
+            'circle-color': '#f49d6e',
             'circle-stroke-color': '#FCFAF9',
             'circle-stroke-width': ['interpolate',
                 ['linear'], ['zoom'],
@@ -39,43 +42,32 @@ const mapLayers = {
         source: 'parks',
         paint: {
             'fill-color': 'rgba(0,167,83,0.2)',
-            'fill-outline-color': '#522032'
-        }
-    },
-    trails: {
-        id: 'trails',
-        type: 'line',
-        source: 'trails',
-        paint: {
-            'line-color': '#6369D1',
-            'line-width': ['interpolate',
-                ['linear'],['zoom'],
-                9.75, 2,
-                11, 2,
-                12, 3
-            ]
+            'fill-outline-color': '#00a753'
         }
     },
     trees: {
-        id: 'trees',
-        type: 'circle',
+        id: 'tree-lines',
+        type: 'line',
         source: 'trees',
+        'source-layer': 'tree-lines-ddzcz1',
         paint: {
-            'circle-color': 'green',
-            'circle-radius': ['interpolate',
-                ['linear'],['zoom'],
-                9.75, 1.5,
-                11, 3,
-                13, 4
+            'line-color': ['case',
+                ['<', ['get', 'trees'], '1'], 'rgba(0,0,0,0)',
+                ['all', ['>=', ['get', 'trees'], '1'], ['<', ['get', 'trees'], '3']], '#f7fcb9',
+                ['all', ['>=', ['get', 'trees'], '3'], ['<', ['get', 'trees'], '9']], '#addd8e',
+                '#31a354'
             ],
-            'circle-stroke-color': '#FCFAF9'
+            'line-width': ['interpolate',
+                ['linear'],['zoom'],
+                9.75, 0.5,
+                20, 2.25
+            ]
         }
     }
 }
 
 const layersKey = {
     thumb: ['thumb', 'thumbPoints'],
-    trails: ['trails'],
     parks: ['parks'],
     trees: ['trees']
 }

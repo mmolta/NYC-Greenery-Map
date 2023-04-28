@@ -3,7 +3,7 @@ import { getSrc, srcURLs } from './map/mapSources.js'
 import { mapLayers, layersKey } from './map/mapLayers.js'
 import handleModal from './modal.js'
 import handleForms from './forms.js'
-import { makePopup, addPopup, makeThumbHoverPopup, makeThumbClickPopup } from './map/popup.js'
+import { makePopup, addPopup, makeThumbHoverPopup, makeParkHoverPopup, makeThumbClickPopup } from './map/popup.js'
 import { fetchParkDetails } from './map/mapFetch.js'
 
 
@@ -18,20 +18,30 @@ const hoverPopup = makePopup()
 const clickPopup = makePopup()
 
 map.on('load', () => {
-    for(let [key, value] of Object.entries(srcURLs)) {
-        getSrc(value).then(data => {
-            if(data) {
+    for(let [key, value] of Object.entries(srcURLs.openData)) {
+        getSrc(value.url).then(src => {
+            if(src) {
                 map.addSource(key, {
-                    type: 'geojson',
-                    data: data
+                    type: value.type,
+                    data: value.url
                 })
 
-                // add associated layers
                 layersKey[key].forEach(layer => map.addLayer(mapLayers[layer]))
+
             } else {
-                console.log(`failed to fetch ${key} at url: ${value}`)
+                console.log(`failed to fetch ${key} at url: ${src.url}`)
             }
         })
+    }
+
+    // overkill but makes it easy to add more tiles if I want to
+    for(let [key, value] of Object.entries(srcURLs.tiles)) {
+        map.addSource(key, {
+            type: value.type,
+            url: value.url
+        })
+    
+        layersKey[key].forEach(layer => map.addLayer(mapLayers[layer], 'waterway-label'))
     }
 
     // map events
@@ -53,6 +63,20 @@ map.on('load', () => {
         addPopup(map, lngLat, html, hoverPopup)
     })
 
+    map.on('mouseenter', 'parks', e => {
+        map.getCanvas().style.cursor = 'pointer'
+
+        const lngLat = e.lngLat
+        const html = makeParkHoverPopup(e.features[0].properties)
+
+        addPopup(map, lngLat, html, hoverPopup)
+    })
+
+    map.on('mouseleave', 'parks', () => {
+        map.getCanvas().style.cursor = ''
+        hoverPopup.remove()
+    })
+
     map.on('mouseleave', 'thumb', () => {
         map.getCanvas().style.cursor = ''
         hoverPopup.remove()
@@ -66,7 +90,7 @@ map.on('load', () => {
     map.on('click', 'thumb', e => {
         const lngLat = e.lngLat
         const logisticProps = e.features[0].properties
-        const id = allProps.parksid
+        const id = logisticProps.parksid
         let html;
 
         fetchParkDetails(id).then(response => {
@@ -76,7 +100,8 @@ map.on('load', () => {
                 html = makeThumbClickPopup(logisticProps, false)
             }
 
-            addPopup(map, lngLat, html, hoverPopup)
+            addPopup(map, lngLat, html, clickPopup)
+            hoverPopup.remove()
         })
 
         map.flyTo({
@@ -88,65 +113,19 @@ map.on('load', () => {
 
     map.on('click', 'thumb-points', e => {
         const lngLat = e.lngLat
-        const allProps = e.features[0].properties
-        const id = allProps.parksid
-        const gardenName = allProps.gardenname
+        const logisticProps = e.features[0].properties
+        const id = logisticProps.parksid
+        let html;
 
-        // fetch id from parksID endpoint and put into popup
         fetchParkDetails(id).then(response => {
-            let props;
-
             if(response.length) {
-                const data = response[0]
-
-                props = [
-                    {
-                        display: '',
-                        prop: gardenName
-                    },
-                    {
-                        display: 'Open to public',
-                        prop: data.openlawnorcommunalarea
-                    },
-                    {
-                        display: 'Garden Area',
-                        prop: data.totalsidewalkarea + ' square feet'
-                    },
-                    {
-                        display: 'Composting',
-                        prop: data.composting
-                    },
-                    {
-                        display: 'CSA Pick Site',
-                        prop: data.csapickup
-                    },
-                    {
-                        display: 'Solar Panels',
-                        prop: data.solarpanels
-                    },
-                    {
-                        display: 'Is Food Grown Here?',
-                        prop: data.food
-                    },
-                    {
-                        display: 'Is There a Pond?',
-                        prop: data.pond
-                    }
-                ]
+                html = makeThumbClickPopup(logisticProps, response[0])
             } else {
-                props = [
-                    {
-                        display: '',
-                        prop: gardenName
-                    },
-                    {
-                        display: 'Additional details for this park are unavailable',
-                        prop: ''
-                    }
-                ]
+                html = makeThumbClickPopup(logisticProps, false)
             }
-    
-            makePopupContent(map, lngLat, props, clickPopup)
+
+            addPopup(map, lngLat, html, clickPopup)
+            hoverPopup.remove()
         })
 
         map.flyTo({

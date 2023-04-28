@@ -8,17 +8,19 @@ const addPopup = (map, lnglat, html, popup) => {
     .addTo(map)
 }
 
-const makeThumbDetails = () => {
-
+const makeThumbDetails = details => {
+    return `
+        <p>I'm a friggin garden</p>
+    `
 }
 
 const makeThumbClickPopup = (logistics, details) => {
-    const thumbDetails = makeThumbDetails()
+    const thumbDetails = makeThumbDetails(details)
 
     return `
         <div class="flex-row">
             <div class="thumb-popup-logistics">
-                <h2 class="thump-popup-h2>${logistics.gardenName}</h2>
+                <h2 class="thump-popup-h2>${logistics.gardenname}</h2>
                 
             </div>
 
@@ -29,16 +31,20 @@ const makeThumbClickPopup = (logistics, details) => {
     `
 }
 
-const makeThumbHoverPopup = (props) => {
+const makeThumbHoverPopup = props => {
     return `
         <span class="popup-span">
-            <strong>${props.gardenName}</strong>
+            <strong>${props.gardenname}</strong>
         </span>
     `
 }
 
-const makeParkPopup = () => {
-
+const makeParkHoverPopup = props => {
+    return `
+        <span class="popup-span">
+            <strong>${props.NAME311}
+        </span>
+    `
 }
 
-export { makePopup, addPopup, makeThumbHoverPopup }
+export { makePopup, addPopup, makeThumbHoverPopup, makeParkHoverPopup, makeThumbClickPopup }
