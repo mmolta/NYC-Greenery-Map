@@ -51,8 +51,8 @@ li {
 :root {
     --theme-blue: #05adda;
     --theme-green: #1f6735;
-    --theme-thumb: #f49d6e;
-    --theme-thumb-text: #522032;
+    --theme-thumb-text: #E6E6FA;
+    --theme-thumb: #522032;
     --theme-black: #353535;
     --theme-white: #FCFAF9;
 
@@ -262,7 +262,7 @@ nav {
     box-shadow: var(--box-shadow);
 }
 .thumb-popup summary {
-    color: var(--theme-thumb-text);
+    color: var(--theme-thumb);
 }
 .thumb-popup-h2, .thumb-popup-h3 {
     color: var(--theme-thumb-text);
@@ -270,13 +270,14 @@ nav {
 .thumb-popup-logistics {
     width: 50%;
     background-color: var(--theme-thumb);
+    color: var(--theme-white);
     padding: 16px;
     border-top-left-radius: var(--border-radius);
     border-bottom-left-radius: var(--border-radius);
 }
 .thumb-popup-details {
     width: 50%;
-    max-height: 300px;
+    max-height: 275px;
     overflow-y: auto;
     padding: 16px;
 }

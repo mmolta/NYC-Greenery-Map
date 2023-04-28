@@ -35,10 +35,10 @@ const makeThumbLogistics = props => {
         <h2 class="popup-h2 thumb-popup-h2">${props.gardenname}</h2>
         <ul class="list-unstyled">
             <li>
-                <strong>GreenThumb Status</strong>: ${props.status}
+                GreenThumb Status: ${props.status}
             </li>
             <li>
-                <strong>Park Area:</strong> ${props.area} square feet
+                Park Area: ${props.area} square feet
             </li>
         </ul>
 

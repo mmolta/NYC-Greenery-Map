@@ -5,8 +5,8 @@ const mapLayers = {
         type: 'fill',
         source: 'thumb',
         paint: {
-            'fill-color': '#f49d6e',
-            'fill-outline-color': '#353535'
+            'fill-color': '#522032',
+            'fill-outline-color': '#E6E6FA'
         }
     },
     // @TODO: replace thumbPoints with a symbol layer at the centroid of thumb
@@ -27,8 +27,8 @@ const mapLayers = {
                 12, 2.5,
                 13, 0,
             ],
-            'circle-color': '#f49d6e',
-            'circle-stroke-color': '#FCFAF9',
+            'circle-color': '#522032',
+            'circle-stroke-color': '#E6E6FA',
             'circle-stroke-width': ['interpolate',
                 ['linear'], ['zoom'],
                 9.75, 1,
@@ -42,7 +42,7 @@ const mapLayers = {
         source: 'parks',
         paint: {
             'fill-color': 'rgba(31,103,53,0.3)',
-            'fill-outline-color': '#1f6735'
+            'fill-outline-color': '#522032'
         }
     },
     trees: {

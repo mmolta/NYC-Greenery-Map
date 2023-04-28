@@ -144,6 +144,7 @@ map.on('load', () => {
         map.flyTo({
             center: lngLat,
             zoom: 16,
+            speed: 0.5
         })
     })
 
