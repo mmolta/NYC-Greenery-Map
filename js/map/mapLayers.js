@@ -63,13 +63,27 @@ const mapLayers = {
                 20, 2.25
             ]
         }
+    },
+    boroughs: {
+        id: 'boroughs',
+        type: 'line',
+        source: 'boroughs',
+        paint: {
+            'line-color': '#353535',
+            'line-width': ['interpolate',
+                ['linear'],['zoom'],
+                9.75, 0.5,
+                20, 2.5
+            ]
+        }
     }
 }
 
 const layersKey = {
     thumb: ['thumb', 'thumbPoints'],
     parks: ['parks'],
-    trees: ['trees']
+    trees: ['trees'],
+    boroughs: ['boroughs']
 }
 
 export { mapLayers, layersKey }

@@ -89,7 +89,7 @@
                     </label>
                 </form>
 
-                <form id="trails-form" class="overlay-container toggle-form flex-column">
+                <form id="trees-form" class="overlay-container flex-column">
                     <div class="flex-row flex-align-center legend-header">
                         <span class="legend-icon-gradient legend-gradient-trees"></span>
                         <h2 class="overlay-h2">Street Trees</h2>
@@ -101,7 +101,7 @@
                     </label>
                 </form>
 
-                <form id="parks-form" class="overlay-container toggle-form flex-column">
+                <form id="parks-form" class="overlay-container flex-column">
                     <div class="flex-row flex-align-center legend-header">
                         <span class="legend-icon-polygon circle-park"></span>
                         <h2 class="overlay-h2">Parks</h2>
@@ -110,6 +110,20 @@
                     <label class="flex-row flex-align-center legend-item">
                         filter ?
                         <input type="checkbox" value="thumb-points" checked />
+                    </label>
+                </form>
+
+                <form id="boros-form" class="overlay-container toggle-form">
+                    <label>
+                        Borough:
+                        <select autocomplete="off">
+                            <option value="0" selected>All</option>
+                            <option value="1">Manhattan</option>
+                            <option value="2">The Bronx</option>
+                            <option value="3">Brooklyn</option>
+                            <option value="4">Queens</option>
+                            <option value="5">Staten Island</option>
+                        </select>
                     </label>
                 </form>
 
@@ -131,8 +145,7 @@
                     <p>
                         This webmap provides an overview of available greenspaces in New York City. It leverages
                         NYC Open Data to visualize community gardens, parks properties and the presence of street 
-                        trees throughout the five boroughs. 
-                        
+                        trees throughout the five boroughs.
                     </p>
                 </section>
 
@@ -143,7 +156,7 @@
 
                     <p>
                         All data comes from NYC OpenData. GreenThumbs and Parks data is pulled from the API and updates 
-                        whenever hte dataset is updated.
+                        whenever the dataset is updated.
                         Because of API limits and the volume of records, the Street Trees data was downloaded, cleaned
                         up in qGIS, and then uploaded as a custom vector tile set using Mapbox Studio. 
                     </p>

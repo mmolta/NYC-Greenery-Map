@@ -24,6 +24,10 @@ const srcURLs = {
         parks: {
             type: 'geojson',
             url: "https://data.cityofnewyork.us/resource/enfh-gkve.geojson?$select=multipolygon,borough,url,typecategory,name311,location,acres&typecategory='Flagship Park' OR typecategory='Nature Area' OR typecategory='Community Park' OR typecategory='Neighborhood Park' OR typecategory='Triangle/Plaza' OR typecategory='Historic House Park'"
+        },
+        boroughs: {
+            type: 'geojson',
+            url: "https://data.cityofnewyork.us/resource/7t3b-ywvw.geojson?$select=the_geom,boro_code"
         }
     },
     tiles: {

@@ -1,7 +1,3 @@
-import secondaryMapLayers from './map/secondaryMapLayers.js'
-
-// handles: checkboxes, toggles, radio buttons
-// @TODO: change to a filter instead of a toggle
 const handleFormInputs = (inputs, map) => {
     let active = []
 
@@ -28,42 +24,6 @@ const handleFormInputs = (inputs, map) => {
 }
 
 // handles: select
-const handleFormSelect = (selects, map) => {
-    let active = []
+const handleBoroughsForm = select => select.options[select.selectedIndex].value
 
-    selects.forEach(select => {
-        const options = Array.from(select.children)
-
-        options.forEach(option => {
-            const layer = option.value
-            const selected = option.selected
-            const visibility = selected ? 'visible' : 'none'
-
-            if(selected) active.push(layer)
-
-            if(map.getLayer(layer)) {
-                map.setLayoutProperty(layer, 'visibility', visibility)
-            }
-            else {
-                // add layer on first pass
-                if(selected) {
-                    const mapLayer = secondaryMapLayers[layer]
-                    map.addLayer(mapLayer, 'road-label')
-                }
-            }            
-        })
-    })
-
-    return active
-}
-
-const handleForms = (type, toggles, map) => {
-    switch(type) {
-        case 'select':
-            return handleFormSelect(toggles, map)
-        default:
-            return handleFormInputs(toggles, map)
-    }
-}
-
-export default handleForms
+export { handleBoroughsForm }

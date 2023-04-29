@@ -2,15 +2,16 @@ import makeMap from './map/map.js'
 import { getSrc, srcURLs } from './map/mapSources.js'
 import { mapLayers, layersKey } from './map/mapLayers.js'
 import handleModal from './modal.js'
-import handleForms from './forms.js'
+import { handleBoroughsForm } from './forms.js'
 import { makePopup, addPopup, makeThumbHoverPopup, makeParkHoverPopup, makeThumbClickPopup, makeParkClickPopup } from './map/popup.js'
 import { fetchParkDetails } from './map/mapFetch.js'
+import { filterBoroughs } from './map/mapEvents.js'
 
 
 const modal = document.getElementById('modal')
 const modalToggle = document.getElementById('modal-toggle')
 const closeModal = document.getElementById('close-modal')
-const toggleForm = document.querySelectorAll('.toggle-form')
+const boroughForm = document.getElementById('boros-form')
 
 
 const map = makeMap()
@@ -148,18 +149,17 @@ map.on('load', () => {
         })
     })
 
-    // @TODO: re-incorporate
-    // set default form state
-    // let activeInputs = handleForms('input', inputs, map)
-    // let activeSelects = handleForms('select', selects, map)
-    // let allActiveToggles = [... activeSelects, ... activeInputs]
+    boroughForm.onchange = e => {
+        const activeBoro = handleBoroughsForm(e.target)
+        const filters = filterBoroughs(activeBoro)
 
-    // handle simple toggles - layers on/off and corresponding legend items on/off
-    // toggleForm.onchange = () => {
-    //     activeInputs = handleForms('input', inputs, map)
-    //     activeSelects = handleForms('select', selects, map)
-    //     allActiveToggles = [... activeSelects, ... activeInputs]
-    // }
+
+        // map.setFilter('thumb', filters.alph)
+        // map.setFilter('thumbPoints', filters.alph)
+        // map.setFilter('parks', filters.num)
+        // map.setFilter('tree-lines', filters.num)
+        map.setFilter('boroughs', filters.boro)
+    }
 })
 
 
