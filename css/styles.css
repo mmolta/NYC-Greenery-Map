@@ -24,20 +24,13 @@ summary {
     cursor: pointer;
     font-weight: 700;
 }
-fieldset {
-    font-size: 0.8em;
-    border-radius: var(--border-radius);
-    background-color: white;
-}
-select, input {
-    cursor: pointer;
-}
 select {
     border-radius: var(--border-radius);
-    padding: 0.5em 0.25em;
-}
-input[type=radio], input[type=checkbox] {
-    margin-left: 0.5em;
+    padding: 4px 8px;
+    background: var(--theme-white);
+    border: 1px solid var(--theme-black);
+    margin-left: 4px;
+    cursor: pointer;
 }
 a {
     color: var(--theme-black);
@@ -46,7 +39,7 @@ a {
     border-color: inherit;
 }
 li {
-    margin: 0 0 4px 0;
+    margin: 0 0 8px 0;
 }
 :root {
     --theme-blue: #05adda;
@@ -341,43 +334,37 @@ nav {
     box-shadow: var(--box-shadow);
     border-radius: var(--border-radius);
 }
-.legend-header {
-    margin-bottom: 8px;
-}
-.legend-h2 {
-    padding-left: 8px;
-    font-size: 1em;
-    font-weight: 500;
-}
-.overlay-h2 {
-    font-size: 1em;
-    font-weight: 700;
-}
-.overlay-form, .overlay-select {
-    background-color: white;
-    font-size: inherit;
-}
-.label-select {
-    /* same as fieldset */
-    font-size: 0.8em;
-    margin-bottom: 8px;
-}
 .overlay-container {
     padding: 8px;
     margin-top: 4px;
+    margin-bottom: 16px;
     background-color: var(--theme-white);
     box-shadow: var(--box-shadow-half);
     border-radius: var(--border-radius);
 }
-.overlay-form-toggle-group {
-    margin-bottom: 8px;
+.legend-h2 {
+    padding-left: 8px;
+    font-size: 1rem;
 }
-.overlay-form-toggle-group:last-child {
-    margin-bottom: 0;
+.totals-figures {
+    font-size: 1rem;
+    margin-right: 4px;
+}
+#gardens-totals {
+    color: var(--theme-thumb);
+}
+#trees-totals {
+    color: var(--theme-green);
+}
+#parks-totlas {
+    color: var(--theme-green);
 }
 .legend-section {
     padding: 0 8px;
     background-color: white
+}
+.legend-header {
+    margin-bottom: 8px;
 }
 .legend-item {
     margin-bottom: 8px;

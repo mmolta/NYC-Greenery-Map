@@ -38,14 +38,13 @@ const filterBoroughs = boro => {
             filters.boro = ['==', 'boro_code', boro]
             filters.thumb = ['==', 'borough', textLookup[boro]]
             filters.parks = ['==', 'borough', textLookup[boro]]
-            filters.trees = ['', 'boro_code', boro]
+            filters.trees = ['==', 'boro_code', boro]
     }
 
     return filters
 }
 
 const borobbox = {
-    "0": [],
     "1": [[-74.049568,40.690326],[-73.867950,40.887515]],
     "2": [[-73.938332,40.783407],[-73.762207,40.915326]],
     "3": [[-74.044418,40.565199],[-73.831902,40.740225]],

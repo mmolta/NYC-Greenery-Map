@@ -47,72 +47,24 @@
                 <h2 class="legend-h2">
                     <span id="bounds">New York City</span> Totals
                 </h2>
-
                 <div class="overlay-container">
                     <ul id="totals-ul" class="list-unstyled">
                         <li>
-                            <strong id="gardens-totals">234</strong>
+                            <span id="gardens-totals" class="totals-figures">234</span>
                             Gardens
                         </li>
                         <li>
-                            <strong id="trees-totals">629,109</strong>
+                            <span id="trees-totals" class="totals-figures">629,109</span>
                             Street Trees
                         </li>
                         <li>
-                            <strong id="parts-totals">391</strong>
+                            <span id="parts-totals" class="totals-figures">391</span>
                             Parks
                         </li>
                     </ul>
                 </div>
 
-                <h2 class="legend-h2">Legend</h2>
-
-                <form id="gardens-form" class="overlay-container toggle-form flex-column">
-                    <div class="flex-row flex-align-center legend-header">
-                        <span class="legend-icon-circle circle-thumb"></span>
-                        <h2 class="overlay-h2">GreenThumb Community Gardens</h2>
-                    </div>
-
-                    <label class="flex-row flex-align-center legend-item">
-                        Active
-                        <input type="checkbox" value="thumb-points" checked />
-                    </label>
-
-                    <label class="flex-row flex-align-center legend-item">
-                        Not GreenThumb
-                        <input type="checkbox" value="thumb-points" checked />
-                    </label>
-
-                    <label class="flex-row flex-align-center legend-item">
-                        Unclassified
-                        <input type="checkbox" value="thumb-points" checked />
-                    </label>
-                </form>
-
-                <form id="trees-form" class="overlay-container flex-column">
-                    <div class="flex-row flex-align-center legend-header">
-                        <span class="legend-icon-gradient legend-gradient-trees"></span>
-                        <h2 class="overlay-h2">Street Trees</h2>
-                    </div>
-
-                    <label class="flex-row flex-align-center legend-item">
-                        filter ?
-                        <input type="checkbox" value="thumb-points" checked />
-                    </label>
-                </form>
-
-                <form id="parks-form" class="overlay-container flex-column">
-                    <div class="flex-row flex-align-center legend-header">
-                        <span class="legend-icon-polygon circle-park"></span>
-                        <h2 class="overlay-h2">Parks</h2>
-                    </div>
-
-                    <label class="flex-row flex-align-center legend-item">
-                        filter ?
-                        <input type="checkbox" value="thumb-points" checked />
-                    </label>
-                </form>
-
+                <h2 class="legend-h2">Filters</h2>
                 <form id="boros-form" class="overlay-container toggle-form">
                     <label>
                         Borough:
@@ -126,6 +78,24 @@
                         </select>
                     </label>
                 </form>
+
+                <h2 class="legend-h2">Legend</h2>
+                <div class="overlay-container">
+                    <div class="flex-row flex-align-center legend-header">
+                        <span class="legend-icon-circle circle-thumb"></span>
+                        GreenThumb Community Gardens
+                    </div>
+
+                    <div class="flex-row flex-align-center legend-header">
+                        <span class="legend-icon-line circle-park legend-icon-gradient legend-gradient-trees"></span>
+                        Street Trees
+                    </div>
+
+                    <div class="flex-row flex-align-center legend-header">
+                        <span class="legend-icon-polygon circle-park"></span>
+                        Parks
+                    </div>
+                </div>
 
                 <footer class="flex-row flex-align-center">
                     Marc Molta, INFO 658
