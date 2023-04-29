@@ -163,7 +163,7 @@ map.on('load', () => {
         // zoom to bounds
         if(activeBoro == '0') {
             const defaultCoords = positionMap()
-            
+
             map.flyTo({
                 center: defaultCoords.center,
                 zoom: defaultCoords.zoom
@@ -180,6 +180,36 @@ map.on('load', () => {
         }
 
         // queryFeatures
+        // features blueprint:
+
+        // make the query and the commented out 
+        // loop below 1 function 
+            // call it on form end
+            // call it after initial render
+        const features = map.queryRenderedFeatures({
+            layers: ['thumb', 'parks', 'tree-lines']
+        })
+
+        /*
+            const data = {
+                const parks = {
+                    Landmark Park: 0,
+                    //
+                }
+                const trees = {
+                    Active: 0,
+                    // etc
+                }
+            }
+            
+            // only push relevant props
+            features.forEach(feature => {
+                data[feature.source].push(props)
+            })
+
+            // get total length of each jawn for totals
+            // get length of each key/value pair for charts
+            */
     }
 })
 
