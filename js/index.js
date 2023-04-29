@@ -5,7 +5,7 @@ import handleModal from './modal.js'
 import { handleBoroughsForm } from './forms.js'
 import { makePopup, addPopup, makeThumbHoverPopup, makeParkHoverPopup, makeThumbClickPopup, makeParkClickPopup } from './map/popup.js'
 import { fetchParkDetails } from './map/mapFetch.js'
-import { filterBoroughs } from './map/mapEvents.js'
+import { filterBoroughs, borobbox, positionMap } from './map/mapEvents.js'
 
 
 const modal = document.getElementById('modal')
@@ -153,12 +153,33 @@ map.on('load', () => {
         const activeBoro = handleBoroughsForm(e.target)
         const filters = filterBoroughs(activeBoro)
 
-
-        // map.setFilter('thumb', filters.alph)
-        // map.setFilter('thumbPoints', filters.alph)
-        // map.setFilter('parks', filters.num)
-        // map.setFilter('tree-lines', filters.num)
+        // filter
+        map.setFilter('thumb', filters.thumb)
+        map.setFilter('thumbPoints', filters.thumb)
+        map.setFilter('parks', filters.parks)
+        map.setFilter('tree-lines', filters.trees)
         map.setFilter('boroughs', filters.boro)
+
+        // zoom to bounds
+        if(activeBoro == '0') {
+            const defaultCoords = positionMap()
+            
+            map.flyTo({
+                center: defaultCoords.center,
+                zoom: defaultCoords.zoom
+            })
+        } else {
+            map.fitBounds(borobbox[activeBoro], {
+                padding: {
+                    top: 25,
+                    bottom: 25,
+                    left: 25,
+                    right: 25
+                }
+            })
+        }
+
+        // queryFeatures
     }
 })
 

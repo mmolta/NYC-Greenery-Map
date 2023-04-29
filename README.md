@@ -31,6 +31,8 @@ Visualizing NYC Open Data's greenery datasets. Includes GreenThumb community gar
 
 
 ## @TODO
-- Mockup designs for the popups
-- Try adding GreenThumb markers as symbols in the garden centroid instead of as points on each vertex
+- GreenThumb clusters replace points
+- Parks legend same semi-transparent + border as parks
 - Feature state for hover effects
+- Add header font "h1" "h2" "h3" etc.
+- force green thumbs layer over parks layer
