@@ -33,7 +33,7 @@ const srcURLs = {
     tiles: {
         trees: {
             type: 'vector',
-            url: 'mapbox://mmolta.axm1ka2x'
+            url: 'mapbox://mmolta.tree-lines'
         }
     }
 }

@@ -38,7 +38,7 @@ const filterBoroughs = boro => {
             filters.boro = ['==', 'boro_code', boro]
             filters.thumb = ['==', 'borough', textLookup[boro]]
             filters.parks = ['==', 'borough', textLookup[boro]]
-            filters.trees = ['==', 'boro_code', boro]
+            filters.trees = ['==', 'borocode', boro]
     }
 
     return filters
@@ -52,4 +52,56 @@ const borobbox = {
     "5": [[-74.259338,40.492909],[-74.049225,40.652518]]
 }
 
-export { positionMap, filterBoroughs, borobbox }
+// get data to update charts and totals and whatnot
+const getRendered = features => {
+    const charts = {
+        trees: {
+            none: 0,
+            low: 0,
+            mid: 0,
+            high: 0
+        },
+        parks: {
+
+        },
+        thumb: {
+            Active: 0,
+            GreenThumb: 0,
+            Inactive: 0
+        }
+    }
+
+    features.forEach(feature => {
+        const props = feature.properties
+
+        switch(feature.source) {
+            case 'parks':
+                // charts.parks[props.typeCategory] ++
+                break
+            case 'thumb':
+                charts.thumb[props.status] ++
+                break 
+            default:
+                const trees = parseInt(props.trees)
+
+                if(trees === 0) charts.trees.none += trees
+                else if(trees < 3 || trees >= 1) charts.trees.low += trees
+                else if(trees >= 3 || trees < 9) charts.trees.mid += trees
+                else charts.trees.high += trees
+        }
+    })
+
+    const totals = {
+        trees: Object.values(data.trees).reduce((acc, val) => acc + val),
+        parks: Object.values(data.parks).reduce((acc, val) => acc + val),
+        thumb: Object.values(data.thumb).reduce((acc, val) => acc + val)
+    }
+
+    return {
+        charts,
+        totals,
+        header
+    }
+}
+
+export { positionMap, filterBoroughs, getRendered, borobbox }

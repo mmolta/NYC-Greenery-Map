@@ -49,7 +49,7 @@ const mapLayers = {
         id: 'tree-lines',
         type: 'line',
         source: 'trees',
-        'source-layer': 'tree-lines-ddzcz1',
+        'source-layer': 'tree-lines',
         paint: {
             'line-color': ['case',
                 ['<', ['get', 'trees'], '1'], 'rgba(0,0,0,0)',

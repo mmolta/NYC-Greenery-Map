@@ -5,7 +5,7 @@ import handleModal from './modal.js'
 import { handleBoroughsForm } from './forms.js'
 import { makePopup, addPopup, makeThumbHoverPopup, makeParkHoverPopup, makeThumbClickPopup, makeParkClickPopup } from './map/popup.js'
 import { fetchParkDetails } from './map/mapFetch.js'
-import { filterBoroughs, borobbox, positionMap } from './map/mapEvents.js'
+import { filterBoroughs, borobbox, positionMap, getRendered } from './map/mapEvents.js'
 
 
 const modal = document.getElementById('modal')
@@ -179,37 +179,13 @@ map.on('load', () => {
             })
         }
 
-        // queryFeatures
-        // features blueprint:
+        // queryFeatures and update stateful overlays
 
-        // make the query and the commented out 
-        // loop below 1 function 
-            // call it on form end
-            // call it after initial render
-        const features = map.queryRenderedFeatures({
-            layers: ['thumb', 'parks', 'tree-lines']
-        })
+        // const features = map.queryRenderedFeatures({
+        //     layers: ['thumb', 'parks', 'tree-lines']
+        // })
 
-        /*
-            const data = {
-                const parks = {
-                    Landmark Park: 0,
-                    //
-                }
-                const trees = {
-                    Active: 0,
-                    // etc
-                }
-            }
-            
-            // only push relevant props
-            features.forEach(feature => {
-                data[feature.source].push(props)
-            })
-
-            // get total length of each jawn for totals
-            // get length of each key/value pair for charts
-            */
+        // const data = getRendered(features)
     }
 })
 
