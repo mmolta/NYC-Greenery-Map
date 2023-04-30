@@ -7,11 +7,16 @@ import { makePopup, addPopup, makeThumbHoverPopup, makeParkHoverPopup, makeThumb
 import { fetchParkDetails } from './map/mapFetch.js'
 import { filterBoroughs, borobbox, positionMap, getRendered } from './map/mapEvents.js'
 
+let formChanged = false
 
 const modal = document.getElementById('modal')
 const modalToggle = document.getElementById('modal-toggle')
 const closeModal = document.getElementById('close-modal')
 const boroughForm = document.getElementById('boros-form')
+const boundsHeader = document.getElementById('bounds')
+const totalGardens = document.getElementById('gardens-totals')
+const totalTrees = document.getElementById('trees-totals')
+const totalParks = document.getElementById('parks-totals')
 
 
 const map = makeMap()
@@ -20,6 +25,8 @@ const clickPopup = makePopup()
 
 
 map.on('load', () => {
+    const spinner = map['_container'].querySelector('.lds-ring')
+
     for(let [key, value] of Object.entries(srcURLs.openData)) {
         getSrc(value.url).then(src => {
             if(src) {
@@ -153,8 +160,14 @@ map.on('load', () => {
     })
 
     boroughForm.onchange = e => {
-        const activeBoro = handleBoroughsForm(e.target)
+        spinner.classList.add('lds-ring-active')
+
+
+        const selectedBoro = handleBoroughsForm(e.target)
+        const activeBoro = selectedBoro.value
+        const newBoundsHeader = selectedBoro.textContent
         const filters = filterBoroughs(activeBoro)
+        
 
         // filter
         map.setFilter('thumb', filters.thumb)
@@ -186,20 +199,29 @@ map.on('load', () => {
 
         // @NOTE: all boroughs bbox used for the geocoder.
             // Use this for the default and all NYC load b/c zoom of 10 cuts off *some* lines
+            // [-74.317017,40.489017,-73.708649,40.948830]
 
-        // [-74.317017,40.489017,-73.708649,40.948830]
-
-        // const features = map.queryRenderedFeatures({
-        //     layers: ['thumb', 'parks', 'tree-lines']
-        // })
-
-        // const data = getRendered(features)
+        boundsHeader.textContent = newBoundsHeader
+        formChanged = true
     }
 })
 
 
 // loading spinner 
 map.on('idle', () => {
+
+    // only call this if 'idle' is the result of a form change
+    if(formChanged) {
+        const features = map.queryRenderedFeatures({
+            layers: ['thumb', 'parks', 'tree-lines']
+        })
+        
+        const data = getRendered(features)
+        console.log(data)
+        totalTrees.textContent = data.totals.trees
+        formChanged = false
+    }
+
     const spinner = map['_container'].querySelector('.lds-ring')
     spinner.classList.remove('lds-ring-active')
 })

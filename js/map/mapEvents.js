@@ -59,7 +59,7 @@ const getRendered = features => {
             high: 0
         },
         parks: {
-
+            flagship: 0
         },
         thumb: {
             Active: 0,
@@ -89,15 +89,14 @@ const getRendered = features => {
     })
 
     const totals = {
-        trees: Object.values(data.trees).reduce((acc, val) => acc + val),
-        parks: Object.values(data.parks).reduce((acc, val) => acc + val),
-        thumb: Object.values(data.thumb).reduce((acc, val) => acc + val)
+        trees: Object.values(charts.trees).reduce((acc, val) => acc + val),
+        parks: Object.values(charts.parks).reduce((acc, val) => acc + val),
+        thumb: Object.values(charts.thumb).reduce((acc, val) => acc + val)
     }
 
     return {
         charts,
-        totals,
-        header
+        totals
     }
 }
 
