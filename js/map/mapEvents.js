@@ -90,9 +90,9 @@ const getRendered = features => {
             default:
                 const trees = parseInt(props.trees)
 
-                if(trees === 0) charts.trees.none += trees
-                else if(trees < 3 || trees >= 1) charts.trees.low += trees
-                else if(trees >= 3 || trees < 9) charts.trees.mid += trees
+                if(trees === 0) charts.trees.none += 1
+                else if(trees < 3 && trees >= 1) charts.trees.low += trees
+                else if(trees >= 3 && trees < 9) charts.trees.mid += trees
                 else charts.trees.high += trees
         }
     })

@@ -6,6 +6,7 @@ import { handleBoroughsForm } from './forms.js'
 import { makePopup, addPopup, makeThumbHoverPopup, makeParkHoverPopup, makeThumbClickPopup, makeParkClickPopup } from './map/popup.js'
 import { fetchParkDetails } from './map/mapFetch.js'
 import { filterBoroughs, borobbox, positionMap, getRendered } from './map/mapEvents.js'
+import makeCharts from './charts/charts.js'
 
 let triggerDataChange = true
 
@@ -17,6 +18,11 @@ const boundsHeader = document.getElementById('bounds')
 const totalGardens = document.getElementById('gardens-totals')
 const totalTrees = document.getElementById('trees-totals')
 const totalParks = document.getElementById('parks-totals')
+const treesChart = document.getElementById('trees-chart')
+
+const charts = {
+    trees: treesChart
+}
 
 
 const map = makeMap()
@@ -228,7 +234,8 @@ map.on('idle', () => {
         })
         
         const data = getRendered(features)
-        console.log(data)
+        makeCharts(data.charts, charts)
+
         totalTrees.textContent = data.totals.trees.toLocaleString()
         totalGardens.textContent = data.totals.thumb.toLocaleString()
         totalParks.textContent = data.totals.parks.toLocaleString()

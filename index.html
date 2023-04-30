@@ -47,6 +47,7 @@
                 <h2 class="legend-h2">
                     <span id="bounds">All Boroughs</span> Totals
                 </h2>
+
                 <div class="overlay-container">
                     <ul id="totals-ul" class="list-unstyled totals-ul">
                         <li>
@@ -62,6 +63,10 @@
                             Parks
                         </li>
                     </ul>
+                </div>
+
+                <div class="overlay-container">
+                    <canvas id="trees-chart"></canvas>
                 </div>
 
                 <h2 class="legend-h2">Filters</h2>
@@ -158,5 +163,6 @@
         
         <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js"></script>
         <script src="https://api.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     </body>
 </html>
