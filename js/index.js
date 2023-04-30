@@ -18,6 +18,7 @@ const map = makeMap()
 const hoverPopup = makePopup()
 const clickPopup = makePopup()
 
+
 map.on('load', () => {
     for(let [key, value] of Object.entries(srcURLs.openData)) {
         getSrc(value.url).then(src => {
@@ -105,6 +106,8 @@ map.on('load', () => {
             hoverPopup.remove()
         })
 
+        // @TODO: hack lngLat to slightly offset the popup so it doesn't collide with 
+        // the main overlay bar
         map.flyTo({
             center: lngLat,
             zoom: 16,

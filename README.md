@@ -33,7 +33,7 @@ Visualizing NYC Open Data's greenery datasets. Includes GreenThumb community gar
 
 ## @TODO
 - GreenThumb clusters replace points
-- Parks legend same semi-transparent + border as parks
+- Parks legend same semi-transparent color + border as parks
 - Feature state for hover effects
 - Add header font "h1" "h2" "h3" etc.
 - force green thumbs layer over parks layer

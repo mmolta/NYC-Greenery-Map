@@ -43,7 +43,7 @@ const makeThumbLogistics = props => {
         </ul>
 
         <h3 class="popup-h3 thumb-popup-h3">Hours</h2>
-        <ul class="list-unstyled">
+        <ul class="list-unstyled hours-list">
             <li>Monday: ${props.openhrsm === 'null' ? 'hours not posted' : props.openhrsm}</li>
             <li>Tuesday: ${props.openhrstu === 'null' ? 'hours not posted' : props.openhrstu}</li>
             <li>Wednesday: ${props.openhrsw === 'null' ? 'hours not posted' : props.openhrsw}</li>
