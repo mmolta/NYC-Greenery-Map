@@ -7,7 +7,7 @@ import { makePopup, addPopup, makeThumbHoverPopup, makeParkHoverPopup, makeThumb
 import { fetchParkDetails } from './map/mapFetch.js'
 import { filterBoroughs, borobbox, positionMap, getRendered } from './map/mapEvents.js'
 
-let formChanged = false
+let triggerDataChange = true
 
 const modal = document.getElementById('modal')
 const modalToggle = document.getElementById('modal-toggle')
@@ -195,14 +195,12 @@ map.on('load', () => {
             })
         }
 
-        // queryFeatures and update stateful overlays
-
-        // @NOTE: all boroughs bbox used for the geocoder.
-            // Use this for the default and all NYC load b/c zoom of 10 cuts off *some* lines
-            // [-74.317017,40.489017,-73.708649,40.948830]
-
         boundsHeader.textContent = newBoundsHeader
-        formChanged = true
+        totalTrees.textContent = 'calculating...'
+        totalGardens.textContent = 'calculating...'
+        totalParks.textContent = 'calculating...'
+
+        triggerDataChange = true
     }
 })
 
@@ -210,16 +208,32 @@ map.on('load', () => {
 // loading spinner 
 map.on('idle', () => {
 
-    // only call this if 'idle' is the result of a form change
-    if(formChanged) {
+        /*
+            @NOTE: default state w/default view
+            cuts off southenr tip of staten island
+                fitting the whole thing in the viewport cuts off features
+                via zoom
+                pass this bbox: [[-74.317017,40.489017],[-73.708649,40.948830]]
+                for default or all jawns
+                    ^ this didn't work. can't query outside viewport
+            287 Gardens
+            612,934 Street Trees
+            675 Parks
+        */
+
+    // call on first pass and when 'idle' is result of a form change
+    if(triggerDataChange) {
         const features = map.queryRenderedFeatures({
             layers: ['thumb', 'parks', 'tree-lines']
         })
         
         const data = getRendered(features)
         console.log(data)
-        totalTrees.textContent = data.totals.trees
-        formChanged = false
+        totalTrees.textContent = data.totals.trees.toLocaleString()
+        totalGardens.textContent = data.totals.thumb.toLocaleString()
+        totalParks.textContent = data.totals.parks.toLocaleString()
+
+        triggerDataChange = false
     }
 
     const spinner = map['_container'].querySelector('.lds-ring')

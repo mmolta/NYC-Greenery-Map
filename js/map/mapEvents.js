@@ -59,12 +59,21 @@ const getRendered = features => {
             high: 0
         },
         parks: {
-            flagship: 0
+            "Community Park": 0,
+            "Flagship Park": 0,
+            "Historic House Park": 0,
+            "Nature Area": 0,
+            "Neighborhood Park": 0,
+            "Triangle/Plaza": 0
         },
         thumb: {
-            Active: 0,
-            GreenThumb: 0,
-            Inactive: 0
+            "Active": 0,
+            "Active (Unlicensed)": 0,
+            "Closed (Construction)": 0,
+            "Closed (Other)": 0,
+            "Inactive (Group Forming)": 0,
+            "Inactive (No Group)": 0,
+            "Not GreenThumb": 0
         }
     }
 
@@ -73,10 +82,10 @@ const getRendered = features => {
 
         switch(feature.source) {
             case 'parks':
-                // charts.parks[props.typeCategory] ++
+                charts.parks[props.typecategory]++
                 break
             case 'thumb':
-                charts.thumb[props.status] ++
+                charts.thumb[props.status]++
                 break 
             default:
                 const trees = parseInt(props.trees)
