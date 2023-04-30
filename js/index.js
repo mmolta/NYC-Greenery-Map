@@ -181,6 +181,11 @@ map.on('load', () => {
 
         // queryFeatures and update stateful overlays
 
+        // @NOTE: all boroughs bbox used for the geocoder.
+            // Use this for the default and all NYC load b/c zoom of 10 cuts off *some* lines
+
+        // [-74.317017,40.489017,-73.708649,40.948830]
+
         // const features = map.queryRenderedFeatures({
         //     layers: ['thumb', 'parks', 'tree-lines']
         // })
