@@ -326,13 +326,19 @@ nav {
     max-height: calc(88vh - 40px);
     overflow-x: hidden;
     overflow-y: auto;
-    top: 16px;
-    left: 16px;
     font-size: 1em;
     padding: 8px;
     background-color: transparent;
     box-shadow: var(--box-shadow);
     border-radius: var(--border-radius);
+}
+.data-overlay {
+    top: 16px;
+    left: 16px;
+}
+.legend-overlay {
+    bottom: 16px;
+    left: 16px;
 }
 .overlay-container {
     padding: 8px;
@@ -357,9 +363,9 @@ nav {
     color: var(--theme-thumb);
 }
 #trees-totals {
-    color: var(--theme-green);
+    color: #31a354;
 }
-#parks-totlas {
+#parks-totals {
     color: var(--theme-green);
 }
 .legend-section {
@@ -367,46 +373,46 @@ nav {
     background-color: white
 }
 .legend-header {
-    margin-bottom: 8px;
+    margin-bottom: 16px;
+}
+.legend-header:last-child {
+    margin-bottom: 0;
 }
 .legend-item {
     margin-bottom: 8px;
     margin-left: 16px;
     width: max-content;
 }
-.legend-icon-line {
-    display: block;
-    width: 2.5px;
-    height: 16px;
-    margin-right: 12.5px;
-    transform: rotate(90deg);
-    /* account for transform */
-    margin-left: 7.5px;
-}
 .legend-icon-circle {
     display: inline-block;
-    width: 10px;
-    height: 10px;
+    width: 16px;
+    height: 16px;
     margin-right: 8px;
     border-radius: 50%;
 }
 .legend-icon-polygon {
     display: inline-block;
-    width: 10px;
-    height: 10px;
+    width: 16px;
+    height: 16px;
     margin-right: 8px;
 }
-.circle-blue {
-    background-color: var(--theme-blue);
+.legend-gradient-container {
+    /* 4 stops so make width divisible by 4 */
+    width: 180px;
+    margin-right: 8px;
+}
+.legend-gradient-trees {
+    width: 100%;
+    height: 16px;
+    background: linear-gradient(to right, rgba(0,0,0,0) 25%, #f7fcb9 25%, #f7fcb9 50%, #addd8e 50%, #addd8e 75%, #31a354 75%, #31a354);
+    border: 1px solid var(--theme-black);
 }
 .circle-thumb {
     background-color: var(--theme-thumb);
 }
-.circle-park {
-    background-color: var(--theme-green);
-}
-.circle-black {
-    background-color: var(--theme-black);
+.polygon-park {
+    background-color: rgba(31,103,53,0.3);
+    border: 1px solid var(--theme-thumb);
 }
 .legend-text {
     font-size: 0.75em;

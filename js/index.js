@@ -31,7 +31,6 @@ const clickPopup = makePopup()
 
 const charts = makeCharts(defaultData, chartEls)
 
-
 map.on('load', () => {
     const spinner = map['_container'].querySelector('.lds-ring')
 
