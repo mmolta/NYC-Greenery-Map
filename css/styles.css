@@ -9,6 +9,9 @@ body {
     text-rendering: optimizeLegibility;
     color: var(--theme-black);
 }
+h1, h2, h3 {
+    font-family: 'Overpass', sans-serif
+}
 h1 {
     text-align: center;
     font-size: inherit;
@@ -60,6 +63,9 @@ a {
 .flex-align-center {
     align-items: center;
 }
+.flex-center {
+    justify-content: center;
+}
 .flex-between {
     justify-content: space-between;
 }
@@ -90,7 +96,6 @@ a {
 }
 .modal{
     position: fixed;
-    display: none;
     z-index: 3;
     top: 0;
     width: 100%;
@@ -98,11 +103,27 @@ a {
     overflow: auto;
     background: rgba(0, 0, 0, 0.3);
 }
+.modal-header {
+    background-color: var(--theme-green);
+    color: var(--theme-white);
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+    margin-bottom: 32px;
+    font-size: 2rem;
+    height: 56px;
+}
+.modal-logo {
+    width: 75px !important;
+}
+.modal-content-overflow {
+    max-height: 70vh;
+    overflow-y: auto;
+}
 .modal-content{
     position: relative;
     background: #fff;
-    width: 48em;
-    padding: 40px 16px;
+    width: 52em;
+    padding: 0 0 40px 0;
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
 }
@@ -110,21 +131,34 @@ a {
     margin-top: 0.25em;
 }
 .modal-section {
-    width: 44em;
     margin: 0 auto;
+}
+.modal-section, .modal-hr {
+    width: 40em;
 }
 .modal-section h3 {
     color: var(--theme-green);
+}
+.modal-gif-section {
+    margin: 16px 0;
+}
+.modal-figure {
+    margin-left: 16px;
+    text-align: center;
+    font-size: 0.8rem;
+}
+.modal-figure img {
+    border-radius: var(--border-radius);
 }
 .close-modal{
     position: absolute;
     right: 16px;
     top: -8px;
     font-size: 2em;
+    color: var(--theme-white);
 }
 .modal-hr {
     margin: 16px auto;
-    width: 45em;
 }
 /* END Modal */
 
@@ -133,7 +167,7 @@ a {
 /* Navbar */
 nav {
     position: absolute;
-    height: 5vh;
+    height: 40px;
     top: 16px;
     left: 50%;
     transform: translate(-50%, 0);
@@ -338,7 +372,7 @@ nav {
 }
 .legend-overlay {
     bottom: 16px;
-    left: 16px;
+    right: 16px;
 }
 .overlay-container {
     padding: 8px;
