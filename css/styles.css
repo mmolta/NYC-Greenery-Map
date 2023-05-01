@@ -113,7 +113,7 @@ a {
     height: 56px;
 }
 .modal-logo {
-    width: 75px !important;
+    width: 80px !important;
 }
 .modal-content-overflow {
     max-height: 70vh;
@@ -196,7 +196,7 @@ nav {
 }
 .project-logo {
     display: block;
-    width: 55px;
+    width: 56px;
     margin-right: 4px;
     box-shadow: var(--box-shadow);
     border-radius: 50%;
