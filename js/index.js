@@ -6,7 +6,8 @@ import { handleBoroughsForm } from './forms.js'
 import { makePopup, addPopup, makeThumbHoverPopup, makeParkHoverPopup, makeThumbClickPopup, makeParkClickPopup } from './map/popup.js'
 import { fetchParkDetails } from './map/mapFetch.js'
 import { filterBoroughs, borobbox, positionMap, getRendered } from './map/mapEvents.js'
-import makeCharts from './charts/charts.js'
+import { makeCharts, updateCharts } from './charts/charts.js'
+import defaultData from './charts/chartsDefaults.js'
 
 let triggerDataChange = true
 
@@ -20,14 +21,15 @@ const totalTrees = document.getElementById('trees-totals')
 const totalParks = document.getElementById('parks-totals')
 const treesChart = document.getElementById('trees-chart')
 
-const charts = {
+const chartEls = {
     trees: treesChart
 }
-
 
 const map = makeMap()
 const hoverPopup = makePopup()
 const clickPopup = makePopup()
+
+const charts = makeCharts(defaultData, chartEls)
 
 
 map.on('load', () => {
@@ -234,7 +236,7 @@ map.on('idle', () => {
         })
         
         const data = getRendered(features)
-        makeCharts(data.charts, charts)
+        updateCharts(data.charts, charts)
 
         totalTrees.textContent = data.totals.trees.toLocaleString()
         totalGardens.textContent = data.totals.thumb.toLocaleString()

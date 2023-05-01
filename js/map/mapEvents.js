@@ -51,6 +51,8 @@ const borobbox = {
 
 // get data to update charts and totals and whatnot
 const getRendered = features => {
+    let totalTrees = 0
+
     const charts = {
         trees: {
             none: 0,
@@ -91,14 +93,16 @@ const getRendered = features => {
                 const trees = parseInt(props.trees)
 
                 if(trees === 0) charts.trees.none += 1
-                else if(trees < 3 && trees >= 1) charts.trees.low += trees
-                else if(trees >= 3 && trees < 9) charts.trees.mid += trees
-                else charts.trees.high += trees
+                else if(trees < 3 && trees >= 1) charts.trees.low += 1
+                else if(trees >= 3 && trees < 9) charts.trees.mid += 1
+                else charts.trees.high += 1
+
+                totalTrees += trees
         }
     })
 
     const totals = {
-        trees: Object.values(charts.trees).reduce((acc, val) => acc + val),
+        trees: totalTrees,
         parks: Object.values(charts.parks).reduce((acc, val) => acc + val),
         thumb: Object.values(charts.thumb).reduce((acc, val) => acc + val)
     }
