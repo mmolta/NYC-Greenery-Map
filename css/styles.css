@@ -9,13 +9,14 @@ body {
     text-rendering: optimizeLegibility;
     color: var(--theme-black);
 }
-h1, h2, h3 {
-    font-family: 'Overpass', sans-serif
-}
 h1 {
+    font-family: 'Calistoga', cursive;
     text-align: center;
     font-size: inherit;
     margin: 0 32px;
+}
+h4 {
+    margin-top: 8px;
 }
 details {
     margin-bottom: 8px;
@@ -101,7 +102,7 @@ a {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.6);
 }
 .modal-header {
     background-color: var(--theme-green);
@@ -140,7 +141,7 @@ a {
     color: var(--theme-green);
 }
 .modal-gif-section {
-    margin: 16px 0;
+    margin: 24px 0;
 }
 .modal-figure {
     margin-left: 16px;
@@ -158,7 +159,8 @@ a {
     color: var(--theme-white);
 }
 .modal-hr {
-    margin: 16px auto;
+    margin: 32px auto;
+    color: var(--theme-white);
 }
 /* END Modal */
 

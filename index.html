@@ -21,7 +21,7 @@
         
 
         <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?Overpass:wght@600;900&family=Roboto:200,300,400,500,700&amp;display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Calistoga&family=Roboto:200,300,400,500,700&amp;display=swap">
         <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.css" type="text/css">
         <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.css">
         <link rel="stylesheet" href="./css/styles.css">
@@ -136,20 +136,22 @@
                         <h3>About</h3>
                         
                         <p>
-                            This webmap provides an overview of available greenspaces in New York City. It leverages
-                            NYC Open Data to visualize community gardens, parks properties and the presence of street 
-                            trees throughout the five boroughs.
+                            The purpose of this map is to connect New Yorkers to the publicly accessible urban greenspaces
+                            in New York City. Interactive community gardens and parks properties provide
+                            information on greenspaces people can partake in. Lines that represent the number of trees on a street
+                            provide context for passive greenery throughout the city.
                         </p>
 
                         <div class="modal-gif-section flex-row flex-between flex-align-center">
                             <p>
-                                A brief description of the features and functionality of the map including the filter,
-                                hover and click events and other things that I want to include here.
+                                Hover over and click parks and community gardens in the map to get their name and learn
+                                about their hours, amenities, and other facts. Use the drop down menu in the
+                                "Filters" section to re-calculate charts and figures for each borough.
                             </p>
 
                             <figure class="modal-figure">
                                 <img src="" width="400px" height="300px" />
-                                <figcaption>gif of interactions to show not tell</figcaption>
+                                <figcaption>feature demo</figcaption>
                             </figure>
                         </div>
                     </section>
@@ -160,17 +162,43 @@
                         <h3>Methodology</h3>
     
                         <p>
-                            All data comes from NYC OpenData. GreenThumbs and Parks data is pulled from the API and updates 
-                            whenever the dataset is updated.
-                            Because of API limits and the volume of records, the Street Trees data was downloaded, cleaned
-                            up in qGIS, and then uploaded as a custom vector tile set using Mapbox Studio. 
+                            All data comes from <a href="https://opendata.cityofnewyork.us/" target="_blank" rel="noopener noreferrer">NYC OpenData</a>.
+                            GreenThumbs Community Gardens and Parks Properties data is fetched from the API and updates 
+                            whenever the dataset is updated. Each API query pre-selects relevant fields to keep the response data as small as possible.
+                            <br>
+                            Parks data, for example, is constrained to Parks Properties that are public green spaces and excludes entries such as Park's
+                            buildings and jointly operated school playgrounds.
+                            <br>
+                            Because of API limits, the Street Trees data was downloaded, cleaned up in qGIS, and then uploaded as a custom vector tile set
+                            using Mapbox Studio's
+                            <a href="https://docs.mapbox.com/mapbox-tiling-service/guides/" target="_blank" rel="noopener noreferrer">Mapbox Tiling Service</a>. 
                         </p>
-    
+
                         <p>
-                            <a href="">GreenThumb Community Gardens</a>,
-                            <a href="">GreenThumb site visits</a>
-                            <a href="">Parks Properties</a> and
-                            <a href="">Street Tree</a> datasets from New York's Open Data portal.
+                            The map is built with Mapboxgl JS. Everything else is vanilla HTML/CSS/JS.
+                        </p>
+                        
+                        <h4>Datasets Used</h4>
+                        <ul>
+                            <li>
+                                <a href="https://data.cityofnewyork.us/dataset/GreenThumb-Garden-Info/p78i-pat6" target="_blank" rel="noopener noreferrer">GreenThumb Community Gardens</a>
+                            </li>
+                            <li>
+                                <a href="https://data.cityofnewyork.us/Environment/GreenThumb-Site-Visits/xqbk-beh5" target="_blank" rel="noopener noreferrer">GreenThumb site visits</a>
+                            </li>
+                            <li>
+                                <a href="https://data.cityofnewyork.us/Recreation/Parks-Properties/enfh-gkve" target="_blank" rel="noopener noreferrer">Parks Properties</a>
+                            </li>
+                            <li>
+                                <a href="https://data.cityofnewyork.us/Environment/2015-Street-Tree-Census-Blockface-Data/2cd9-59fr" target="_blank" rel="noopener noreferrer">Street Trees Blockface Metrics</a>
+                            </li>
+                            <li>
+                                <a href="https://data.cityofnewyork.us/City-Government/Borough-Boundaries/tqmj-j8zm" rel="noopener noreferrer">Borough Boundaries</a>
+                            </li>
+                        </ul>
+
+                        <p>
+                            Check out the <a href="https://github.com/mmolta/NYC-Greenery-Map" rel="noopener noreferrer">GitHub repo</a> for additional details.
                         </p>
                     </section>
     
@@ -184,9 +212,9 @@
                             at Pratt Institute.
                         </p>
     
-                        <p>Last Updated on <strong>April 30<sup>th</sup>, 2023</strong></p>
+                        <p>Last Updated on <strong>May 1<sup>st</sup>, 2023</strong></p>
     
-                        <a href="https://www.flaticon.com/free-icons/green-city" title="green city icons">Green city icons created by Culmbio - Flaticon</a>
+                        <a href="https://www.flaticon.com/free-icons/green-city" target="_blank" rel="noopener noreferrer" title="green city icons">Green city icons created by Culmbio - Flaticon</a>
                     </section>
                 </div>
 
