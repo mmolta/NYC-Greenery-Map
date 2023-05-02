@@ -31,10 +31,10 @@ const charts = makeCharts(defaultData, chartEls)
 
 const query = fetchFeatures(0)
 
-// query.then(features => {
-//     totalGardens.textContent = features.thumb.totals.toLocaleString()
-//     totalParks.textContent = features.parks.totals.toLocaleString()    
-// })
+query.then(features => {
+    totalGardens.textContent = features.thumb.totals.toLocaleString()
+    totalParks.textContent = features.parks.totals.toLocaleString()    
+})
 
 let queryTrees = true
 
@@ -178,12 +178,12 @@ map.on('load', () => {
         queryTrees = true
 
         // @TODO: finish update
-        // const query = fetchFeatures(activeBoro)
+        const query = fetchFeatures(activeBoro)
 
-        // query.then(features => {
-        //     totalGardens.textContent = features.thumb.totals.toLocaleString()
-        //     totalParks.textContent = features.parks.totals.toLocaleString()
-        // })
+        query.then(features => {
+            totalGardens.textContent = features.thumb.totals.toLocaleString()
+            totalParks.textContent = features.parks.totals.toLocaleString()    
+        })
 
     }
 })
@@ -195,6 +195,7 @@ map.on('idle', () => {
     spinner.classList.remove('lds-ring-active')
 
     if(queryTrees) {
+        // @TODO: store fetched values and check before invoking queryRenderedFeatures again
         const features = map.queryRenderedFeatures({
             layers: ['tree-lines']
         })

@@ -18,7 +18,6 @@ const fetchOpenData = async url => {
 }
 
 const textLookup = {
-    "0": '',
     "1": "M",
     "2": "X",
     "3": "B",
@@ -38,22 +37,23 @@ const beenFetched = {
 
 // @RETURN: totals and chart data
 const fetchFeatures = async boro => {
+    console.log(beenFetched)
+
     if(beenFetched[boro]) {
-        console.log('been fetched!')
         return beenFetched[boro]
     }else {
-        const gardenCode = textLookup[boro]
+        const boroCode = textLookup[boro]
         let urls
 
-        if(boro === 0) {
+        if(boro == 0) {
             urls = [
-                `https://data.cityofnewyork.us/resource/p78i-pat6.json?$select=status`,
-                `https://data.cityofnewyork.us/resource/enfh-gkve.json?$select=name311,acres&typecategory='Flagship Park' OR typecategory='Nature Area' OR typecategory='Community Park' OR typecategory='Neighborhood Park' OR typecategory='Triangle/Plaza' OR typecategory='Historic House Park'`,
+                encodeURI(`https://data.cityofnewyork.us/resource/p78i-pat6.json?$select=status`),
+                encodeURI(`https://data.cityofnewyork.us/resource/enfh-gkve.json?$select=name311,acres&typecategory='Flagship Park' OR typecategory='Nature Area' OR typecategory='Community Park' OR typecategory='Neighborhood Park' OR typecategory='Triangle/Plaza' OR typecategory='Historic House Park'`),
             ]
         }else {
             urls = [
-                `https://data.cityofnewyork.us/resource/p78i-pat6.json?$select=status&borough=${gardenCode}`,
-                `https://data.cityofnewyork.us/resource/enfh-gkve.json?$select=name311,acres&typecategory='Flagship Park' OR typecategory='Nature Area' OR typecategory='Community Park' OR typecategory='Neighborhood Park' OR typecategory='Triangle/Plaza' OR typecategory='Historic House Park'&borough=${boro}`,
+                encodeURI(`https://data.cityofnewyork.us/resource/p78i-pat6.json?$select=status&borough=${boroCode}`),
+                encodeURI(`https://data.cityofnewyork.us/resource/enfh-gkve.json?$select=name311,acres&typecategory='Flagship Park' OR typecategory='Nature Area' OR typecategory='Community Park' OR typecategory='Neighborhood Park' OR typecategory='Triangle/Plaza' OR typecategory='Historic House Park'&borough=${boroCode}`),
             ]
         }
 
@@ -65,26 +65,18 @@ const fetchFeatures = async boro => {
             throw errors.map((response) => Error(response.statusText));
         }
 
-        console.log(responses)
-        // beenFetched[boro].thumb = thumbData
-        // beenFetched[boro].park = parkData
-
         // // update beenFetched
-        // beenFetched[boro] = {
-        //     trees: {
-        //         totals: treeResponse.length,
-        //         chart: treesChart
-        //     },
-        //     parks: {
-        //         totals: parkResponse.length
-        //     },
-        //     thumb: {
-        //         totals: thumbResponse.length
-        //     }
-        // }
+        beenFetched[boro] = {
+            thumb: {
+                totals: responses[0].length
+            },
+            parks: {
+                totals: responses[1].length
+            }
+        }
 
         // // return updated beenFetched
-        // return beenFetched[boro]
+        return beenFetched[boro]
     }
 }
 
