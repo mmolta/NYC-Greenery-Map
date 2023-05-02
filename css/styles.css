@@ -148,8 +148,9 @@ a {
     text-align: center;
     font-size: 0.8rem;
 }
-.modal-figure img {
+.modal-figure video {
     border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
 }
 .close-modal{
     position: absolute;
