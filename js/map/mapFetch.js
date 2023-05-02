@@ -48,12 +48,12 @@ const fetchFeatures = async boro => {
         if(boro == 0) {
             urls = [
                 encodeURI(`https://data.cityofnewyork.us/resource/p78i-pat6.json?$select=status`),
-                encodeURI(`https://data.cityofnewyork.us/resource/enfh-gkve.json?$select=name311,acres&typecategory='Flagship Park' OR typecategory='Nature Area' OR typecategory='Community Park' OR typecategory='Neighborhood Park' OR typecategory='Triangle/Plaza' OR typecategory='Historic House Park'`),
+                encodeURI(`https://data.cityofnewyork.us/resource/enfh-gkve.json?$select=typecategory,name311,location,acres&typecategory='Flagship Park' OR typecategory='Nature Area' OR typecategory='Community Park' OR typecategory='Neighborhood Park' OR typecategory='Triangle/Plaza' OR typecategory='Historic House Park'`),
             ]
         }else {
             urls = [
                 encodeURI(`https://data.cityofnewyork.us/resource/p78i-pat6.json?$select=status&borough=${boroCode}`),
-                encodeURI(`https://data.cityofnewyork.us/resource/enfh-gkve.json?$select=name311,acres&typecategory='Flagship Park' OR typecategory='Nature Area' OR typecategory='Community Park' OR typecategory='Neighborhood Park' OR typecategory='Triangle/Plaza' OR typecategory='Historic House Park'&borough=${boroCode}`),
+                encodeURI(`https://data.cityofnewyork.us/resource/enfh-gkve.json?$select=typecategory,name311,location,acres&borough=${boroCode}`),
             ]
         }
 
@@ -64,6 +64,26 @@ const fetchFeatures = async boro => {
         if (errors.length > 0) {
             throw errors.map((response) => Error(response.statusText));
         }
+        
+        // @TODO: build the top 3 largest in this loop
+        const parksFiltered = responses[1].filter(response => {
+            switch(response.typecategory) {
+                case 'Flagship Park':
+                    return true
+                case 'Nature Area':
+                    return true
+                case 'Community Park':
+                    return true
+                case 'Neighborhood Park':
+                    return true
+                case 'Triangle/Plaza':
+                    return true
+                case 'Historic House Park':
+                    return true
+                default:
+                    return false
+            }
+        })
 
         // // update beenFetched
         beenFetched[boro] = {
@@ -71,7 +91,7 @@ const fetchFeatures = async boro => {
                 totals: responses[0].length
             },
             parks: {
-                totals: responses[1].length
+                totals: parksFiltered.length
             }
         }
 

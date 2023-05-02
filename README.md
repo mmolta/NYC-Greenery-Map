@@ -14,7 +14,7 @@ Visualizing NYC Open Data's greenery datasets. Includes GreenThumb community gar
 
 ## Other Resources
 - [Million Trees NYC fact sheet](https://www.milliontreesnyc.org/html/urban_forest/urban_forest_facts.shtml)
-- [OFFSET AND LIMIT OMG](https://support.socrata.com/hc/en-us/articles/202949268-How-to-query-more-than-1000-rows-of-a-dataset)
+- [Socrata API Limits](https://support.socrata.com/hc/en-us/articles/202949268-How-to-query-more-than-1000-rows-of-a-dataset)
 - [bbox finder](http://bboxfinder.com/#40.492909,-74.259338,40.652518,-74.049225)
 
 
@@ -28,6 +28,4 @@ Visualizing NYC Open Data's greenery datasets. Includes GreenThumb community gar
 
 
 ## @TODO
-- GreenThumb clusters replace points
-- Feature state for hover effects
 - force green thumbs layer over parks layer
