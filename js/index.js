@@ -4,12 +4,10 @@ import { mapLayers, layersKey } from './map/mapLayers.js'
 import handleModal from './modal.js'
 import { handleBoroughsForm } from './forms.js'
 import { makePopup, addPopup, makeThumbHoverPopup, makeParkHoverPopup, makeThumbClickPopup, makeParkClickPopup } from './map/popup.js'
-import { fetchParkDetails } from './map/mapFetch.js'
+import { fetchFeatures, fetchOpenData } from './map/mapFetch.js'
 import { filterBoroughs, borobbox, positionMap, getRendered } from './map/mapEvents.js'
 import { makeCharts, updateCharts } from './charts/charts.js'
 import defaultData from './charts/chartsDefaults.js'
-
-let triggerDataChange = true
 
 const modal = document.getElementById('modal')
 const modalToggle = document.getElementById('modal-toggle')
@@ -30,6 +28,15 @@ const hoverPopup = makePopup()
 const clickPopup = makePopup()
 
 const charts = makeCharts(defaultData, chartEls)
+
+const query = fetchFeatures(0)
+
+// query.then(features => {
+//     totalGardens.textContent = features.thumb.totals.toLocaleString()
+//     totalParks.textContent = features.parks.totals.toLocaleString()    
+// })
+
+let queryTrees = true
 
 map.on('load', () => {
     const spinner = map['_container'].querySelector('.lds-ring')
@@ -70,15 +77,6 @@ map.on('load', () => {
         addPopup(map, lngLat, html, hoverPopup)
     })
 
-    map.on('mouseenter', 'thumb-points', e => {
-        map.getCanvas().style.cursor = 'pointer'
-
-        const lngLat = e.lngLat
-        const html = makeThumbHoverPopup(e.features[0].properties)
-
-        addPopup(map, lngLat, html, hoverPopup)
-    })
-
     map.on('mouseenter', 'parks', e => {
         map.getCanvas().style.cursor = 'pointer'
 
@@ -98,18 +96,13 @@ map.on('load', () => {
         hoverPopup.remove()
     })
 
-    map.on('mouseleave', 'thumb-points', () => {
-        map.getCanvas().style.cursor = ''
-        hoverPopup.remove()
-    })
-
     map.on('click', 'thumb', e => {
         const lngLat = e.lngLat
         const props = e.features[0].properties
-        const id = props.parksid
+        const url = `https://data.cityofnewyork.us/resource/xqbk-beh5.json?parksid=${props.parksid}`
         let html;
 
-        fetchParkDetails(id).then(response => {
+        fetchOpenData(url).then(response => {
             if(response.length) {
                 html = makeThumbClickPopup(props, response[0])
             } else {
@@ -122,30 +115,6 @@ map.on('load', () => {
 
         // @TODO: hack lngLat to slightly offset the popup so it doesn't collide with 
         // the main overlay bar
-        map.flyTo({
-            center: lngLat,
-            zoom: 16,
-            speed: 0.5
-        })
-    })
-
-    map.on('click', 'thumb-points', e => {
-        const lngLat = e.lngLat
-        const logisticProps = e.features[0].properties
-        const id = logisticProps.parksid
-        let html;
-
-        fetchParkDetails(id).then(response => {
-            if(response.length) {
-                html = makeThumbClickPopup(logisticProps, response[0])
-            } else {
-                html = makeThumbClickPopup(logisticProps, false)
-            }
-
-            addPopup(map, lngLat, html, clickPopup)
-            hoverPopup.remove()
-        })
-
         map.flyTo({
             center: lngLat,
             zoom: 16,
@@ -168,13 +137,12 @@ map.on('load', () => {
 
     boroughForm.onchange = e => {
         spinner.classList.add('lds-ring-active')
-
+        updateCharts(defaultData, charts)
 
         const selectedBoro = handleBoroughsForm(e.target)
         const activeBoro = selectedBoro.value
         const newBoundsHeader = selectedBoro.textContent
         const filters = filterBoroughs(activeBoro)
-        
 
         // filter
         map.setFilter('thumb', filters.thumb)
@@ -184,7 +152,7 @@ map.on('load', () => {
         map.setFilter('boroughs', filters.boro)
 
         // zoom to bounds
-        if(activeBoro == '0') {
+        if(activeBoro == 0) {
             const defaultCoords = positionMap()
 
             map.flyTo({
@@ -207,45 +175,36 @@ map.on('load', () => {
         totalGardens.textContent = 'calculating...'
         totalParks.textContent = 'calculating...'
 
-        triggerDataChange = true
+        queryTrees = true
+
+        // @TODO: finish update
+        // const query = fetchFeatures(activeBoro)
+
+        // query.then(features => {
+        //     totalGardens.textContent = features.thumb.totals.toLocaleString()
+        //     totalParks.textContent = features.parks.totals.toLocaleString()
+        // })
+
     }
 })
 
 
 // loading spinner 
 map.on('idle', () => {
-
-        /*
-            @NOTE: default state w/default view
-            cuts off southenr tip of staten island
-                fitting the whole thing in the viewport cuts off features
-                via zoom
-                pass this bbox: [[-74.317017,40.489017],[-73.708649,40.948830]]
-                for default or all jawns
-                    ^ this didn't work. can't query outside viewport
-            287 Gardens
-            612,934 Street Trees
-            675 Parks
-        */
-
-    // call on first pass and when 'idle' is result of a form change
-    if(triggerDataChange) {
-        const features = map.queryRenderedFeatures({
-            layers: ['thumb', 'parks', 'tree-lines']
-        })
-        
-        const data = getRendered(features)
-        updateCharts(data.charts, charts)
-
-        totalTrees.textContent = data.totals.trees.toLocaleString()
-        totalGardens.textContent = data.totals.thumb.toLocaleString()
-        totalParks.textContent = data.totals.parks.toLocaleString()
-
-        triggerDataChange = false
-    }
-
     const spinner = map['_container'].querySelector('.lds-ring')
     spinner.classList.remove('lds-ring-active')
+
+    if(queryTrees) {
+        const features = map.queryRenderedFeatures({
+            layers: ['tree-lines']
+        })
+        const treeData = getRendered(features)
+
+        updateCharts(treeData, charts)
+
+        totalTrees.textContent = treeData.totals.toLocaleString()
+        queryTrees = false
+    }
 })
 
 

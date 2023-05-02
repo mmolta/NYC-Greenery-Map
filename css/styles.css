@@ -129,7 +129,7 @@ a {
     box-shadow: var(--box-shadow);
 }
 .modal-content p, .modal-content span {
-    margin-top: 0.25em;
+    margin: 8px 0;
 }
 .modal-section {
     margin: 0 auto;
@@ -446,7 +446,7 @@ nav {
 .circle-thumb {
     background-color: var(--theme-thumb);
 }
-.polygon-park {
+.circle-park {
     background-color: rgba(31,103,53,0.3);
     border: 1px solid var(--theme-thumb);
 }
