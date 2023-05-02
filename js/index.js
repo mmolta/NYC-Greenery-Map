@@ -102,6 +102,8 @@ map.on('load', () => {
         const url = `https://data.cityofnewyork.us/resource/xqbk-beh5.json?parksid=${props.parksid}`
         let html;
 
+        console.log(lngLat)
+
         fetchOpenData(url).then(response => {
             if(response.length) {
                 html = makeThumbClickPopup(props, response[0])

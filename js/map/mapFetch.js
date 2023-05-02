@@ -37,8 +37,6 @@ const beenFetched = {
 
 // @RETURN: totals and chart data
 const fetchFeatures = async boro => {
-    console.log(beenFetched)
-
     if(beenFetched[boro]) {
         return beenFetched[boro]
     }else {

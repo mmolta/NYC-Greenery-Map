@@ -11,7 +11,7 @@ const makeTreesChart = (trees, chart) => {
         "9+"
       ],
       datasets: [{
-        label: 'Trees per Street',
+        label: '# of streets',
         data,
         borderWidth: 1,
         backgroundColor: [
@@ -27,6 +27,12 @@ const makeTreesChart = (trees, chart) => {
       scales: {
         y: {
           beginAtZero: true
+        }
+      },
+      plugins: {
+        title: {
+          display: true,
+          text: 'Trees per Street'
         }
       }
     }

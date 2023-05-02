@@ -8,24 +8,69 @@ const addPopup = (map, lnglat, html, popup) => {
 }
 
 const makeThumbDetails = details => {
+    // build composting phrase
+    const composting = details.composting ? 'There is composting at this garden' : ''
+    const composters = details.compostsystem ? ' including a compost system' : '.'
+    const tumblers = details.composttumblers ? ' with on site compost tumblers.' : '.'
+    const compostingLine = composting + composters + tumblers
+
+    // build vegetation phrase
+    let sadPark = false
+    if(!details.food && !details.fruittrees && !details.treesingarden && !details.nonfoodplants) sadPark = true
+    const hasTrees = details.treesingarden ? 'trees in the garden' : ''
+    const andFood = hasTrees ? ' and ' : ''
+    const nonFood = details.nonfoodplants ? 'non-food plants.' : ''
+    const food = details.food ? 'This garden does grow food. ' : 'This garden does not grow food. '
+    const hasFruitTrees = details.fruittrees ? 'There are even fruit trees in this garden!' : ''
+    const regularPark = 'The kind of plant life you can find in this garden includes ' + hasTrees + andFood + nonFood + food + hasFruitTrees
+
+    // build wildlife phrase
+    let noWildlife = false
+    if(!details.pond && !details.turtles &!details.aquaponics & !details.chicken) noWildlife = true
+    const pond = details.pond ? 'There is a pond' : ''
+    const aquaponics = details.aquaponics ? ' with an aquaponics system that uses natural waste to provide nutrients to hydroponic plants.' : ''
+    const turtles = details.turtles ? ' and it has turtles in it!' : '.'
+    const chickens = details.chickens ? 'There are chickens in this garden!' : ''
+    const wildlife = pond + aquaponics + turtles + chickens
+
+    // build structures phrase
+    let noStructures = false
+    if(!details.solarpanels && !details.greenhouse && !details.structureforseasonextension) noStructures = true
+    const solar = details.solarpanels ? 'This garden is equipped with solar pannels for providing clean energy. ' : ''
+    const greenhouse = details.greenhouse ? 'There is a greenhouse for controlled growing conditions. ' : ''
+    const structureforseasonextension = details.structureforseasonextension ? 'There is even an all-weather structure that allows for year round growing at this garden.' : ''
+    const structures = solar + greenhouse + structureforseasonextension
+
     return `
         <details open>
             <summary>Services</summary>
             <p class="details-content">
-                This park offers a number of services including 
-                ${details.onsiteservice ? 'a water source on site, ' : ''}
-                ${details.rainharvesting ? `rain harvesting up to ${details.raingallons} gallons, `: ''}
+                This park offers a number of services.  
+                ${composting ? compostingLine : ''}
+                ${details.rainharvesting ? `There is rain harvesting up to ${details.raingallons} gallons. `: ''}
+                ${details.csapickup ? 'There is a CSA pickup service at this park.' : ''}
+                ${details.farmersmarket ? 'This park even has a farmers market!' : ''}
+                ${details.onsiteservice ? 'There is a clean water drinking source on site. ' : ''}
 
             </p>
         </details>
         <details>
             <summary>Vegetation</summary>
+            <p class="details-content">
+                ${sadPark ? 'This garden has no listed plant life.' : regularPark}
+            </p>
         </details>
         <details>
             <summary>Wildlife</summary>
+            <p class="details-content">
+                ${noWildlife ? 'There is no wildlife intentionally in the garden.' : wildlife}
+            </p>
         </details>
         <details>
             <summary>Structures</summary>
+            <p class="details-content">
+                ${noStructures ? 'There are no structures inside this garden.' : structures}
+            </p>
         </details>
     `
 }
