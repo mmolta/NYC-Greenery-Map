@@ -474,6 +474,7 @@ nav {
     height: 16px;
     background: linear-gradient(to right, rgba(0,0,0,0) 25%, #f7fcb9 25%, #f7fcb9 50%, #addd8e 50%, #addd8e 75%, #31a354 75%, #31a354);
     border: 1px solid var(--theme-black);
+    border-radius: var(--border-radius);
 }
 .circle-thumb {
     background-color: var(--theme-thumb);
