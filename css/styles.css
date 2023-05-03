@@ -169,27 +169,20 @@ nav {
     left: 50%;
     transform: translate(-50%, 0);
     padding: 0 24px;
+    border: 2px solid var(--theme-black);
     border-radius: var(--border-radius);
-    background-color: var(--theme-green);
-    color: var(--theme-white);
-    box-shadow: var(--box-shadow);
+    background-color: var(--theme-white);
+    color: var(--theme-green);
     z-index: 1;
 }
 .nav-btn {
     font-size: 1em;
     background-color: transparent;
-    color: var(--theme-white);
+    color: var(--theme-green);
     border: none;
-    border-bottom: 2px solid var(--theme-white);
+    border-bottom: 2px solid var(--theme-green);
     padding: 0;
     cursor: pointer;
-}
-.nav-vr {
-    display: none;
-    margin: 0 16px;
-    font-size: 1.5em;
-    font-weight: 200;
-    color: var(--theme-white);
 }
 .project-logo {
     display: block;
@@ -239,7 +232,8 @@ nav {
     box-shadow: var(--box-shadow);
 }
 .mapboxgl-ctrl-geocoder, .mapboxgl-ctrl-geocoder .suggestions, .mapboxgl-ctrl-group:not(:empty) {
-    box-shadow: var(--box-shadow);
+    box-shadow: none;
+    border: 2px solid var(--theme-black);
 }
 .mapboxgl-ctrl-geocoder--icon {
     fill: var(--theme-green);
@@ -278,6 +272,7 @@ nav {
 }
 .thumb-popup {
     width: 500px;
+    height: 300px;
     background-color: var(--theme-white);
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
@@ -295,13 +290,15 @@ nav {
     padding: 16px;
     border-top-left-radius: var(--border-radius);
     border-bottom-left-radius: var(--border-radius);
+    max-height: 300px;
+    overflow-y: auto;
 }
 .hours-list li {
     margin-bottom: 4px;
 }
 .thumb-popup-details {
     width: 50%;
-    max-height: 290px;
+    max-height: 300px;
     overflow-y: auto;
     padding: 16px;
 }
@@ -360,7 +357,7 @@ nav {
     font-size: 1em;
     padding: 8px;
     background-color: var(--theme-white);
-    box-shadow: var(--box-shadow);
+    border: 2px solid var(--theme-black);
     border-radius: var(--border-radius);
 }
 .data-overlay {
@@ -501,7 +498,6 @@ footer {
     font-size: inherit;
     color: grey;
     width: 40em;
-    color: var(--theme-black);
-    margin: 24px 0;
+    margin: 24px auto;
 }
 /* END Footer */
