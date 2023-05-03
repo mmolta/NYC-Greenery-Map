@@ -13,11 +13,14 @@ const modal = document.getElementById('modal')
 const modalToggle = document.getElementById('modal-toggle')
 const closeModal = document.getElementById('close-modal')
 const boroughForm = document.getElementById('boros-form')
-const boundsHeader = document.getElementById('bounds')
+
+// const boundsHeader = document.getElementById('bounds')
+
 const totalGardens = document.getElementById('gardens-totals')
 const totalTrees = document.getElementById('trees-totals')
 const totalParks = document.getElementById('parks-totals')
 const treesChart = document.getElementById('trees-chart')
+const treesRank = document.getElementById('tree-rank-ol')
 
 const chartEls = {
     trees: treesChart
@@ -37,6 +40,24 @@ query.then(features => {
 })
 
 let queryTrees = true
+
+// const updateTreesRank = block => {
+//     while (treesRank.firstChild)(treesR.removeChild(treesRank.firstChild))
+
+//     const jawn = `
+//         <li class="tops-li">
+//             <span class="tops-rank">1</span><span id="rank-1" class="tops-num">${block[0].trees}</span>
+//         </li>
+//         <li class="tops-li">
+//             <span class="tops-rank">2</span><span id="rank-2" class="tops-num">${block[1].trees}</span>
+//         </li>
+//         <li class="tops-li">
+//             <span class="tops-rank">3</span><span id="rank-3" class="tops-num">${block[2].trees}</span>
+//         </li>
+//     `
+
+//     treesRank.insertAdjacentHTML('afterbegin', jawn)
+// }
 
 map.on('load', () => {
     const spinner = map['_container'].querySelector('.lds-ring')
@@ -142,7 +163,9 @@ map.on('load', () => {
 
         const selectedBoro = handleBoroughsForm(e.target)
         const activeBoro = selectedBoro.value
-        const newBoundsHeader = selectedBoro.textContent
+        
+        //const newBoundsHeader = selectedBoro.textContent
+
         const filters = filterBoroughs(activeBoro)
 
         // filter
@@ -171,7 +194,7 @@ map.on('load', () => {
             })
         }
 
-        boundsHeader.textContent = newBoundsHeader
+        // boundsHeader.textContent = newBoundsHeader
         totalTrees.textContent = 'calculating...'
         totalGardens.textContent = 'calculating...'
         totalParks.textContent = 'calculating...'
@@ -203,8 +226,11 @@ map.on('idle', () => {
         const treeData = getRendered(features)
 
         updateCharts(treeData, charts)
-
+        
+        // updateTreesRank(treeData.tops)
+        
         totalTrees.textContent = treeData.totals.toLocaleString()
+
         queryTrees = false
     }
 })

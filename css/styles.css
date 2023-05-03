@@ -14,6 +14,8 @@ h1 {
     text-align: center;
     font-size: inherit;
     margin: 0 32px;
+    font-size: 1.56rem;
+    letter-spacing: 0.56px;
 }
 h4 {
     margin-top: 8px;
@@ -27,14 +29,6 @@ details:last-of-type {
 summary {
     cursor: pointer;
     font-weight: 700;
-}
-select {
-    border-radius: var(--border-radius);
-    padding: 4px 8px;
-    background: var(--theme-white);
-    border: 1px solid var(--theme-black);
-    margin-left: 4px;
-    cursor: pointer;
 }
 a {
     color: var(--theme-black);
@@ -183,7 +177,7 @@ nav {
 }
 .nav-btn {
     font-size: 1em;
-    background: transparent;
+    background-color: transparent;
     color: var(--theme-white);
     border: none;
     border-bottom: 2px solid var(--theme-white);
@@ -365,7 +359,7 @@ nav {
     overflow-y: auto;
     font-size: 1em;
     padding: 8px;
-    background-color: transparent;
+    background-color: var(--theme-white);
     box-shadow: var(--box-shadow);
     border-radius: var(--border-radius);
 }
@@ -378,23 +372,28 @@ nav {
     right: 16px;
 }
 .overlay-container {
-    padding: 8px;
-    margin-top: 4px;
-    margin-bottom: 16px;
-    background-color: var(--theme-white);
-    box-shadow: var(--box-shadow-half);
-    border-radius: var(--border-radius);
+    padding: 0 8px;
 }
 .legend-h2 {
-    padding-left: 8px;
-    font-size: 1rem;
+    font-size: 1em;
+    text-align: center;
+    font-weight: 700;
+}
+.legend-h2-inline {
+    display: inline-block;
 }
 .totals-figures {
     font-size: 1rem;
     margin-right: 4px;
 }
-.totals-ul li {
+.totals-list {
+    margin-bottom: 24px;
+}
+.totals-list li {
     margin-bottom: 8px;
+}
+.tops-rank {
+    font-size: 1.15rem
 }
 #gardens-totals {
     color: var(--theme-thumb);
@@ -405,6 +404,38 @@ nav {
 #parks-totals {
     color: var(--theme-green);
 }
+/* END Map Overlays */
+
+
+
+/* Forms */
+.toggle-form {
+    margin-bottom: 16px;
+    font-size: 0.8rem;
+}
+.toggle-form:last-child {
+    margin-bottom: 0;
+}
+.toggle-form-select {
+    border-radius: var(--border-radius);
+    padding: 4px 8px;
+    background: var(--theme-white);
+    border: 1px solid var(--theme-black);
+    margin-left: 4px;
+    cursor: pointer;
+    box-shadow: var(--box-shadow-half);
+}
+.toggle-form-input {
+    margin-right: 24px;
+}
+.trees-inputs {
+    margin-left: 4px;
+}
+/*  */
+
+
+
+/* Legends */
 .legend-section {
     padding: 0 8px;
     background-color: white
@@ -454,23 +485,22 @@ nav {
 .legend-text {
     font-size: 0.75em;
 }
-/* END Map Overlays */
+/*  */
 
 
 
 /* Charts */
-.charts {
-    min-width: 350px;
-}
+
 /* END Charts */
 
 
 
 /* Footer */
 footer {
-    font-size: 0.8em;
+    font-size: inherit;
+    color: grey;
+    width: 40em;
     color: var(--theme-black);
-    padding-left: 8px;
-    margin-top: 4px;
+    margin: 24px 0;
 }
 /* END Footer */

@@ -60,16 +60,28 @@ const getRendered = features => {
         totals: 0
     }
 
+    const totalHigh = []
+
     features.forEach(feature => {
         const trees = parseInt(feature.properties.trees)
 
         if(trees === 0) treeData.trees.none += 1
-        else if(trees < 3 && trees >= 1) treeData.trees.low += 1
-        else if(trees >= 3 && trees < 9) treeData.trees.mid += 1
-        else treeData.trees.high += 1
+        else if(trees < 5 && trees >= 1) treeData.trees.low += 1
+        else if(trees >= 5 && trees < 9) treeData.trees.mid += 1
+        else {
+            treeData.trees.high += 1
+
+            totalHigh.push({
+                geom: feature.geometry,
+                trees
+            })
+        }
 
         treeData.totals += trees
     })
+
+    const sortedTops = totalHigh.sort((a, b) => b.trees - a.trees);
+    treeData.tops = sortedTops.slice(0, 3);
 
     return treeData
 }

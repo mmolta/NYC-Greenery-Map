@@ -6,14 +6,14 @@ const makeTreesChart = (trees, chart) => {
     data: {
       labels: [
         "0",
-        "1 - 3",
-        "4 - 8",
+        "1 - 4",
+        "5 - 8",
         "9+"
       ],
       datasets: [{
-        label: '# of streets',
         data,
         borderWidth: 1,
+        borderRadius: 15,
         backgroundColor: [
             'rgba(0,0,0,0)',
             '#f7fcb9',
@@ -26,13 +26,26 @@ const makeTreesChart = (trees, chart) => {
     options: {
       scales: {
         y: {
-          beginAtZero: true
+          beginAtZero: true,
+          title: {
+            display: true,
+            text: 'blocks'
+          }
+        },
+        x: {
+          title: {
+            display: true,
+            text: 'trees'
+          }
         }
       },
       plugins: {
         title: {
           display: true,
-          text: 'Trees per Street'
+          text: 'Trees per Block'
+        },
+        legend: {
+          display: false
         }
       }
     }
@@ -48,6 +61,7 @@ const makeCharts = (data, els) => {
 // @PARAMS
     // data: key/values of chartNme: chartData
     // chartObjs: key/values of chartName: chart.js object
+    // @TODO: simplify data input param
 const updateCharts = (data, chartObjs) => {
   for(let [key, chart] of Object.entries(chartObjs)) {
     const chartDataObj = data[key]
