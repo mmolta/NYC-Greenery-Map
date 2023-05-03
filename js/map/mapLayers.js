@@ -53,8 +53,8 @@ const mapLayers = {
         paint: {
             'line-color': ['case',
                 ['<', ['get', 'trees'], '1'], 'rgba(0,0,0,0)',
-                ['all', ['>=', ['get', 'trees'], '1'], ['<', ['get', 'trees'], '4']], '#f7fcb9',
-                ['all', ['>=', ['get', 'trees'], '4'], ['<', ['get', 'trees'], '9']], '#addd8e',
+                ['all', ['>=', ['get', 'trees'], '1'], ['<', ['get', 'trees'], '5']], '#f7fcb9',
+                ['all', ['>=', ['get', 'trees'], '5'], ['<', ['get', 'trees'], '9']], '#addd8e',
                 '#31a354'
             ],
             'line-width': ['interpolate',

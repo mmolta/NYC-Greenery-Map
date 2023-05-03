@@ -109,6 +109,7 @@ a {
 }
 .modal-logo {
     width: 80px !important;
+    border: 2px solid var(--theme-white);
 }
 .modal-content-overflow {
     max-height: 70vh;
@@ -188,9 +189,8 @@ nav {
     display: block;
     width: 56px;
     margin-right: 4px;
-    box-shadow: var(--box-shadow);
+    box-shadow: var(--box-shadow-half);
     border-radius: 50%;
-    border: 2px solid var(--theme-white);
     background-color: var(--theme-green);
 }
 /* END Navbar */
@@ -420,6 +420,8 @@ nav {
     border: 1px solid var(--theme-black);
     margin-left: 4px;
     cursor: pointer;
+}
+.toggle-form-select:hover {
     box-shadow: var(--box-shadow-half);
 }
 .toggle-form-input {
