@@ -119,7 +119,6 @@ map.on('load', () => {
 
     map.on('click', 'thumb', e => {
         const lngLat = e.lngLat
-        lngLat.lat += .0001 // offset large popups
         const props = e.features[0].properties
         const url = `https://data.cityofnewyork.us/resource/xqbk-beh5.json?parksid=${props.parksid}`
         let html;
@@ -135,8 +134,6 @@ map.on('load', () => {
             hoverPopup.remove()
         })
 
-        // @TODO: hack lngLat to slightly offset the popup so it doesn't collide with 
-        // the main overlay bar
         map.flyTo({
             center: lngLat,
             zoom: 16,
@@ -152,7 +149,7 @@ map.on('load', () => {
 
         map.flyTo({
             center: lngLat,
-            zoom: 16,
+            zoom: 14,
             speed: 0.5
         })
     })
