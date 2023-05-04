@@ -13,15 +13,13 @@ const modal = document.getElementById('modal')
 const modalToggle = document.getElementById('modal-toggle')
 const closeModal = document.getElementById('close-modal')
 const boroughForm = document.getElementById('boros-form')
-
-// const boundsHeader = document.getElementById('bounds')
-
 const totalGardens = document.getElementById('gardens-totals')
 const totalTrees = document.getElementById('trees-totals')
 const totalParks = document.getElementById('parks-totals')
 const treesChart = document.getElementById('trees-chart')
 const treesRank = document.getElementById('tree-rank-ol')
 
+let queryTrees = true
 const chartEls = {
     trees: treesChart
 }
@@ -29,17 +27,13 @@ const chartEls = {
 const map = makeMap()
 const hoverPopup = makePopup()
 const clickPopup = makePopup()
-
 const charts = makeCharts(defaultData, chartEls)
-
 const query = fetchFeatures(0)
 
 query.then(features => {
     totalGardens.textContent = features.thumb.totals.toLocaleString()
     totalParks.textContent = features.parks.totals.toLocaleString()    
 })
-
-let queryTrees = true
 
 // const updateTreesRank = block => {
 //     while (treesRank.firstChild)(treesR.removeChild(treesRank.firstChild))
@@ -160,9 +154,6 @@ map.on('load', () => {
 
         const selectedBoro = handleBoroughsForm(e.target)
         const activeBoro = selectedBoro.value
-        
-        //const newBoundsHeader = selectedBoro.textContent
-
         const filters = filterBoroughs(activeBoro)
 
         // filter
@@ -191,7 +182,6 @@ map.on('load', () => {
             })
         }
 
-        // boundsHeader.textContent = newBoundsHeader
         totalTrees.textContent = 'calculating...'
         totalGardens.textContent = 'calculating...'
         totalParks.textContent = 'calculating...'
@@ -216,18 +206,16 @@ map.on('idle', () => {
     spinner.classList.remove('lds-ring-active')
 
     if(queryTrees) {
-        // @TODO: store fetched values and check before invoking queryRenderedFeatures again
         const features = map.queryRenderedFeatures({
             layers: ['tree-lines']
         })
+
         const treeData = getRendered(features)
 
         updateCharts(treeData, charts)
-        
         // updateTreesRank(treeData.tops)
         
         totalTrees.textContent = treeData.totals.toLocaleString()
-
         queryTrees = false
     }
 })
