@@ -17,7 +17,6 @@ const totalGardens = document.getElementById('gardens-totals')
 const totalTrees = document.getElementById('trees-totals')
 const totalParks = document.getElementById('parks-totals')
 const treesChart = document.getElementById('trees-chart')
-const treesRank = document.getElementById('tree-rank-ol')
 
 let queryTrees = true
 const chartEls = {
@@ -35,28 +34,10 @@ query.then(features => {
     totalParks.textContent = features.parks.totals.toLocaleString()    
 })
 
-// const updateTreesRank = block => {
-//     while (treesRank.firstChild)(treesR.removeChild(treesRank.firstChild))
-
-//     const jawn = `
-//         <li class="tops-li">
-//             <span class="tops-rank">1</span><span id="rank-1" class="tops-num">${block[0].trees}</span>
-//         </li>
-//         <li class="tops-li">
-//             <span class="tops-rank">2</span><span id="rank-2" class="tops-num">${block[1].trees}</span>
-//         </li>
-//         <li class="tops-li">
-//             <span class="tops-rank">3</span><span id="rank-3" class="tops-num">${block[2].trees}</span>
-//         </li>
-//     `
-
-//     treesRank.insertAdjacentHTML('afterbegin', jawn)
-// }
-
 map.on('load', () => {
     const spinner = map['_container'].querySelector('.lds-ring')
 
-    // @UPDATE: add gardens symbol img
+    // add gardens symbol img
     map.loadImage('./img/gthumbgarden.png', (error, image) => {
         if (error) throw error;
         map.addImage('gthumbgarden', image);
@@ -136,8 +117,7 @@ map.on('load', () => {
 
         map.flyTo({
             center: lngLat,
-            zoom: 16,
-            speed: 0.5
+            speed: 1
         })
     })
 
@@ -149,8 +129,7 @@ map.on('load', () => {
 
         map.flyTo({
             center: lngLat,
-            zoom: 14,
-            speed: 0.5
+            speed: 1
         })
     })
 
@@ -164,8 +143,6 @@ map.on('load', () => {
 
         // filter
         map.setFilter('thumb', filters.thumb)
-        // @UPDATE: removing thumbpoints
-        // map.setFilter('thumbPoints', filters.thumb)
         map.setFilter('parks', filters.parks)
         map.setFilter('tree-lines', filters.trees)
         map.setFilter('boroughs', filters.boro)

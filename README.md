@@ -1,5 +1,5 @@
 # NYC Greenery Map
-Visualizing NYC Open Data's greenery datasets. Includes GreenThumb community gardens, parks properties, street tree coverage, forestry tree points (TBD), parks trails, and tree canopy metrics (TBD?). Final project for INFO 658, Information Visualization.
+Visualizing NYC Open Data's greenery datasets. Includes GreenThumb community gardens, parks properties, and street tree coverage. Final project for INFO 658, Information Visualization.
 
 
 ## Datasets

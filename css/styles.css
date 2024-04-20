@@ -150,7 +150,6 @@ a {
 }
 .modal-figure video {
     border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
     border: var(--border);
 }
 .close-modal{
