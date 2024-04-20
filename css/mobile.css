@@ -19,6 +19,8 @@ h1 {
 
 .data-overlay {
     top: 130px;
+    height: 120px;
+    overflow-y: auto;
 }
 .mapboxgl-ctrl-geocoder {
 	max-width: unset;
