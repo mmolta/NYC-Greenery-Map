@@ -21,7 +21,7 @@ body {
 .modal-gif-section {
     flex-direction: column-reverse;
     width: 80%;
-    width: 32px auto 0 auto;
+    margin: 32px auto 0 auto;
 }
 /* END Modal */
 
