@@ -2,16 +2,20 @@
     --modal-height: 675px;
     --modal-header-height: 48px;
 }
-
 h1 {
 	font-size: 1rem;
 	max-width: unset;
 	margin: 0 8px;
 }
+
+
+
 .nav {
 	padding: 0 16px;
 	width: calc(100% - 64px);
 }
+
+
 
 .data-overlay {
     top: 130px;
