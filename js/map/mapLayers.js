@@ -9,11 +9,19 @@ const mapLayers = {
             'fill-outline-color': '#E6E6FA'
         }
     },
-    // @TODO: replace thumbPoints with a symbol layer at the centroid of thumb
-    // OR a thumb heatmap at a certain zoom level? and then hide it and show gardens
-    // when zoomed in
-    // OR use clusters at an upper zoom level
-        // https://docs.mapbox.com/mapbox-gl-js/example/cluster-html/
+    // @UPDATE: replace thumbPoints w/symbol at zoomed out level
+    thumbIcon: {
+        'id': 'thumb-icon',
+        'source': 'thumb',
+        'type': 'symbol',
+        'layout': {
+            // @TODO: add img src to map in index.js
+            'icon-image': '',
+            'icon-size': 0.3,
+            'icon-allow-overlap': true
+        },
+        'maxzoom': 13
+    },
     thumbPoints: {
         id: 'thumbPoints',
         type: 'circle',
