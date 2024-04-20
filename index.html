@@ -71,52 +71,11 @@
                             Street Trees (approximate)
                         </li>
                     </ul>
-
-                    <!-- <ol id="tree-rank-ol" class="list-unstyled totals-list flex-row flex-wrap">
-                    </ol> -->
                     
                     <div>
                         <canvas id="trees-chart" class="charts"></canvas>
                     </div>
                 </div>
-
-
-                <!-- <div class="overlay-container">
-                    <form id="boros-form" class="toggle-form">
-                        <label>
-                            Showing Data For
-                            <select class="toggle-form-select" autocomplete="off">
-                                <option value="0" selected>All Boroughs</option>
-                                <option value="1">Manhattan</option>
-                                <option value="2">The Bronx</option>
-                                <option value="3">Brooklyn</option>
-                                <option value="4">Queens</option>
-                                <option value="5">Staten Island</option>
-                            </select>
-                        </label>
-                    </form>
-                    <form id="trees-form" class="toggle-form flex-row flex-wrap">
-                        Trees:
-                        <div class="flex-row flex-wrap trees-inputs">
-                            <label for="none">
-                                0
-                                <input type="checkbox" checked value="none" name="none" class="toggle-form-input">
-                            </label>
-                            <label for="low">
-                                1 - 4
-                                <input type="checkbox" checked value="low" name="low" class="toggle-form-input">
-                            </label>
-                            <label for="mid">
-                                5 - 8
-                                <input type="checkbox" checked value="mid" name="mid" class="toggle-form-input">
-                            </label>
-                            <label for="high">
-                                9+
-                                <input type="checkbox" checked value="high" name="high" class="toggle-form-input">
-                            </label>
-                        </div>
-                    </form>
-                </div> -->
             </section>
 
             <section class="overlay legend-overlay">
@@ -124,12 +83,15 @@
                 <div class="overlay-container">
                     <div class="flex-column flex-align-start legend-header">
                         Parks
-                        <span class="legend-icon-circle circle-park"></span>
+                        <span class="legend-icon-polygon legend-icon-park"></span>
                     </div>
 
                     <div class="flex-column flex-align-start legend-header">
                         Community Gardens
-                        <span class="legend-icon-circle circle-thumb"></span>
+                        <div class="flex flex-between">
+                            <img class="legend-icon-polycon legend-icon-img" alt="green thumb icon" src="./img/gthumbgarden.png" height="16px" width="16px" />
+                            <span class="legend-icon-polygon legend-icon-thumb"></span>
+                        </div>
                     </div>
 
                     <div class="flex-column flex-align-start legend-header">
@@ -155,7 +117,7 @@
                 <span id="close-modal" class="close-modal">&times;</span>
         
                 <div class="modal-header flex-row flex-align-center flex-center">
-                    <img src="./img/green-city.png" alt="A green city with a leaf in front to symbolize urban greenery as the project logo" class="project-logo modal-logo" />
+                    <img src="./img/green-city.png" alt="A green city with a leaf in front to symbolize urban greenery as the project logo" class="modal-logo" />
                     <h1>New York City Green Spaces</h1>
                 </div>
 
@@ -164,9 +126,9 @@
                         <h3>About</h3>
                         
                         <p>
-                            The purpose of this map is to connect people to publicly accessible green spaces in New York City.
-                            Community Gardens, selected Parks Properties, and Block-level Street Trees paint a picture of active
-                            and passive greenery in the city.
+                            This map connects you to publicly accessible green spaces in New York City. Find places you  
+                            can visit like community gardens and parks, and get a sense of how green a neighborhood is by seeing
+                            street trees per block.
                         </p>
 
                         <div class="modal-gif-section flex-row flex-between flex-align-center">
@@ -192,14 +154,20 @@
                         <p>
                             All data comes from <a href="https://opendata.cityofnewyork.us/" target="_blank" rel="noopener noreferrer">NYC OpenData</a>.
                             GreenThumbs Community Gardens and Parks Properties data is fetched from the API and updates 
-                            whenever the dataset is updated. Each API query pre-selects relevant fields to keep the response data as small as possible.
-                            <br>
+                            whenever the dataset is updated.
+                        </p>
+
+                        <p>
+                            Each API query pre-selects relevant fields to keep the response data as small as possible.
                             Parks data, for example, is constrained to Parks Properties that are public green spaces and excludes entries such as Park's
                             buildings and jointly operated school playgrounds.
-                            <br>
+                        </p>
+
+                        <p>
                             Because of API limits, the Street Trees data was downloaded, cleaned up in qGIS, and then uploaded as a custom vector tile set
                             using Mapbox Studio's
-                            <a href="https://docs.mapbox.com/mapbox-tiling-service/guides/" target="_blank" rel="noopener noreferrer">Mapbox Tiling Service</a>. 
+                            <a href="https://docs.mapbox.com/mapbox-tiling-service/guides/" target="_blank" rel="noopener noreferrer">Mapbox Tiling Service</a>.
+                            Street Trees data on this map comes from the 2015 Street Tree Census.
                         </p>
 
                         <p>
