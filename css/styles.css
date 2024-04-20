@@ -48,6 +48,9 @@ a {
     --border-radius: 2px;
     --box-shadow: 6px 8px 0px var(--theme-black);
     --box-shadow-half: 3px 4px 0 var(--theme-black);
+
+    --modal-height: 650px;
+    --modal-header-height: 56px;
 }
 .flex-row {
     display: flex;
@@ -102,33 +105,34 @@ a {
 .modal-header {
     background-color: var(--theme-green);
     color: var(--theme-white);
-    margin-bottom: 32px;
     font-size: 2rem;
-    height: 56px;
+    height: var(--modal-header-height);
 }
 .modal-logo {
-    width: 80px !important;
-    border: 2px solid var(--theme-white);
+    display: block;
+    width: 80px;
+    background-color: var(--theme-white);
+    border: 2px solid var(--theme-green);
     border-radius: 50%;
 }
 .modal-content-overflow {
-    max-height: 70vh;
+    height: calc(var(--modal-height) - var(--modal-header-height));
     overflow-y: auto;
 }
 .modal-content{
     position: relative;
     background: #fff;
     width: 52em;
-    padding: 0 0 40px 0;
+    height: var(--modal-height);
     border: var(--border);
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
 }
 .modal-content p, .modal-content span {
-    margin: 8px 0;
+    margin: 16px 0;
 }
 .modal-section {
-    margin: 0 auto;
+    margin: 32px auto;
 }
 .modal-section, .modal-hr {
     width: 40em;
@@ -137,7 +141,7 @@ a {
     color: var(--theme-green);
 }
 .modal-gif-section {
-    margin: 24px 0;
+    margin-top: 32px;
 }
 .modal-figure {
     margin-left: 16px;
@@ -189,10 +193,9 @@ nav {
 }
 .project-logo {
     display: block;
-    width: 56px;
+    width: 64px;
     border-radius: 50%;
     margin-right: 4px;
-    box-shadow: var(--box-shadow-half);
     background-color: var(--theme-green);
     border: 2px solid var(--theme-white);
 }
@@ -475,7 +478,7 @@ nav {
     background-color: var(--theme-thumb);
 }
 .legend-icon-park {
-    background-color: rgba(31,103,53,0.3);
+    background-color: rgba(31,103,53,0.5);
     border: 1px solid var(--theme-thumb);
 }
 .legend-text {

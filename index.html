@@ -158,7 +158,7 @@
                 <span id="close-modal" class="close-modal">&times;</span>
         
                 <div class="modal-header flex-row flex-align-center flex-center">
-                    <img src="./img/green-city.png" alt="A green city with a leaf in front to symbolize urban greenery as the project logo" class="project-logo modal-logo" />
+                    <img src="./img/green-city.png" alt="A green city with a leaf in front to symbolize urban greenery as the project logo" class="modal-logo" />
                     <h1>New York City Green Spaces</h1>
                 </div>
 
@@ -167,9 +167,9 @@
                         <h3>About</h3>
                         
                         <p>
-                            The purpose of this map is to connect people to publicly accessible green spaces in New York City.
-                            Community Gardens, selected Parks Properties, and Block-level Street Trees paint a picture of active
-                            and passive greenery in the city.
+                            This map connects you to publicly accessible green spaces in New York City. Find places you  
+                            can visit like community gardens and parks, and get a sense of how green a neighborhood is by seeing
+                            street trees per block.
                         </p>
 
                         <div class="modal-gif-section flex-row flex-between flex-align-center">
@@ -195,14 +195,20 @@
                         <p>
                             All data comes from <a href="https://opendata.cityofnewyork.us/" target="_blank" rel="noopener noreferrer">NYC OpenData</a>.
                             GreenThumbs Community Gardens and Parks Properties data is fetched from the API and updates 
-                            whenever the dataset is updated. Each API query pre-selects relevant fields to keep the response data as small as possible.
-                            <br>
+                            whenever the dataset is updated.
+                        </p>
+
+                        <p>
+                            Each API query pre-selects relevant fields to keep the response data as small as possible.
                             Parks data, for example, is constrained to Parks Properties that are public green spaces and excludes entries such as Park's
                             buildings and jointly operated school playgrounds.
-                            <br>
+                        </p>
+
+                        <p>
                             Because of API limits, the Street Trees data was downloaded, cleaned up in qGIS, and then uploaded as a custom vector tile set
                             using Mapbox Studio's
-                            <a href="https://docs.mapbox.com/mapbox-tiling-service/guides/" target="_blank" rel="noopener noreferrer">Mapbox Tiling Service</a>. 
+                            <a href="https://docs.mapbox.com/mapbox-tiling-service/guides/" target="_blank" rel="noopener noreferrer">Mapbox Tiling Service</a>.
+                            Street Trees data on this map comes from the 2015 Street Tree Census.
                         </p>
 
                         <p>

@@ -1,33 +1,5 @@
 // put the default layers here
 const mapLayers = {
-    thumb: {
-        id: 'thumb',
-        type: 'fill',
-        source: 'thumb',
-        paint: {
-            'fill-color': '#522032',
-            // 'fill-outline-color': '#1f6735'
-        }
-    },
-    thumbIcon: {
-        id: 'thumbIcon',
-        source: 'thumb',
-        type: 'symbol',
-        layout: {
-            'icon-image': 'gthumbgarden',
-            'icon-size': 0.32,
-            'icon-size': ['interpolate',
-                ['linear'], ['zoom'],
-                9.75, 0.32,
-                14, 0.56,
-                18, 0.7,
-            ],
-            'icon-allow-overlap': true,
-        },
-        paint: {
-            'icon-halo-color': '#522032'
-        },
-    },
     parks: {
         id: 'parks',
         type: 'fill',
@@ -55,6 +27,34 @@ const mapLayers = {
                 20, 2.25
             ]
         }
+    },
+    thumb: {
+        id: 'thumb',
+        type: 'fill',
+        source: 'thumb',
+        paint: {
+            'fill-color': '#522032',
+            // 'fill-outline-color': '#1f6735'
+        }
+    },
+    thumbIcon: {
+        id: 'thumbIcon',
+        source: 'thumb',
+        type: 'symbol',
+        layout: {
+            'icon-image': 'gthumbgarden',
+            'icon-size': 0.32,
+            'icon-size': ['interpolate',
+                ['linear'], ['zoom'],
+                9.75, 0.32,
+                14, 0.56,
+                18, 0.7,
+            ],
+            'icon-allow-overlap': true,
+        },
+        paint: {
+            'icon-halo-color': '#522032'
+        },
     },
     boroughs: {
         id: 'boroughs',
