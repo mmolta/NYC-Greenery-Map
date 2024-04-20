@@ -1,0 +1,20 @@
+h1 {
+    margin: 0 24px;
+}
+.nav {
+    /* 24 + 24 + 16 + 16 */
+    width: calc(100% - 80px);
+    justify-content: center !important;
+    left: 50%;
+}
+.overlay {
+    padding: 16px 4px;
+    max-width: 264px;
+}
+.data-overlay {
+    /* account for mapoxctrl margin + nav gap */
+    top: 80px;
+}
+.mapboxgl-ctrl-top-right {
+    margin-top: 64px;
+}

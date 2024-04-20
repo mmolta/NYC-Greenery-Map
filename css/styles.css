@@ -169,7 +169,7 @@ a {
 
 
 /* Navbar */
-nav {
+.nav {
     position: absolute;
     height: 40px;
     top: 16px;
@@ -226,6 +226,7 @@ nav {
 }
 .mapboxgl-popup {
     max-width: unset;
+    z-index: 2;
 }
 .mapboxgl-popup-close-button {
     top: 4px;

@@ -28,5 +28,4 @@ Visualizing NYC Open Data's greenery datasets. Includes GreenThumb community gar
 
 
 ## @TODO
-- lazy load demo.mp4
-- responsive
+- active geo outline
