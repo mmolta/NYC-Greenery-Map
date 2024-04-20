@@ -143,6 +143,7 @@ map.on('load', () => {
 
         // filter
         map.setFilter('thumb', filters.thumb)
+        map.setFilter('thumbIcon', filters.thumb)
         map.setFilter('parks', filters.parks)
         map.setFilter('tree-lines', filters.trees)
         map.setFilter('boroughs', filters.boro)
