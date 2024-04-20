@@ -1,6 +1,6 @@
 /* General */
 body {
-    font-size: 12px;
+    font-size: 14px;
 }
 /* END General */
 
@@ -10,8 +10,18 @@ body {
 .modal-content {
     width: 85%;
 }
+.modal-content-overflow {
+	padding: 0 24px;
+	width: calc(100% - 48px);
+	overflow-x: hidden;
+}
 .modal-section, .modal-hr {
     width: unset;
+}
+.modal-gif-section {
+    flex-direction: column-reverse;
+    width: 80%;
+    width: 32px auto 0 auto;
 }
 /* END Modal */
 
@@ -27,7 +37,6 @@ body {
 
 /* Main Webmap Area */
 .overlay {
-    top: calc(1em + var(--padding-double) + 14.5px);
     width: 20em;
     width: calc(100vw - 60.5px - var(--padding-double));
     min-height: calc(116px - var(--padding-double));
@@ -40,16 +49,6 @@ body {
     margin: var(--padding) 0;
 }
 .mapboxgl-ctrl-geocoder {
-    width: calc(100vw - 20px);
-    font-size: 0.9rem;
-}
-.mapboxgl-ctrl-geocoder--input {
-    height: 30px;
-    padding: 6px 35px;
-    padding-right: 0;
-}
-.mapboxgl-ctrl-geocoder--icon-search {
-    top: 3px;
-    left: 6px;
+    max-width: 240px;
 }
 /* END Main Webmap Area */
