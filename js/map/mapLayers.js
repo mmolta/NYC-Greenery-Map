@@ -5,9 +5,9 @@ const mapLayers = {
         type: 'fill',
         source: 'parks',
         paint: {
-            'fill-color': 'rgba(31,103,53,0.5)',
-            'fill-outline-color': '#1f6735'
-        }
+            'fill-color': 'rgba(31,103,53,0.8)',
+        },
+        order: 'building'
     },
     trees: {
         id: 'tree-lines',
@@ -34,8 +34,8 @@ const mapLayers = {
         source: 'thumb',
         paint: {
             'fill-color': '#522032',
-            // 'fill-outline-color': '#1f6735'
-        }
+        },
+        order: 'country-label'
     },
     thumbIcon: {
         id: 'thumbIcon',

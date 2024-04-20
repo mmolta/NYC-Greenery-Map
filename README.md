@@ -28,5 +28,4 @@ Visualizing NYC Open Data's greenery datasets. Includes GreenThumb community gar
 
 
 ## @TODO
-- force green thumbs layer over parks layer
 - lazy load demo.mp4

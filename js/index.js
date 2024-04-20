@@ -51,7 +51,7 @@ map.on('load', () => {
                     data: value.url
                 })
 
-                layersKey[key].forEach(layer => map.addLayer(mapLayers[layer]))
+                layersKey[key].forEach(layer => map.addLayer(mapLayers[layer], mapLayers[layer].order))
 
             } else {
                 console.log(`failed to fetch ${key} at url: ${src.url}`)
