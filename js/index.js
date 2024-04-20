@@ -11,6 +11,7 @@ import defaultData from './charts/chartsDefaults.js'
 
 const modal = document.getElementById('modal')
 const modalToggle = document.getElementById('modal-toggle')
+const modalVideo = docuemtn.getElementById('modal-video')
 const closeModal = document.getElementById('close-modal')
 const boroughForm = document.getElementById('boros-form')
 const totalGardens = document.getElementById('gardens-totals')
@@ -208,3 +209,7 @@ map.on('idle', () => {
 
 // modal
 handleModal(modal, modalToggle, closeModal)
+
+modalVideo.onclick = () => {
+    
+}

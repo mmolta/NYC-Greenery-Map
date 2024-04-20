@@ -110,7 +110,8 @@ a {
 }
 .modal-logo {
     display: block;
-    width: 80px;
+    z-index: 2;
+    width: 88px;
     background-color: var(--theme-white);
     border: 2px solid var(--theme-green);
     border-radius: 50%;
@@ -172,7 +173,7 @@ nav {
     position: absolute;
     height: 40px;
     top: 16px;
-    left: 50%;
+    left: 53%;
     transform: translate(-50%, 0);
     padding: 0 24px;
     border: var(--border);
@@ -360,7 +361,7 @@ nav {
     overflow-x: hidden;
     overflow-y: auto;
     font-size: 1em;
-    padding: 8px;
+    padding: 16px 8px;
     background-color: var(--theme-white);
     border: var(--border);
     border-radius: var(--border-radius);
