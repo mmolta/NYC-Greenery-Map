@@ -1,54 +1,53 @@
-/* General */
-body {
-    font-size: 14px;
+:root {
+    --modal-height: 675px;
+    --modal-header-height: 48px;
 }
-/* END General */
 
-
-
-/* Modal */
-.modal-content {
-    width: 85%;
+h1 {
+	font-size: 1rem;
+	max-width: unset;
+	margin: 0 8px;
 }
-.modal-content-overflow {
-	padding: 0 24px;
-	width: calc(100% - 48px);
-	overflow-x: hidden;
+.nav {
+	padding: 0 16px;
+	width: calc(100% - 64px);
 }
-.modal-section, .modal-hr {
-    width: unset;
-}
-.modal-gif-section {
-    flex-direction: column-reverse;
-    width: 80%;
-    margin: 32px auto 0 auto;
-}
-/* END Modal */
 
-
-
-/* Navbar */
-#dvrpc-logo {
-    width: 55px;
-}
-/* END Navbar */
-
-
-
-/* Main Webmap Area */
-.overlay {
-    width: 20em;
-    width: calc(100vw - 60.5px - var(--padding-double));
-    min-height: calc(116px - var(--padding-double));
-    background-color: white;
-}
-.overlay-details {
-    margin: var(--padding) 0 var(--padding-half) 0;
-}
-.overlay-hr {
-    margin: var(--padding) 0;
+.data-overlay {
+    top: 130px;
 }
 .mapboxgl-ctrl-geocoder {
-    max-width: 240px;
+	max-width: unset;
+	width: calc(100vw - 32px);
 }
-/* END Main Webmap Area */
+.mapboxgl-ctrl-geocoder--input {
+    height: 32px;
+    font-size: 0.9em;
+}
+.mapboxgl-ctrl-geocoder--icon {
+    top: 5px;
+    left: 8px;
+}
+
+
+
+.close-modal {
+	line-height: initial;
+	margin: 4px 0 0 0;
+	right: 4px;
+}
+.modal-content {
+    width: 90%;
+}
+.modal-logo {
+    width: 64px;
+}
+.modal-gif-section {
+    width: 100%;
+}
+.modal-figure {
+    margin-left: 0;
+}
+video {
+    width: 100%;
+}

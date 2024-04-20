@@ -1,0 +1,54 @@
+/* General */
+body {
+    font-size: 14px;
+}
+/* END General */
+
+
+
+/* Modal */
+.modal-content {
+    width: 85%;
+}
+.modal-content-overflow {
+	padding: 0 24px;
+	width: calc(100% - 48px);
+	overflow-x: hidden;
+}
+.modal-section, .modal-hr {
+    width: unset;
+}
+.modal-gif-section {
+    flex-direction: column-reverse;
+    width: 80%;
+    margin: 32px auto 0 auto;
+}
+/* END Modal */
+
+
+
+/* Navbar */
+#dvrpc-logo {
+    width: 55px;
+}
+/* END Navbar */
+
+
+
+/* Main Webmap Area */
+.overlay {
+    width: 20em;
+    width: calc(100vw - 60.5px - var(--padding-double));
+    min-height: calc(116px - var(--padding-double));
+    background-color: white;
+}
+.overlay-details {
+    margin: var(--padding) 0 var(--padding-half) 0;
+}
+.overlay-hr {
+    margin: var(--padding) 0;
+}
+.mapboxgl-ctrl-geocoder {
+    max-width: 240px;
+}
+/* END Main Webmap Area */
