@@ -44,9 +44,10 @@ a {
     --theme-black: #353535;
     --theme-white: #FCFAF9;
 
-    --border-radius: 15px;
-    --box-shadow: 1px 2px 3px rgba(0,0,0,0.3);
-    --box-shadow-half: 0.5px 1px 1.5px rgba(0, 0, 0, 0.15);
+    --border: 2px solid var(--theme-black);
+    --border-radius: 2px;
+    --box-shadow: 6px 8px 0px var(--theme-black);
+    --box-shadow-half: 3px 4px 0 var(--theme-black);
 }
 .flex-row {
     display: flex;
@@ -101,8 +102,6 @@ a {
 .modal-header {
     background-color: var(--theme-green);
     color: var(--theme-white);
-    border-top-left-radius: var(--border-radius);
-    border-top-right-radius: var(--border-radius);
     margin-bottom: 32px;
     font-size: 2rem;
     height: 56px;
@@ -110,6 +109,7 @@ a {
 .modal-logo {
     width: 80px !important;
     border: 2px solid var(--theme-white);
+    border-radius: 50%;
 }
 .modal-content-overflow {
     max-height: 70vh;
@@ -120,6 +120,7 @@ a {
     background: #fff;
     width: 52em;
     padding: 0 0 40px 0;
+    border: var(--border);
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
 }
@@ -146,6 +147,7 @@ a {
 .modal-figure video {
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
+    border: var(--border);
 }
 .close-modal{
     position: absolute;
@@ -170,7 +172,7 @@ nav {
     left: 50%;
     transform: translate(-50%, 0);
     padding: 0 24px;
-    border: 2px solid var(--theme-black);
+    border: var(--border);
     border-radius: var(--border-radius);
     background-color: var(--theme-white);
     color: var(--theme-green);
@@ -188,10 +190,11 @@ nav {
 .project-logo {
     display: block;
     width: 56px;
+    border-radius: 50%;
     margin-right: 4px;
     box-shadow: var(--box-shadow-half);
-    border-radius: 50%;
     background-color: var(--theme-green);
+    border: 2px solid var(--theme-white);
 }
 /* END Navbar */
 
@@ -233,7 +236,7 @@ nav {
 }
 .mapboxgl-ctrl-geocoder, .mapboxgl-ctrl-geocoder .suggestions, .mapboxgl-ctrl-group:not(:empty) {
     box-shadow: none;
-    border: 2px solid var(--theme-black);
+    border: var(--border);
 }
 .mapboxgl-ctrl-geocoder--icon {
     fill: var(--theme-green);
@@ -357,7 +360,7 @@ nav {
     font-size: 1em;
     padding: 8px;
     background-color: var(--theme-white);
-    border: 2px solid var(--theme-black);
+    border: var(--border);
     border-radius: var(--border-radius);
 }
 .data-overlay {
@@ -450,13 +453,6 @@ nav {
     margin-left: 16px;
     width: max-content;
 }
-.legend-icon-circle {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    margin-right: 8px;
-    border-radius: 50%;
-}
 .legend-icon-polygon {
     display: inline-block;
     width: 16px;
@@ -475,10 +471,10 @@ nav {
     border: 1px solid var(--theme-black);
     border-radius: var(--border-radius);
 }
-.circle-thumb {
+.legend-icon-thumb {
     background-color: var(--theme-thumb);
 }
-.circle-park {
+.legend-icon-park {
     background-color: rgba(31,103,53,0.3);
     border: 1px solid var(--theme-thumb);
 }

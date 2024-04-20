@@ -6,51 +6,35 @@ const mapLayers = {
         source: 'thumb',
         paint: {
             'fill-color': '#522032',
-            'fill-outline-color': '#E6E6FA'
+            // 'fill-outline-color': '#1f6735'
         }
     },
-    // @UPDATE: replace thumbPoints w/symbol at zoomed out level
     thumbIcon: {
-        'id': 'thumb-icon',
-        'source': 'thumb',
-        'type': 'symbol',
-        'layout': {
-            // @TODO: add img src to map in index.js
-            'icon-image': '',
-            'icon-size': 0.3,
-            'icon-allow-overlap': true
-        },
-        'maxzoom': 13
-    },
-    thumbPoints: {
-        id: 'thumbPoints',
-        type: 'circle',
+        id: 'thumbIcon',
         source: 'thumb',
-        paint: {
-            'circle-radius': ['interpolate',
+        type: 'symbol',
+        layout: {
+            'icon-image': 'gthumbgarden',
+            'icon-size': 0.32,
+            'icon-size': ['interpolate',
                 ['linear'], ['zoom'],
-                9.75, 4,
-                10, 3.5,
-                11, 3,
-                12, 2.5,
-                13, 0,
+                9.75, 0.32,
+                14, 0.56,
+                18, 0.7,
             ],
-            'circle-color': '#522032',
-            'circle-stroke-color': '#E6E6FA',
-            'circle-stroke-width': ['interpolate',
-                ['linear'], ['zoom'],
-                9.75, 1,
-                13, 0
-            ]
-        }
+            'icon-allow-overlap': true,
+        },
+        paint: {
+            'icon-halo-color': '#522032'
+        },
     },
     parks: {
         id: 'parks',
         type: 'fill',
         source: 'parks',
         paint: {
-            'fill-color': 'rgba(31,103,53,0.3)',
-            'fill-outline-color': '#522032'
+            'fill-color': 'rgba(31,103,53,0.5)',
+            'fill-outline-color': '#1f6735'
         }
     },
     trees: {
@@ -88,7 +72,7 @@ const mapLayers = {
 }
 
 const layersKey = {
-    thumb: ['thumb', 'thumbPoints'],
+    thumb: ['thumb', 'thumbIcon'],
     parks: ['parks'],
     trees: ['trees'],
     boroughs: ['boroughs']

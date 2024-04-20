@@ -56,6 +56,12 @@ query.then(features => {
 map.on('load', () => {
     const spinner = map['_container'].querySelector('.lds-ring')
 
+    // @UPDATE: add gardens symbol img
+    map.loadImage('./img/gthumbgarden.png', (error, image) => {
+        if (error) throw error;
+        map.addImage('gthumbgarden', image);
+    });
+
     for(let [key, value] of Object.entries(srcURLs.openData)) {
         getSrc(value.url).then(src => {
             if(src) {
@@ -158,7 +164,8 @@ map.on('load', () => {
 
         // filter
         map.setFilter('thumb', filters.thumb)
-        map.setFilter('thumbPoints', filters.thumb)
+        // @UPDATE: removing thumbpoints
+        // map.setFilter('thumbPoints', filters.thumb)
         map.setFilter('parks', filters.parks)
         map.setFilter('tree-lines', filters.trees)
         map.setFilter('boroughs', filters.boro)

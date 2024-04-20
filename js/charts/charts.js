@@ -13,7 +13,7 @@ const makeTreesChart = (trees, chart) => {
       datasets: [{
         data,
         borderWidth: 1,
-        borderRadius: 15,
+        borderRadius: 2,
         backgroundColor: [
             'rgba(0,0,0,0)',
             '#f7fcb9',
