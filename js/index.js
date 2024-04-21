@@ -5,7 +5,7 @@ import handleModal from './modal.js'
 import { handleBoroughsForm } from './forms.js'
 import { makePopup, addPopup, makeThumbHoverPopup, makeParkHoverPopup, makeThumbClickPopup, makeParkClickPopup } from './map/popup.js'
 import { fetchFeatures, fetchOpenData } from './map/mapFetch.js'
-import { filterBoroughs, borobbox, positionMap, getRendered } from './map/mapEvents.js'
+import { filterBoroughs, borobbox, positionMap, getRendered, clearActiveLayers } from './map/mapEvents.js'
 import { makeCharts, updateCharts } from './charts/charts.js'
 import defaultData from './charts/chartsDefaults.js'
 
@@ -99,6 +99,9 @@ map.on('load', () => {
     })
 
     map.on('click', 'thumb', e => {
+        // clear any active layers
+        clearActiveLayers(map)
+
         const lngLat = e.lngLat
         const props = e.features[0].properties
         const url = `https://data.cityofnewyork.us/resource/xqbk-beh5.json?parksid=${props.parksid}`
@@ -115,6 +118,9 @@ map.on('load', () => {
             hoverPopup.remove()
         })
 
+        // add active layer
+        map.setFilter('thumbActive', ['==', 'gardenname', props.gardenname])
+
         map.flyTo({
             center: lngLat,
             speed: 1
@@ -122,10 +128,17 @@ map.on('load', () => {
     })
 
     map.on('click', 'parks', e => {
+        // clear any active layers
+        clearActiveLayers(map)
+
         const lngLat = e.lngLat
-        const html = makeParkClickPopup(e.features[0].properties)
+        const props = e.features[0].properties
+        const html = makeParkClickPopup(props)
 
         addPopup(map, lngLat, html, clickPopup)
+
+        // add active layer
+        map.setFilter('parksActive', ['==', 'name311', props.name311])
 
         map.flyTo({
             center: lngLat,
@@ -182,6 +195,8 @@ map.on('load', () => {
         })
 
     }
+
+    clickPopup.on('close', () => clearActiveLayers(map))
 })
 
 

@@ -9,6 +9,17 @@ const mapLayers = {
         },
         order: 'building'
     },
+    parksActive: {
+        id: 'parksActive',
+        type: 'line',
+        source: 'parks',
+        paint: {
+            'line-color': '#05adda',
+            'line-width': 5
+        },
+        order: 'building',
+        filter: ['==', 'name311', '']
+    },
     trees: {
         id: 'tree-lines',
         type: 'line',
@@ -56,6 +67,17 @@ const mapLayers = {
             'icon-halo-color': '#522032'
         },
     },
+    thumbActive: {
+        id: 'thumbActive',
+        type: 'line',
+        source: 'thumb',
+        paint: {
+            'line-color': '#05adda',
+            'line-width': 5
+        },
+        order: 'building',
+        filter: ['==', 'gardenname', '']
+    },
     boroughs: {
         id: 'boroughs',
         type: 'line',
@@ -72,8 +94,8 @@ const mapLayers = {
 }
 
 const layersKey = {
-    thumb: ['thumb', 'thumbIcon'],
-    parks: ['parks'],
+    thumb: ['thumb', 'thumbIcon', 'thumbActive'],
+    parks: ['parks', 'parksActive'],
     trees: ['trees'],
     boroughs: ['boroughs']
 }

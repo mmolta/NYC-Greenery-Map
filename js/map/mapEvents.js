@@ -86,4 +86,9 @@ const getRendered = features => {
     return treeData
 }
 
-export { positionMap, filterBoroughs, getRendered, borobbox }
+const clearActiveLayers = map => {
+    map.setFilter('thumbActive', ['==', 'gardenname', ''])
+    map.setFilter('parksActive', ['==', 'name311', ''])
+}
+
+export { positionMap, filterBoroughs, getRendered, clearActiveLayers, borobbox }
