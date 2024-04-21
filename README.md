@@ -25,7 +25,3 @@ Visualizing NYC Open Data's greenery datasets. Includes GreenThumb community gar
 
 ## Build
 - `npm run build`
-
-
-## @TODO
-- active geo outline
