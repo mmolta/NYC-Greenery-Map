@@ -213,9 +213,8 @@ map.on('idle', () => {
         const treeData = getRendered(features)
 
         updateCharts(treeData, charts)
-        // updateTreesRank(treeData.tops)
         
-        totalTrees.textContent = treeData.totals.toLocaleString()
+        totalTrees.textContent = treeData.totals == 0 ? 'n/a' : treeData.totals.toLocaleString()
         queryTrees = false
     }
 })
