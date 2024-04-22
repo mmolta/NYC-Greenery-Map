@@ -1,7 +1,6 @@
 /* General */
 body {
     font-size: 14px;
-    overscroll-behavior: contain;
 }
 /* END General */
 
@@ -32,6 +31,9 @@ body {
 
 
 /* Main Webmap Area */
+.data-overlay, .thumb-popup-logistics, .thumb-popup-details {
+    overscroll-behavior: contain;
+}
 .overlay {
     width: 20em;
     width: calc(100vw - 60.5px - var(--padding-double));
