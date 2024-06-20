@@ -25,3 +25,15 @@ Visualizing NYC Open Data's greenery datasets. Includes GreenThumb community gar
 
 ## Build
 - `npm run build`
+
+
+## Publish
+- Push to main. Netlify trigger webpack build process and automatically handles deployment.
+
+
+## Updating Data
+### Street Trees
+- Use Mapbox Tiling Service [MTS](https://docs.mapbox.com/help/glossary/mapbox-tiling-service/) to update the tileset for street trees.
+- Mapbox [documentation for MTS](https://github.com/mapbox/mts-data-sync)
+- data found in the data folder (local, not part of the repo)
+    - why do this? Uploading tree-lines.geojson constrains the zoom levels, MTS lets me re-create w/custom zoom boundaries.
