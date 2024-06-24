@@ -1,6 +1,7 @@
 import { positionMap } from './mapEvents.js'
 
-mapboxgl.accessToken = process.env.MAPBOX_ACCESS_TOKEN
+// URL restricted token
+mapboxgl.accessToken = 'pk.eyJ1IjoibW1tb2x0YSIsImEiOiJjbHh0ZzJsMDcwMWM1MmlwdmhhbmtsdzJhIn0.ojjY7H9qprmGvjJroZDgjg'
 
 const initMap = () => {
     const position = positionMap()

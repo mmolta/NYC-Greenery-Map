@@ -25,7 +25,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require("terser-webpack-plugin");
-const Dotenv = require('dotenv-webpack');
 
 
 /***** Steps to copy and minify existing HTML files using html-webpack-plugin *****/
@@ -109,7 +108,6 @@ module.exports = {
         path: path.resolve(__dirname, 'build')
     },
     plugins: [
-        new Dotenv(),
         // CopyWebpackPlugin moves assets into the build folder
         // we use it here for the img & css folders b/c this set up assumes you aren't using 'require' or 'import' to load either asset
         new CopyWebpackPlugin({
