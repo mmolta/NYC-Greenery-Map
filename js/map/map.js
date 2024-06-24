@@ -1,6 +1,6 @@
 import { positionMap } from './mapEvents.js'
 
-mapboxgl.accessToken = MAPBOX_ACCESS_TOKEN
+mapboxgl.accessToken = process.env.MAPBOX_ACCESS_TOKEN
 
 const initMap = () => {
     const position = positionMap()
